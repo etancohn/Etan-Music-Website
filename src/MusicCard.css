@@ -1,0 +1,19 @@
+
+
+.card {
+    border-top: 10px solid #015112!important;
+    /* max-height: 310px; */
+}
+
+.first-description-paragraph {
+    text-align: left;
+}
+
+.second-description-paragraph {
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.more-txt {
+    font-size: 17px;
+}
