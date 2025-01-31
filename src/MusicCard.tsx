@@ -1,4 +1,4 @@
-import { IconButtonProps, styled, IconButton, Card, CardActions, CardContent, CardHeader, Typography, Divider } from '@mui/material';
+import { IconButtonProps, styled, IconButton, Card, CardActions, CardContent, CardHeader, Typography, Divider, Collapse } from '@mui/material';
 import React from 'react'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import './MusicCard.css'
@@ -89,6 +89,12 @@ function MusicCard(props: MusicCardProps) {
                 <ExpandMoreIcon />
               </ExpandMore>
             </CardActions>
+          
+            <Collapse in={expanded} timeout='auto' unmountOnExit>
+              <CardContent>
+                <Typography>This is some expanded text!!</Typography>
+              </CardContent>
+            </Collapse>
         </Card>
     )
 }
