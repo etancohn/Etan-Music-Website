@@ -92,6 +92,7 @@ export const mtExpandedContent = <div>
             year="2019"
             show="This Side Up (original show)"
             theater="CMU School of Music"
+            youtubeLink="https://www.youtube.com/watch?v=xkq9TU1V5Lo&list=PLfbyNxCSa0lUr6mnf6x2bsAVvnaY3gfAR"
         />
         <ResumeLine
             year="2019"
