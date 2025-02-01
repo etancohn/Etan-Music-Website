@@ -3,7 +3,7 @@ import { Avatar, Divider, Typography } from '@mui/material'
 import './App.css'
 import MenuAppBar from './AppBar'
 import MusicCard from './MusicCard';
-import { musicalTheaterDescription, secondMusicalTheaterDescription, sessionWorkDescription } from './assets/descriptions.tsx';
+import { mtExpandedContent, musicalTheaterDescription, secondMusicalTheaterDescription, sessionWorkDescription } from './assets/descriptions.tsx';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -107,6 +107,7 @@ function App() {
             title='Musical Theater' 
             description={musicalTheaterDescription} 
             // secondDescription={secondMusicalTheaterDescription} 
+            expandedContent={mtExpandedContent}
           />
           <MusicCard 
             title='Session Work & Recordings' 

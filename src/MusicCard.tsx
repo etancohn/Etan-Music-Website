@@ -35,10 +35,11 @@ interface MusicCardProps {
     title: string;
     description: any;
     secondDescription?: any;
+    expandedContent?: any;
 }
 
 function MusicCard(props: MusicCardProps) {
-    const { title, description, secondDescription } = props;
+    const { title, description, secondDescription, expandedContent } = props;
     const [expanded, setExpanded] = React.useState(false);
     const [delayedExpanded, setDelayedExpanded] = React.useState(false);
 
@@ -55,8 +56,8 @@ function MusicCard(props: MusicCardProps) {
     return (
         <Card 
           className='card' 
-          style={{ maxHeight: delayedExpanded ? '600px' : '310px' }}
-          sx={{ width: 410, height: 300 }}
+          style={{ maxHeight: delayedExpanded ? '800px' : '310px' }}
+          sx={{ width: 430, height: 300 }}
         >
             <CardHeader 
                 title={title} 
@@ -91,20 +92,22 @@ function MusicCard(props: MusicCardProps) {
               <IconButton aria-label="share">
                 <ShareIcon />
               </IconButton> */}
-              <ExpandMore
-                expand={expanded}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
-                aria-label="show more"
-              >
-                {!expanded && <span className='more-txt'>More Info </span>}
-                <ExpandMoreIcon />
-              </ExpandMore>
+              {
+                !!expandedContent && <ExpandMore
+                  expand={expanded}
+                  onClick={handleExpandClick}
+                  aria-expanded={expanded}
+                  aria-label="show more"
+                >
+                  {!expanded && <span className='more-txt'>More Info </span>}
+                  <ExpandMoreIcon />
+                </ExpandMore>
+              }
             </CardActions>
           
             <Collapse in={expanded} timeout='auto' unmountOnExit>
               <CardContent>
-                <Typography>This is some expanded text!!</Typography>
+                { expandedContent }
               </CardContent>
             </Collapse>
         </Card>
