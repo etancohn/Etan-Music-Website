@@ -7,6 +7,7 @@ import { Divider, Paper, Typography } from "@mui/material"
 import '../App.css'
 import SpotifyPlayer from "../SpotifyPlayer"
 import ResumeLine from "../ResumeLine"
+import { SoundCloudPlayer, SoundCloudPlaylist } from "../SoundCloudPlayer"
 
 export const recitalsExpandedContent = <div>
     <Typography style={{ fontWeight: 'bold', textDecoration: 'underline', }}>Notable Performances</Typography>
@@ -62,9 +63,11 @@ export const recitalsExpandedContent = <div>
 
 export const sessionWorkDescription = <div className='card-middle'>
     {/* <span> an album with his band.</span> */}
-    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
+    {/* <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
         <SpotifyPlayer />
-    </div>
+    </div> */}
+    <SoundCloudPlaylist playlistUrl='https://soundcloud.com/joshua-fried-599198325/sets/desdemona' />
+    // <SoundCloudPlayer trackUrl='https://soundcloud.com/joshua-fried-599198325/sets/desdemona' />
 </div>
 
 export const recitalsDescription = <div className='card-middle'>
