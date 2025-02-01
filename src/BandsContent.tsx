@@ -1,6 +1,57 @@
 import { CardMedia, Divider, Paper, Typography } from "@mui/material";
 import './BandsContent.css';
 import './App.css';
+import Youtube from 'react-youtube';
+
+interface BandVideoProps {
+    videoId: string;
+    description?: string;
+}
+
+function BandVideo(props: BandVideoProps) {
+    const { videoId, description } = props;
+    return (
+        <div className="band-vid-container">
+            <Youtube className='youtube-vid' videoId={videoId} opts={{ height: "110", width: "180" }} />
+            <p className='band-vid-text'>{ description }</p>
+        </div>
+    )
+}
+
+export const bandsExpandedContent = <div>
+    <div style={{ fontWeight: 'bold', textDecoration: 'underline' }}>Fox and the Cosmic Caravan</div>
+
+    <div className="band-vids-container">
+        <BandVideo 
+            videoId="g6IVQ7syANc" 
+            description="'Big Head' at S'n'Formal"
+        />
+        <BandVideo
+            videoId="3GYBfs4etzU"
+            description="'Black Sheep' at Black Forge"
+        />
+        <BandVideo
+            videoId="QtavZNgWiWc"
+            description="'I Wanna Be Your Dog' at The Underground"
+        />
+        <BandVideo
+            videoId="9DV_7Co1G8s"
+            description="'Space Cowboy' at graduation concert"
+        />
+    </div>
+
+    <div style={{ fontWeight: 'bold', textDecoration: 'underline', marginTop: '1.3rem' }}>CMU Klezmer Band</div>
+    <div className="band-vids-container">
+        <BandVideo 
+            videoId="I10UBhVukP0" 
+            description="'Kadatchka' at Hanukkah party"
+        />
+        <BandVideo
+            videoId="EoweI1uCsw8"
+            description="'Bessarabia' at Matthew Rygelski's Junior CMU Recital"
+        />
+    </div>
+</div>
 
 export const bandsDescription = <div className='card-middle'>
     <div className='bands-content-container'>

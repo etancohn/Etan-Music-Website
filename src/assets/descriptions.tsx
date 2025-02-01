@@ -9,7 +9,7 @@ import SpotifyPlayer from "../SpotifyPlayer"
 import ResumeLine from "../ResumeLine"
 
 export const recitalsExpandedContent = <div>
-    <Typography style={{ fontWeight: 'bold', textDecoration: 'underline', }}>Notable Shows (* = upcoming)</Typography>
+    <Typography style={{ fontWeight: 'bold', textDecoration: 'underline', }}>Notable Performances</Typography>
     <div style={{ marginLeft: '0.5rem', marginTop: '0.5rem' }}>
         <ResumeLine 
             year="2023"
@@ -40,12 +40,6 @@ export const recitalsExpandedContent = <div>
             show="Matthew Rygelski Junior Recital"
             theater="CMU School of Music"
             youtubeLink="https://www.youtube.com/watch?v=EoweI1uCsw8"
-        />
-        <ResumeLine 
-            year="2021"
-            show="Hanukkah 2021 Performance"
-            theater="CMU Klezmer Band"
-            youtubeLink="https://www.youtube.com/watch?v=I10UBhVukP0&list=PLfbyNxCSa0lWJYpVAN1bar75ZicY5Cl97"
         />
         <ResumeLine 
             year="2021"

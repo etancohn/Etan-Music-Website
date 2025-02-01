@@ -18,7 +18,7 @@ import Youtube from 'react-youtube';
 import SpotifyPlayer from './SpotifyPlayer.tsx';
 import Footer from './Footer.tsx';
 import { mtExpandedContent, musicalTheaterDescription } from './MusicalTheaterContent.tsx';
-import { bandsDescription } from './BandsContent.tsx';
+import { bandsDescription, bandsExpandedContent } from './BandsContent.tsx';
 
 function App() {
   return (
@@ -132,7 +132,7 @@ function App() {
           <MusicCard 
             title='Bands & Collaborations' 
             description={bandsDescription} 
-            expandedContent={recitalsExpandedContent}
+            expandedContent={bandsExpandedContent}
             expandText='Videos'
             // secondDescription={secondMusicalTheaterDescription} 
           />
