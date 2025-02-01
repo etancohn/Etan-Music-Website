@@ -56,7 +56,7 @@ function MusicCard(props: MusicCardProps) {
     return (
         <Card 
           className='card' 
-          style={{ maxHeight: delayedExpanded ? '800px' : '310px' }}
+          style={{ maxHeight: delayedExpanded ? '1500px' : '310px' }}
           sx={{ width: 430, height: 300 }}
         >
             <CardHeader 

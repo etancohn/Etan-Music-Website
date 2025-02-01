@@ -27,6 +27,7 @@ export const mtExpandedContent = <div>
             year="2024"
             show="Winter Wonderettes"
             theater="Greater Boston Stage Company"
+            youtubeLink="https://www.youtube.com/watch?v=nZW-FA_QTS4&list=PLfbyNxCSa0lVzJytuJww20mEhiVKui1_O&index=1"
         />
         <ResumeLine
             year="2024"
@@ -87,6 +88,7 @@ export const mtExpandedContent = <div>
             year="2020"
             show="Behind Closed Doors (original show)"
             theater="Scotch'n'Soda Theater"
+            youtubeLink="https://www.youtube.com/watch?v=PReWoscQbFQ&t=1s"
         />
         <ResumeLine
             year="2019"

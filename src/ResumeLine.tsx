@@ -24,7 +24,7 @@ function ResumeLine(props: ResumeLineProps) {
                         size='small'
                     >
                         <YouTubeIcon 
-                            style={{ color: 'red', fontSize: '1.3rem' }}
+                            style={{ color: 'red', fontSize: '1.3rem', margin: '-0.5rem -0.1rem' }}
                         >
                         </YouTubeIcon>
                     </IconButton>
