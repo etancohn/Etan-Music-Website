@@ -3,7 +3,7 @@
 // Etan has experience in regional, community, and school theaters. \
 // Recent shows include Winter Wonderettes at Greater Boston Stage Company, and Cabaret at Vokes Theater.\
 
-import { Divider, Typography } from "@mui/material"
+import { Divider, Paper, Typography } from "@mui/material"
 import '../App.css'
 import SpotifyPlayer from "../SpotifyPlayer"
 import ResumeLine from "../ResumeLine"
@@ -61,8 +61,10 @@ export const recitalsExpandedContent = <div>
 </div>
 
 export const sessionWorkDescription = <div className='card-middle'>
-    <span>Etan recorded an album with his band.</span>
-    <SpotifyPlayer />
+    {/* <span> an album with his band.</span> */}
+    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
+        <SpotifyPlayer />
+    </div>
 </div>
 
 export const recitalsDescription = <div className='card-middle'>
