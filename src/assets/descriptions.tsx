@@ -15,6 +15,7 @@ export const recitalsExpandedContent = <div>
             year="2023"
             show="Matthew Zwiebel's MT Cabaret"
             theater="CMU School of Music"
+            youtubeLink="https://drive.google.com/drive/u/0/folders/1-2KTO7OUhAk_OIyjkZJznCCLnD7-TZug"
         />
         <ResumeLine 
             year="2023"
