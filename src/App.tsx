@@ -3,7 +3,7 @@ import { Avatar, Divider, Typography } from '@mui/material'
 import './App.css'
 import MenuAppBar from './AppBar'
 import MusicCard from './MusicCard';
-import { mtExpandedContent, musicalTheaterDescription, secondMusicalTheaterDescription, sessionWorkDescription } from './assets/descriptions.tsx';
+import { recitalsExpandedContent, sessionWorkDescription } from './assets/descriptions.tsx';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -17,6 +17,7 @@ import blob4 from './assets/blob3.png';
 import Youtube from 'react-youtube';
 import SpotifyPlayer from './SpotifyPlayer.tsx';
 import Footer from './Footer.tsx';
+import { mtExpandedContent, musicalTheaterDescription } from './MusicalTheaterContent.tsx';
 
 function App() {
   return (
@@ -108,11 +109,19 @@ function App() {
             description={musicalTheaterDescription} 
             // secondDescription={secondMusicalTheaterDescription} 
             expandedContent={mtExpandedContent}
+            expandText='Notable Shows'
           />
           <MusicCard 
             title='Session Work & Recordings' 
             description={sessionWorkDescription} 
             // secondDescription={secondMusicalTheaterDescription} 
+          />
+          <MusicCard 
+            title='Recitals & Live Performances' 
+            description={musicalTheaterDescription} 
+            // secondDescription={secondMusicalTheaterDescription} 
+            expandedContent={recitalsExpandedContent}
+            expandText='Videos'
           />
           <MusicCard 
             title='Social Media & Other Projects' 
@@ -121,11 +130,6 @@ function App() {
           />
           <MusicCard 
             title='Bands & Collaborations' 
-            description={musicalTheaterDescription} 
-            // secondDescription={secondMusicalTheaterDescription} 
-          />
-          <MusicCard 
-            title='Recitals & Live Performances' 
             description={musicalTheaterDescription} 
             // secondDescription={secondMusicalTheaterDescription} 
           />

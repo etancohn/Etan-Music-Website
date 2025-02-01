@@ -8,102 +8,61 @@ import '../App.css'
 import SpotifyPlayer from "../SpotifyPlayer"
 import ResumeLine from "../ResumeLine"
 
-export const mtExpandedContent = <div>
+export const recitalsExpandedContent = <div>
     <Typography style={{ fontWeight: 'bold', textDecoration: 'underline', }}>Notable Shows (* = upcoming)</Typography>
     <div style={{ marginLeft: '0.5rem', marginTop: '0.5rem' }}>
         <ResumeLine 
-            isUpcoming={true} 
-            year="2025"
-            show="Songs for a New World"
-            theater="Concord Players"
+            year="2023"
+            show="Matthew Zwiebel's MT Cabaret"
+            theater="CMU School of Music"
         />
         <ResumeLine 
-            isUpcoming={true} 
-            year="2025"
-            show="The Guy Who Didn't Like Musicals"
-            theater="Boston Center for the Arts"
-        />
-        <ResumeLine
-            year="2024"
-            show="Winter Wonderettes"
-            theater="Greater Boston Stage Company"
-            youtubeLink="https://www.youtube.com/watch?v=nZW-FA_QTS4&list=PLfbyNxCSa0lVzJytuJww20mEhiVKui1_O&index=1"
-        />
-        <ResumeLine
-            year="2024"
-            show="Kiss of the Spider Woman"
-            theater="A Common Thread Theater"
-        />
-        <ResumeLine
-            year="2024"
-            show="The Prom"
-            theater="Cambridge School of Weston"
-        />
-        <ResumeLine
-            year="2024"
-            show="Cabaret"
-            theater="Vokes Theater"
-        />
-        <ResumeLine
-            year="2024"
-            show="Newsies"
-            theater="Suffolk University"
-        />
-        <ResumeLine
             year="2023"
-            show="The Muses (original show)"
-            theater="CMU (Carnegie Mellon) School of Drama"
+            show="Josiah Handelman Senior Recital"
+            theater="CMU School of Music (congas)"
+            youtubeLink="https://youtu.be/acaWBXm6aZM?t=676"
         />
-        <ResumeLine
-            year="2023"
-            show="9 to 5"
-            theater="Scotch'n'Soda Theater"
-        />
-        <ResumeLine
+        <ResumeLine 
             year="2022"
-            show="This Old Haunt (original show)"
-            theater="CMU School of Drama"
-        />
-        <ResumeLine
-            year="2022"
-            show="Newsies"
-            theater="McKeesport Little Theater (sub)"
-        />
-        <ResumeLine
-            year="2022"
-            show="Something Rotten!"
-            theater="Scotch'n'Soda Theater (co-music director, drums)"
-        />
-        <ResumeLine
-            year="2021"
-            show="Rocky Horror"
-            theater="Scotch'n'Soda Theater"
-        />
-        <ResumeLine
-            year="2021"
-            show="Little Shop of Horrors"
-            theater="Scotch'n'Soda Theater"
-        />
-        <ResumeLine
-            year="2020"
-            show="Behind Closed Doors (original show)"
-            theater="Scotch'n'Soda Theater"
-            youtubeLink="https://www.youtube.com/watch?v=PReWoscQbFQ&t=1s"
-        />
-        <ResumeLine
-            year="2019"
-            show="This Side Up (original show)"
+            show="Everything In Its Time: A Musical Cabaret"
             theater="CMU School of Music"
-            youtubeLink="https://www.youtube.com/watch?v=xkq9TU1V5Lo&list=PLfbyNxCSa0lUr6mnf6x2bsAVvnaY3gfAR"
+            youtubeLink="https://www.youtube.com/watch?v=ZG-V3VFSMrI&list=PLKIyoBAAgcNAxqKOVSolkEsEEs_b1mo4A&index=5"
         />
-        <ResumeLine
-            year="2019"
-            show="Catch Me If You Can"
+        <ResumeLine 
+            year="2022"
+            show="Annalise Rogers Senior Recital"
+            theater="CMU School of Music"
+            youtubeLink="https://youtu.be/LrmZbuuFCTg?t=3853"
+        />
+        <ResumeLine 
+            year="2021"
+            show="Matthew Rygelski Junior Recital"
+            theater="CMU School of Music"
+            youtubeLink="https://www.youtube.com/watch?v=EoweI1uCsw8"
+        />
+        <ResumeLine 
+            year="2021"
+            show="Hanukkah 2021 Performance"
+            theater="CMU Klezmer Band"
+            youtubeLink="https://www.youtube.com/watch?v=I10UBhVukP0&list=PLfbyNxCSa0lWJYpVAN1bar75ZicY5Cl97"
+        />
+        <ResumeLine 
+            year="2021"
+            show="2021 Annual Benefit Cabaret"
             theater="Scotch'n'Soda Theater"
         />
-
+        <ResumeLine 
+            year="2019"
+            show="Low Standards Cabaret"
+            theater="CMU School of Drama"
+            youtubeLink="https://www.youtube.com/watch?v=_sXI-I73skk&list=PLfbyNxCSa0lXjuMn2gkFwE81_rnxJ7NsH&index=1"
+        />
+        <ResumeLine 
+            year="2019"
+            show="2019 Annual Benefit Cabaret"
+            theater="Scotch'n'Soda Theater"
+        />
     </div>
-    {/* <div style={{ fontSize: '0.9rem' }}>*2025 - <span style={{ fontStyle: 'italic' }}>Songs for a New World</span> | Concord Players</div> */}
 </div>
 
 export const sessionWorkDescription = <div className='card-middle'>
@@ -111,16 +70,8 @@ export const sessionWorkDescription = <div className='card-middle'>
     <SpotifyPlayer />
 </div>
 
-export const musicalTheaterDescription = <div className='card-middle'>
+export const recitalsDescription = <div className='card-middle'>
     <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-    Etan has experience in <span className="bold">regional</span>, <span className="bold">community</span>, and <span className="bold">school</span> theaters.
-    Recent shows include <span className="italic">Winter Wonderettes</span> at Greater Boston Stage Company, and <span className="italic">Cabaret</span> at Vokes Theater.
-    </Typography>
-    <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-        Other recent shows include <span className="italic">Kiss of the Spider Woman</span>, <span className="italic">The Prom</span>, <span className="italic">Newsies</span>, <span className="italic">Something Rotten!</span>, and <span className="italic">9 To 5.</span>
+    Etan did a lot of recitals through Carnegie Mellon's School of Music.
     </Typography>
 </div>
-
-export const secondMusicalTheaterDescription = <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-    Other recent shows include <span className="italic">Kiss of the Spider Woman</span>, <span className="italic">The Prom</span>, <span className="italic">Newsies</span>, <span className="italic">Something Rotten!</span>, and <span className="italic">9 To 5.</span>
-</Typography>

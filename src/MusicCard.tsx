@@ -36,10 +36,11 @@ interface MusicCardProps {
     description: any;
     secondDescription?: any;
     expandedContent?: any;
+    expandText?: string;
 }
 
 function MusicCard(props: MusicCardProps) {
-    const { title, description, secondDescription, expandedContent } = props;
+    const { title, description, secondDescription, expandedContent, expandText } = props;
     const [expanded, setExpanded] = React.useState(false);
     const [delayedExpanded, setDelayedExpanded] = React.useState(false);
 
@@ -99,7 +100,7 @@ function MusicCard(props: MusicCardProps) {
                   aria-expanded={expanded}
                   aria-label="show more"
                 >
-                  {!expanded && <span className='more-txt'>More Info </span>}
+                  {!expanded && <span className='more-txt'>{ expandText ?? "" }</span>}
                   <ExpandMoreIcon />
                 </ExpandMore>
               }
