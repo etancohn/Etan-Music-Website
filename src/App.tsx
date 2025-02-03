@@ -12,6 +12,7 @@ import Youtube from 'react-youtube';
 import Footer from './Footer.tsx';
 import { mtExpandedContent, musicalTheaterDescription } from './MusicalTheaterContent.tsx';
 import { bandsDescription, bandsExpandedContent } from './BandsContent.tsx';
+import greenStripPhoto from './assets/green-strip.png';
 
 function App() {
   return (
@@ -63,7 +64,8 @@ function App() {
           <div className='green-strip-container'>
             <img 
                   className='green-strip'
-                  src='/src/assets/green-strip.png'
+                  src={greenStripPhoto}
+                  // src='/src/assets/green-strip.png'
                   // width='100%'
                   // height={300}
             />
