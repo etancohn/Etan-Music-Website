@@ -1,5 +1,4 @@
-import { Icon, IconButton } from '@mui/material';
-import React from 'react'
+import { IconButton } from '@mui/material';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 
 interface ResumeLineProps {

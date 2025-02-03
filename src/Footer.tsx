@@ -1,4 +1,3 @@
-import React from 'react';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
 import './App.css'
