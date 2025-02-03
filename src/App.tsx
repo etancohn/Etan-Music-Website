@@ -63,7 +63,7 @@ function App() {
           <div className='green-strip-container'>
             <img 
                   className='green-strip'
-                  src='./src/assets/green-strip.png'
+                  src='/src/assets/green-strip.png'
                   // width='100%'
                   // height={300}
             />
