@@ -1,6 +1,5 @@
 import { Typography } from "@mui/material"
 import ResumeLine from "./ResumeLine"
-import SpotifyPlayer from "./SpotifyPlayer"
 
 export const mtExpandedContent = <div>
     <Typography style={{ fontWeight: 'bold', textDecoration: 'underline', }}>Notable Shows (* = upcoming)</Typography>

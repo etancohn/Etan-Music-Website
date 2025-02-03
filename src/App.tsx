@@ -1,5 +1,5 @@
 // npm run dev
-import { Avatar, Divider, IconButton, Paper, Typography } from '@mui/material'
+import { Paper } from '@mui/material'
 import './App.css'
 import MenuAppBar from './AppBar'
 import MusicCard from './MusicCard';
@@ -8,18 +8,10 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-// import blob1 from './assets/blob1.svg';
-// import blob2 from './assets/blob2.svg';
-// import blob3 from './assets/blob3.svg';
-import blob1 from './assets/blob1.png';
-import blob3 from './assets/blob3.png';
-import blob4 from './assets/blob3.png';
 import Youtube from 'react-youtube';
-import SpotifyPlayer from './SpotifyPlayer.tsx';
 import Footer from './Footer.tsx';
 import { mtExpandedContent, musicalTheaterDescription } from './MusicalTheaterContent.tsx';
 import { bandsDescription, bandsExpandedContent } from './BandsContent.tsx';
-import EmailIcon from '@mui/icons-material/Email';
 
 function App() {
   return (
@@ -154,14 +146,14 @@ function App() {
           />
           <MusicCard 
             title='Recitals & Live Performances' 
-            description={musicalTheaterDescription} 
+            description={<div className='card-middle'></div>} 
             // secondDescription={secondMusicalTheaterDescription} 
             expandedContent={recitalsExpandedContent}
             expandText='Videos'
           />
           <MusicCard 
             title='Social Media & Other Projects' 
-            description={musicalTheaterDescription} 
+            description={<div className='card-middle'></div>} 
             // secondDescription={secondMusicalTheaterDescription} 
           />
           <MusicCard 
@@ -173,7 +165,7 @@ function App() {
           />
           <MusicCard 
             title='Miscellaneous' 
-            description={musicalTheaterDescription} 
+            description={<div className='card-middle'></div>} 
             // secondDescription={secondMusicalTheaterDescription} 
           />
         </div>

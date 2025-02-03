@@ -1,4 +1,4 @@
-import { CardMedia, Divider, Paper, Typography } from "@mui/material";
+import { CardMedia, Paper, Typography } from "@mui/material";
 import './BandsContent.css';
 import './App.css';
 import Youtube from 'react-youtube';

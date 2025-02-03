@@ -3,11 +3,10 @@
 // Etan has experience in regional, community, and school theaters. \
 // Recent shows include Winter Wonderettes at Greater Boston Stage Company, and Cabaret at Vokes Theater.\
 
-import { Divider, Paper, Typography } from "@mui/material"
+import { Typography } from "@mui/material"
 import '../App.css'
 import SpotifyPlayer from "../SpotifyPlayer"
 import ResumeLine from "../ResumeLine"
-import { SoundCloudPlayer, SoundCloudPlaylist } from "../SoundCloudPlayer"
 import YouTube from "react-youtube"
 
 export const recitalsExpandedContent = <div>

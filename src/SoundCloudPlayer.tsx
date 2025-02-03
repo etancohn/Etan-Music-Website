@@ -1,7 +1,11 @@
-import React from "react";
 import ReactPlayer from "react-player";
 
-export const SoundCloudPlayer = ({ trackUrl }) => {
+interface SoundCloudProps {
+  trackUrl: string;
+}
+
+export const SoundCloudPlayer = (props: SoundCloudProps) => {
+  const { trackUrl } = props;
   const embedUrl = `https://w.soundcloud.com/player/?url=${encodeURIComponent(trackUrl)}`;
 
   return (
@@ -16,6 +20,11 @@ export const SoundCloudPlayer = ({ trackUrl }) => {
   );
 };
 
-export const SoundCloudPlaylist = ({ playlistUrl }) => {
+interface SoundCloudPlaylistProps {
+  playlistUrl: string;
+}
+
+export const SoundCloudPlaylist = (props: SoundCloudPlaylistProps) => {
+  const { playlistUrl } = props;
   return <ReactPlayer url={playlistUrl} width="100%" height="300px" />;
 };
