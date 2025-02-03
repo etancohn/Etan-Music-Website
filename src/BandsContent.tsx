@@ -2,6 +2,8 @@ import { CardMedia, Paper, Typography } from "@mui/material";
 import './BandsContent.css';
 import './App.css';
 import Youtube from 'react-youtube';
+import cosmicCaravanPic from '/src/assets/cosmic-caravan-pic.jpeg';
+import klezmerPic from "/src/assets/klezmer-pic.jpeg";
 
 interface BandVideoProps {
     videoId: string;
@@ -65,7 +67,8 @@ export const bandsDescription = <div className='card-middle'>
                 <CardMedia
                     component="img"
                     sx={{ borderRadius: 1 }}
-                    image="/src/assets/cosmic-caravan-pic.jpeg"
+                    image={cosmicCaravanPic}
+                    // image="/src/assets/cosmic-caravan-pic.jpeg"
                     alt='Cosmic Caravan band'
                 />
             </Paper>
@@ -85,7 +88,8 @@ export const bandsDescription = <div className='card-middle'>
                 <CardMedia
                     component="img"
                     sx={{ borderRadius: 1 }}
-                    image="/src/assets/klezmer-pic.jpg"
+                    image={klezmerPic}
+                    // image="/src/assets/klezmer-pic.jpg"
                     alt='Cosmic Caravan band'
                 />
             </Paper>
