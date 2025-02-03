@@ -8,8 +8,12 @@ import '../App.css'
 import SpotifyPlayer from "../SpotifyPlayer"
 import ResumeLine from "../ResumeLine"
 import { SoundCloudPlayer, SoundCloudPlaylist } from "../SoundCloudPlayer"
+import YouTube from "react-youtube"
 
 export const recitalsExpandedContent = <div>
+    <YouTube videoId={"yjH9kFUOr14"} opts={{ height: "170", width: "250" }} />
+    <YouTube videoId={"4NQ0k0Pyisg"} opts={{ height: "170", width: "250" }} />
+    
     <Typography style={{ fontWeight: 'bold', textDecoration: 'underline', }}>Notable Performances</Typography>
     <div style={{ marginLeft: '0.5rem', marginTop: '0.5rem' }}>
         <ResumeLine 
@@ -63,11 +67,11 @@ export const recitalsExpandedContent = <div>
 
 export const sessionWorkDescription = <div className='card-middle'>
     {/* <span> an album with his band.</span> */}
-    {/* <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
         <SpotifyPlayer />
-    </div> */}
-    <SoundCloudPlaylist playlistUrl='https://soundcloud.com/joshua-fried-599198325/sets/desdemona' />
-    // <SoundCloudPlayer trackUrl='https://soundcloud.com/joshua-fried-599198325/sets/desdemona' />
+    </div>
+    {/* <SoundCloudPlaylist playlistUrl='https://soundcloud.com/joshua-fried-599198325/sets/desdemona' /> */}
+    {/* <SoundCloudPlayer trackUrl='https://soundcloud.com/joshua-fried-599198325/sets/desdemona' /> */}
 </div>
 
 export const recitalsDescription = <div className='card-middle'>

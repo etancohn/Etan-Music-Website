@@ -14,6 +14,8 @@ import Menu from '@mui/material/Menu';
 import { Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import EmailIcon from '@mui/icons-material/Email';
+import InstagramIcon from "@mui/icons-material/Instagram"
 
 export default function MenuAppBar() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -64,8 +66,8 @@ export default function MenuAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ boxShadow: 'none' }}>
-        <Toolbar>
-          <IconButton
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-evenly'}}>
+          {/* <IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -74,13 +76,49 @@ export default function MenuAppBar() {
             onClick={toggleDrawer(true)}
           >
             <MenuIcon />
-          </IconButton>
-          <Drawer open={open} onClose={toggleDrawer(false)}>
+          </IconButton> */}
+          {/* <Drawer open={open} onClose={toggleDrawer(false)}>
             {DrawerList}
-          </Drawer>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          </Drawer> */}
+          {/* <Typography variant="h6" 
+              // component="div" 
+              // sx={{ flexGrow: 1 }}
+          >
             Etan Cohn
-          </Typography>
+          </Typography> */}
+          <div style={{ display: 'flex', columnGap: '1rem', flex: 1, justifyContent: 'flex-end' }}>
+          <div
+            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+          >
+            <IconButton 
+                size='medium'
+            >
+                <InstagramIcon 
+                    style={{ color: 'gray', fontSize: '1.5rem' }}
+                >
+                </InstagramIcon>
+            </IconButton>
+            {/* <a href={'#'} target="_blank" rel="noopener noreferrer"> */}
+            <div style={{ color: 'gray' }}>@etan_drums</div>
+            {/* </a> */}
+          </div>
+          
+          <div
+            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+          >
+            <IconButton 
+                size='medium'
+            >
+                <EmailIcon 
+                    style={{ color: 'gray', fontSize: '1.5rem' }}
+                >
+                </EmailIcon>
+            </IconButton>
+            {/* <a href={'#'} target="_blank" rel="noopener noreferrer"> */}
+            <div style={{ color: 'gray' }}>etan.cohn@gmail.com</div>
+            {/* </a> */}
+          </div>
+          </div>
           {(
             <div>
               {/* <IconButton

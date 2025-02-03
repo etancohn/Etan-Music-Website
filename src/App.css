@@ -20,7 +20,7 @@
 
 .green-strip-container {
   width: 100%;
-  height: 425px;
+  height: 380px;
   position: relative;
   display: flex;
 }
@@ -71,12 +71,7 @@
 
 .content-container {
   width: 100%;
-  /* background-color: red; */
 }
-
-/* .top-container {
-  background-color: white;
-} */
 
 .avatar-container {
   display: flex;
@@ -87,47 +82,17 @@
   margin-bottom: 0rem;
 }
 
-/* .videos-container {
-  height: 10rem;
-  background-color: #015112;
-  margin-top: 2rem;
-  margin-bottom: 3rem;
-} */
-
 .text {
   color: black;
-}
-
-.blobs-container {
-  /* position: relative; */
-  display: flex;
-  height: 360px;
-  width: 100%;
-}
-
-.blob-container {
-  flex: 1;
-  /* border: 2px solid black; */
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* background-color: black; */
-}
-
-.blob {
-  /* position: absolute; */
-  /* top: -100px; */
-  /* left: 10px; */
-  /* left: -35px; */
-  /* z-index: 1!important; */
-  /* height: 350px; */
 }
 
 .explore-experience-txt {
   margin-top: 0.7rem;
   margin-bottom: 1rem;
   color: gray;
+  font-size: 2rem;
+  /* font-weight: 500; */
+  /* font-style: italic; */
   /* font-weight: 800!important; */
   /* text-align: center; */
 }
@@ -178,4 +143,13 @@
   /* margin: 0 auto; */
   /* padding: 2rem; */
   text-align: center;
+}
+
+
+.grow-hover {
+  transition: transform 0.3s ease-in-out;
+}
+
+.grow-hover:hover {
+  transform: scale(1.06);
 }
