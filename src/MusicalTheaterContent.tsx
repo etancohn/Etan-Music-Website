@@ -2,7 +2,7 @@ import { Typography } from "@mui/material"
 import ResumeLine from "./ResumeLine"
 
 export const mtExpandedContent = <div>
-    <Typography style={{ fontWeight: 'bold', textDecoration: 'underline', }}>Notable Shows (* = upcoming)</Typography>
+    <Typography style={{ fontWeight: 'bold', textDecoration: 'underline', }}>Shows (* = upcoming)</Typography>
     <div style={{ marginLeft: '0.5rem', marginTop: '0.5rem' }}>
         <ResumeLine 
             isUpcoming={true} 
@@ -12,6 +12,36 @@ export const mtExpandedContent = <div>
         />
         <ResumeLine 
             isUpcoming={true} 
+            year="2025"
+            show="Beetlejuice Jr."
+            theater="North Shore Childrens Theatre"
+        />
+        <ResumeLine 
+            year="2025"
+            show="The Lightning Thief"
+            theater="Cambridge School of Weston"
+        />
+        <ResumeLine 
+            year="2025"
+            show="Fun Home"
+            theater="Burlington Players (sub)"
+        />
+        <ResumeLine 
+            year="2025"
+            show="Honk"
+            theater="Ayer-Shirley High School (sub)"
+        />
+        <ResumeLine 
+            year="2025"
+            show="Cinderella"
+            theater="Chelsea High School"
+        />
+        <ResumeLine 
+            year="2025"
+            show="Something Rotten!"
+            theater="Curtain Call Theatre"
+        />
+        <ResumeLine 
             year="2025"
             show="The Guy Who Didn't Like Musicals"
             theater="Boston Center for the Arts"

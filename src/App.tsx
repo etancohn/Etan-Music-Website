@@ -68,7 +68,7 @@ function App() {
             description={musicalTheaterDescription} 
             // secondDescription={secondMusicalTheaterDescription} 
             expandedContent={mtExpandedContent}
-            expandText='Notable Shows'
+            expandText='Recent Shows'
           />
           <MusicCard 
             title='Session Work & Recordings' 
