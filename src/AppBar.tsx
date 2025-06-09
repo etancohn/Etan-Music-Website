@@ -9,7 +9,7 @@ export default function MenuAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ boxShadow: 'none' }}>
+      <AppBar position="static" sx={{ boxShadow: 'none', backgroundColor: 'transparent' }} >
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-evenly'}}>
           <div style={{ display: 'flex', columnGap: '1rem', flex: 1, justifyContent: 'flex-end' }}>
           <div
