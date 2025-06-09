@@ -73,7 +73,7 @@ function ParticlesBackground() {
                         default: "out",
                     },
                     // random: true,    // Randomize movement direction
-                    speed: 1,        // Slow floating speed
+                    speed: 0.8,        // Slow floating speed
                     straight: false, // Particles move in non-straight lines
                 },
                 number: {
