@@ -35,30 +35,7 @@ function App() {
               {/* <Avatar sx={{ width: 80, height: 80, boxShadow: 0, marginBottom: '1rem' }} src="/src/assets/etan-drums-ww.jpeg" /> */}
             </Paper>
           </div>
-          {/* <div
-            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-          >
-            <IconButton 
-                size='medium'
-            >
-                <EmailIcon 
-                    style={{ color: 'gray', fontSize: '1.5rem', margin: '-0.5rem -0.1rem' }}
-                >
-                </EmailIcon>
-            </IconButton>
-            <div style={{ color: 'gray' }}>etan.cohn@gmail.com</div>
-          </div> */}
 
-            {/* <div 
-              className='text' style={{ marginTop: '1rem' }}
-            >
-              <span style={{ fontWeight: 'bold' }}>Genres:</span> musical theater, rock latin, funk, jazz, pop, klezmer, hip-hop
-            </div>
-            <div 
-              className='text'
-            >
-              <span style={{ fontWeight: 'bold' }}>Skills:</span> sight-reading, transcription, improvisation, aux. percussion
-            </div> */}
           </div>
 
           <div className='green-strip-container'>
@@ -78,60 +55,12 @@ function App() {
                 <Youtube className='youtube-vid' videoId={"HpSeqORjsks"} opts={{ height: "155", width: "250" }} />
                 <span className='vid-text'>Performance at City Winery</span>
               </div>
-              <div className="video-container">
+              {/* <div className="video-container">
                 <Youtube className='youtube-vid' videoId={"LB5AzCmnAG4"} opts={{ height: "155", width: "250" }} />
                 <span className='vid-text'>Too Sweet - Hozier</span>
-              </div>
+              </div> */}
             </div>
           </div>
-
-        {/* <div className='videos-container'></div> */}
-        {/* <div className="blobs-container">
-          <div className='blob-container'>
-            <img 
-              className='blob'
-              src={blob4}
-              width={480}
-              height={360}
-            />
-            <Youtube className='youtube-vid' videoId={"gnsulRFrfno"} opts={{ height: "160", width: "220" }} />
-            <div className='vid-txt-container'>
-              <span className='vid-txt'>Jazz improv at Mad Monkfish</span>
-            </div>
-          </div>
-
-          <div className="blob-container">
-          <img 
-              className='blob'
-              src={blob3}
-              width={480}
-              height={360}
-            />
-            <Youtube className='youtube-vid' videoId={"gnsulRFrfno"} opts={{ height: "160", width: "220" }} />
-            <div className='vid-txt-container'>
-              <span className='vid-txt'>Jazz improv at Mad Monkfish</span>
-            </div>
-          </div>
-          <div className="blob-container">
-          <img 
-              className='blob'
-              src={blob4}
-              width={480}
-              height={360}
-            />
-            <Youtube className='youtube-vid' videoId={"gnsulRFrfno"} opts={{ height: "160", width: "220" }} />
-            <div className='vid-txt-container'>
-              <span className='vid-txt'>Jazz improv at Mad Monkfish</span>
-            </div>
-          </div>
-        </div> */}
-
-        {/* <Divider /> */}
-
-        {/* <h2 className='text explore-experience-txt'>Explore My Experience</h2> */}
-        {/* <div className='explore-experience-txt'>
-          <Typography className='text explore-experience-txt' variant='h4'>Explore My Experience</Typography>
-        </div> */}
 
         <div className="cards-container">
           <MusicCard 
