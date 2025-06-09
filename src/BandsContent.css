@@ -1,0 +1,44 @@
+
+.bands-content-container {
+    /* background-color: red; */
+}
+
+.cosmic-caravan-photo {
+    width: 250px;
+}
+
+.klezmer-band-photo {
+    width: 175px;
+}
+
+.cosmic-caravan-container {
+    display: flex;
+    column-gap: 1rem;
+}
+
+.klezmer-band-container {
+    margin-top: -2rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+}
+
+.band-vid-text {
+    font-style: italic;
+    font-size: 0.9rem;
+    line-height: 17px;
+}
+
+.band-vids-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    column-gap: 1.5rem;
+    /* row-gap: 0rem; */
+}
+
+.band-vid-container {
+    width: 180px;
+    /* background-color: red; */
+}
