@@ -1,7 +1,7 @@
 .app-container {
   width: 100vw;
   min-height: 100vh;
-  background-color: #f3f4f5;
+  /* background-color: #f3f4f5; */
   /* background-color: white; */
 }
 
@@ -11,7 +11,6 @@
 
 .footer-container {
   width: 100vw;
-  /* background-color: red; */
 }
 
 .card-middle {
@@ -32,7 +31,6 @@
   /* width: 1 */
   /* position: absolute; */
   /* display: flex; */
-  /* background-color: red; */
 }
 
 .spotify-player-iframe {
@@ -48,14 +46,11 @@
   width: 100%;
   height: 100%;
   top: 0;
-  /* height: 200; */
-  /* background-color: red; */
 }
 
 .video-container {
   /* width: 500px;
   height: 400px; */
-  /* background-color: blue; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -105,7 +100,6 @@
   align-items: center;
   position: absolute;
   bottom: 52px;
-  /* background-color: red; */
 }
 
 .vid-txt {
@@ -152,4 +146,13 @@
 
 .grow-hover:hover {
   transform: scale(1.06);
+}
+
+#tsparticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100;
+  z-index: -1;
 }

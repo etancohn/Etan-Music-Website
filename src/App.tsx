@@ -13,11 +13,13 @@ import Footer from './Footer.tsx';
 import { mtExpandedContent, musicalTheaterDescription } from './MusicalTheaterContent.tsx';
 import { bandsDescription, bandsExpandedContent } from './BandsContent.tsx';
 import greenStripPhoto from './assets/green-strip.png';
+import ParticlesBackground from './ParticlesBackground.tsx';
 
 function App() {
   return (
     <>
     <div className='app-container'>
+    <ParticlesBackground />
       <MenuAppBar />
       {/* <SpotifyPlayer /> */}
       <div className="content-container">
