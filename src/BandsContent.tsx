@@ -3,7 +3,6 @@ import './BandsContent.css';
 import './App.css';
 import Youtube from 'react-youtube';
 import cosmicCaravanPic from '/src/assets/cosmic-caravan-pic.jpeg';
-import klezmerPic from "/src/assets/klezmer-pic.jpeg";
 
 interface BandVideoProps {
     videoId: string;

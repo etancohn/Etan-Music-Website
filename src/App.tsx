@@ -3,7 +3,7 @@
 import './App.css'
 import MenuAppBar from './AppBar'
 import MusicCard from './MusicCard';
-import { recitalsDescription, recitalsExpandedContent, sessionWorkDescription } from './assets/descriptions.tsx';
+import { recitalsDescription, sessionWorkDescription } from './assets/descriptions.tsx';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -11,7 +11,7 @@ import '@fontsource/roboto/700.css';
 // import Youtube from 'react-youtube';
 import Footer from './Footer.tsx';
 import { mtExpandedContent, musicalTheaterDescription } from './MusicalTheaterContent.tsx';
-import { bandsDescription, bandsExpandedContent } from './BandsContent.tsx';
+import { bandsExpandedContent } from './BandsContent.tsx';
 import ParticlesBackground from './ParticlesBackground.tsx';
 import ReactPlayer from 'react-player/youtube';
 import { Paper, Box, Grid, Typography } from '@mui/material';
@@ -19,7 +19,6 @@ import { Paper, Box, Grid, Typography } from '@mui/material';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You need to import the CSS too
 import { useEffect } from 'react';
-import { darkGreen } from './main.tsx';
 import { motion } from "framer-motion";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';

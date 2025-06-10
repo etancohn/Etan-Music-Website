@@ -1,5 +1,6 @@
 // MusicalTheaterCarousel.jsx
-import React from 'react';
+// import React from 'react';
+// @ts-ignore
 import Slider from 'react-slick';
 import './MusicalTheaterCarousel.css'; // optional styling
 
