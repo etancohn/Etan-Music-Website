@@ -46,11 +46,11 @@
   bottom: -35px;
 }
 
-.video-wrapper:hover {
+/* .video-wrapper:hover {
     box-shadow: 0 4px 20px rgba(29, 71, 52, 0.3);
     transform: translateY(-2px);
     transition: all 0.2s ease;
-}
+} */
 
 
 /* All dots */

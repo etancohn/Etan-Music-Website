@@ -35,7 +35,8 @@ function App() {
   useEffect(() => {
     AOS.init({
       duration: 800, // animation duration in ms
-      once: false,    // whether animation should happen only once
+      once: true,    // whether animation should happen only once
+      offset: 100,
     });
   }, []);
 
