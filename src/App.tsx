@@ -22,8 +22,8 @@ import { useEffect } from 'react';
 import { motion } from "framer-motion";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import MusicalTheaterCarousel from './MusicalTheaterCarousel.tsx';
-import PopCarousel from './PopCarousel.tsx';
+// import MusicalTheaterCarousel from './MusicalTheaterCarousel.tsx';
+// import PopCarousel from './PopCarousel.tsx';
 
 function App() {
 
@@ -265,7 +265,7 @@ function App() {
           /> */}
         </div>
 
-        <div 
+        {/* <div 
           style={{
             marginTop: 50,
             marginBottom: 20,
@@ -312,7 +312,7 @@ function App() {
 
         <div data-aos="fade-left">
           <PopCarousel />
-        </div>
+        </div> */}
         
 
 
