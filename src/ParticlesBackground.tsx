@@ -79,10 +79,10 @@ function ParticlesBackground() {
                 number: {
                     density: {
                         enable: true,
-                        area: 2000,
+                        area: 1400,
                         // area: 1600,     // Adjust density based on canvas size
                     },
-                    value: 6,         // Number of polygons
+                    value: 7,         // Number of polygons
                 },
                 opacity: {
                   value: {min: 0.04, max: 0.06 }, // <<< Low and variable opacity
@@ -109,7 +109,7 @@ function ParticlesBackground() {
                      */
                 },
                 size: {
-                    value: { min: 150, max: 220 }, // Size range for polygons
+                    value: { min: 170, max: 230 }, // Size range for polygons
                     // animation: {
                     //     enable: true,
                     //     // speed: 50,

@@ -1,5 +1,5 @@
 // npm run dev
-import { Paper } from '@mui/material'
+// import { Paper } from '@mui/material'
 import './App.css'
 import MenuAppBar from './AppBar'
 import MusicCard from './MusicCard';
@@ -8,13 +8,13 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import Youtube from 'react-youtube';
+// import Youtube from 'react-youtube';
 import Footer from './Footer.tsx';
 import { mtExpandedContent, musicalTheaterDescription } from './MusicalTheaterContent.tsx';
 import { bandsDescription, bandsExpandedContent } from './BandsContent.tsx';
-import greenStripPhoto from './assets/green-strip.png';
 import ParticlesBackground from './ParticlesBackground.tsx';
 import ReactPlayer from 'react-player/youtube';
+import { Paper, Box, Grid, Typography } from '@mui/material';
 
 function App() {
   return (
@@ -24,10 +24,11 @@ function App() {
       <MenuAppBar />
       {/* <SpotifyPlayer /> */}
       <div className="content-container">
-          <div className="avatar-container">
+        
+        <div className="avatar-container">
           <div className='grow-hover'>
             <Paper 
-              elevation={1}
+              elevation={2}
               style={{ 
                   display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',
                   backgroundColor: '#f3f4f5', paddingLeft: '50px', paddingRight: '50px', marginBottom: '1rem'
@@ -38,47 +39,129 @@ function App() {
               {/* <Avatar sx={{ width: 80, height: 80, boxShadow: 0, marginBottom: '1rem' }} src="/src/assets/etan-drums-ww.jpeg" /> */}
             </Paper>
           </div>
+        </div>
 
-          </div>
+          <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          width: '100%',
+          py: { xs: 3, md: 6 },
+          px: { xs: 2, md: 4 },
+          mt: 4,
+          mb: 6,
+        }}
+      >
+        <Paper
+          elevation={4}
+          sx={{
+            p: { xs: 2, md: 4 },
+            width: '100%',
+            maxWidth: 960,
+            borderRadius: 2,
+            bgcolor: 'background.paper',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 3,
+          }}
+        >
+          {/* Section Title with Green Accent */}
+          <Typography
+            variant="h4"
+            component="h2"
+            sx={{
+              textAlign: 'center',
+              mb: { xs: 2, md: 3 },
+              fontWeight: 700,
+              color: 'black',
+              letterSpacing: '-0.02em',
+              position: 'relative', // Needed for pseudo-element
+              pb: 0.5, // Padding at the bottom for the underline
+              '&::after': { // The green underline
+                content: '""',
+                position: 'absolute',
+                bottom: 0,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '150px', // Length of the underline
+                height: '4px', // Thickness of the underline
+                bgcolor: "darkGreen", // Your dark green color
+                borderRadius: '2px', // Slightly rounded ends
+              },
+            }}
+          >
+            Videos
+          </Typography>
 
-          <div className='green-strip-container'>
-            <img 
-                  className='green-strip'
-                  src={greenStripPhoto}
-                  // src='/src/assets/green-strip.png'
-                  // width='100%'
-                  // height={300}
-            />
+    {/* Video Grid */}
+    <Grid container spacing={4} justifyContent="center">
+      {/* Video 1 */}
+      <Grid item xs={12} sm={6} md={4}> {/* Responsive sizing for each video */}
+        <Box sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center',
+          p: 1.5, // Padding around video and text
+          // Optional: If you want each video to have its own subtle card-like look within the Paper
+          // border: '1px solid #e0e0e0', // Light border
+          // borderRadius: 1, // Slight rounding
+          // bgcolor: '#f9f9f9', // Very subtle background
+        }}>
+          <ReactPlayer
+            url="https://www.youtube.com/watch?v=QetcQ_k17VM" // **USE YOUR ACTUAL YOUTUBE URLS HERE**
+            light={true} // Only loads iframe after click for performance
+            width="100%" // Important for responsiveness within the Grid item
+            height={180} // Adjust this height or use aspect ratio settings if preferred
+            controls
+          />
+          <Typography
+            variant="body1" // Standard body text size
+            sx={{
+              mt: 1.5, // Margin top for space between video and text
+              fontWeight: 500, // Medium boldness
+              color: 'text.secondary', // Muted text color
+              lineHeight: 1.4, // Good line spacing
+            }}
+          >
+            Dancing Through Life - Wicked
+          </Typography>
+        </Box>
+      </Grid>
 
-            <div className="videos-container" style={{ marginTop: '0.3rem'}}>
-              <div className="video-container">
-              <ReactPlayer
-                  url="https://www.youtube.com/watch?v=QetcQ_k17VM"
-                  light={true} // Only loads iframe after click
-                  width={250}
-                  height={155}
-                  controls
-                />
-                {/* <Youtube className='youtube-vid' videoId={"QetcQ_k17VM"} opts={{ height: "155", width: "250" }} /> */}
-                <span className='vid-text'>Dancing Through Life - Wicked</span>
-              </div>
-              <div className="video-container">
-                <ReactPlayer
-                  url="https://www.youtube.com/watch?v=HpSeqORjsks"
-                  light={true} // Only loads iframe after click
-                  width={250}
-                  height={155}
-                  controls={true}
-                />
-                {/* <Youtube className='youtube-vid' videoId={"HpSeqORjsks"} opts={{ height: "155", width: "250" }} /> */}
-                <span className='vid-text'>Performance at City Winery</span>
-              </div>
-              {/* <div className="video-container">
-                <Youtube className='youtube-vid' videoId={"LB5AzCmnAG4"} opts={{ height: "155", width: "250" }} />
-                <span className='vid-text'>Too Sweet - Hozier</span>
-              </div> */}
-            </div>
-          </div>
+      {/* Video 2 */}
+      <Grid item xs={12} sm={6} md={4}>
+        <Box sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center',
+          p: 1.5,
+        }}>
+          <ReactPlayer
+            url="https://www.youtube.com/watch?v=HpSeqORjsks" // **USE YOUR ACTUAL YOUTUBE URLS HERE**
+            light={true}
+            width="100%"
+            height={180}
+            controls={true}
+          />
+          <Typography
+            variant="body1"
+            sx={{
+              mt: 1.5,
+              fontWeight: 500,
+              color: 'text.secondary',
+              lineHeight: 1.4,
+            }}
+          >
+            Performance at City Winery
+          </Typography>
+        </Box>
+      </Grid>
+    </Grid>
+  </Paper>
+</Box>
 
         <div className="cards-container">
           <MusicCard 
@@ -100,11 +183,11 @@ function App() {
             expandedContent={recitalsExpandedContent}
             expandText='Videos'
           />
-          <MusicCard 
+          {/* <MusicCard 
             title='Social Media & Other Projects' 
             description={<div className='card-middle'></div>} 
             // secondDescription={secondMusicalTheaterDescription} 
-          />
+          /> */}
           <MusicCard 
             title='Bands & Collaborations' 
             description={bandsDescription} 
@@ -112,11 +195,11 @@ function App() {
             expandText='Videos'
             // secondDescription={secondMusicalTheaterDescription} 
           />
-          <MusicCard 
+          {/* <MusicCard 
             title='Miscellaneous' 
             description={<div className='card-middle'></div>} 
             // secondDescription={secondMusicalTheaterDescription} 
-          />
+          /> */}
         </div>
       </div>
     </div>
