@@ -29,7 +29,7 @@ function ParticlesBackground() {
                     // value: "rgb(18, 20, 19)", // A darker background often looks good
                 },
             },
-            fpsLimit: 150,
+            fpsLimit: 120,
             interactivity: {
                 events: {
                     onClick: {
