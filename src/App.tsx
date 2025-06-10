@@ -24,6 +24,7 @@ import { motion } from "framer-motion";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import MusicalTheaterCarousel from './MusicalTheaterCarousel.tsx';
+import PopCarousel from './PopCarousel.tsx';
 
 function App() {
 
@@ -107,7 +108,7 @@ function App() {
           }}
         >
           {/* Section Title with Green Accent */}
-          <Typography
+          {/* <Typography
             variant="h4"
             component="h2"
             sx={{
@@ -132,7 +133,7 @@ function App() {
             }}
           >
             Videos
-          </Typography>
+          </Typography> */}
 
     {/* Video Grid */}
     <Grid container spacing={4} justifyContent="center">
@@ -277,7 +278,7 @@ function App() {
               whileInView="animate"
               viewport={{ once: false }}
               style={{
-                  fontSize: '3rem',
+                  fontSize: '2.7rem',
                   color: 'gray',
               }}
           >
@@ -288,6 +289,32 @@ function App() {
         <div data-aos="fade-left">
           <MusicalTheaterCarousel />
         </div>
+
+        <div 
+          style={{
+            marginTop: 50,
+            marginBottom: 20,
+          }}
+        >
+          <motion.h2
+              variants={headerVariants}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: false }}
+              style={{
+                  fontSize: '2.7rem',
+                  color: 'gray',
+                  marginTop: '7rem',
+              }}
+          >
+              Pop Covers
+          </motion.h2>
+        </div>
+
+        <div data-aos="fade-left">
+          <PopCarousel />
+        </div>
+        
 
 
       </div>
