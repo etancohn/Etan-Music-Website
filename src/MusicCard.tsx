@@ -61,8 +61,8 @@ function MusicCard(props: MusicCardProps) {
           style={{ maxHeight: delayedExpanded ? '1500px' : '310px' }}
           // sx={{ width: 430, height: 300 }}
           sx={{ 
-            // width: 730, 
-            // height: 700 
+            // width: 430, 
+            height: 900 
           }}
         >
             <CardHeader 
@@ -75,19 +75,21 @@ function MusicCard(props: MusicCardProps) {
             ></CardHeader>
 
             <CardContent
-              sx={{ paddingTop: 0 }}
+              sx={{ 
+                paddingTop: 0,
+              }}
             >
             <div className='first-description-paragraph'>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                 {description}
               </Typography>
             </div>
-              {secondDescription && 
+              {/* {secondDescription && 
               <div className='second-description-paragraph'>
                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                     {secondDescription}
                 </Typography>
-              </div>}
+              </div>} */}
             </CardContent>
             <Divider />
 

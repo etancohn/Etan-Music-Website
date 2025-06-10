@@ -131,10 +131,12 @@ export const mtExpandedContent = <div>
 
 export const musicalTheaterDescription = <div className='card-middle'>
     <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-    Etan has experience in <span className="bold">regional</span>, <span className="bold">community</span>, and <span className="bold">school</span> theaters.
-    Recent shows include <span className="italic">Winter Wonderettes</span> at Greater Boston Stage Company, and <span className="italic">Cabaret</span> at Vokes Theater.
+        Recent Boston theater experience includes Winter Wonderettes at Greater Boston Stage Company, Songs For A New World with Concord Players, and Cabaret at Vokes Theater.
+    {/* Experience in <span className="bold">regional</span>, <span className="bold">community</span>, and <span className="bold">school</span> theaters.
+    Recent shows include <span className="italic">Winter Wonderettes</span> at Greater Boston Stage Company, and <span className="italic">Cabaret</span> at Vokes Theater. */}
     </Typography>
-    <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-        Other recent shows include <span className="italic">Kiss of the Spider Woman</span>, <span className="italic">The Prom</span>, <span className="italic">Newsies</span>, <span className="italic">Something Rotten!</span>, and <span className="italic">9 To 5.</span>
+    <Typography variant="body2" sx={{ color: 'text.secondary', marginTop: 1 }}>
+        Other recent Boston shows include Fun Home at Burlington Players, Something Rotten at Curtain Call Theatre, and Kiss of the Spider Woman at A Common Thread.
+        {/* <span className="italic">Kiss of the Spider Woman</span>, <span className="italic">The Prom</span>, <span className="italic">Newsies</span>, <span className="italic">Something Rotten!</span>, and <span className="italic">9 To 5.</span> */}
     </Typography>
 </div>

@@ -35,6 +35,7 @@ const MusicalTheaterCarousel = () => {
         breakpoint: 768, // tablet and below
         settings: {
           slidesToShow: 1,
+          slidesToScroll: 1,
         },
       },
     ],
