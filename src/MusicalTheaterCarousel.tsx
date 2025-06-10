@@ -52,6 +52,7 @@ const MusicalTheaterCarousel = () => {
                 height="250"
                 src={video.url}
                 title={video.title}
+                loading="lazy"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen

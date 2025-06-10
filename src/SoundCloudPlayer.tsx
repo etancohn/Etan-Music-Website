@@ -14,6 +14,7 @@ export const SoundCloudPlayer = (props: SoundCloudProps) => {
       height="166"
       scrolling="no"
       frameBorder="no"
+      loading="lazy"
       allow="autoplay"
       src={embedUrl}
     ></iframe>
