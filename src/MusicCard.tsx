@@ -40,7 +40,7 @@ interface MusicCardProps {
 }
 
 function MusicCard(props: MusicCardProps) {
-    const { title, description, secondDescription, expandedContent, expandText } = props;
+    const { title, description, expandedContent, expandText } = props;
     const [expanded, setExpanded] = React.useState(false);
     const [delayedExpanded, setDelayedExpanded] = React.useState(false);
 
