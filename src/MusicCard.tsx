@@ -55,6 +55,7 @@ function MusicCard(props: MusicCardProps) {
         }
     };
     return (
+      <div data-aos="flip-down">
         <Card 
           className='card' 
           style={{ maxHeight: delayedExpanded ? '1500px' : '310px' }}
@@ -113,6 +114,7 @@ function MusicCard(props: MusicCardProps) {
               </CardContent>
             </Collapse>
         </Card>
+      </div>
     )
 }
 

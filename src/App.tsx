@@ -15,8 +15,20 @@ import { bandsDescription, bandsExpandedContent } from './BandsContent.tsx';
 import ParticlesBackground from './ParticlesBackground.tsx';
 import ReactPlayer from 'react-player/youtube';
 import { Paper, Box, Grid, Typography } from '@mui/material';
+// @ts-ignore;
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You need to import the CSS too
+import { useEffect } from 'react';
 
 function App() {
+
+  useEffect(() => {
+    AOS.init({
+      duration: 800, // animation duration in ms
+      once: false,    // whether animation should happen only once
+    });
+  }, []);
+
   return (
     <>
     <div className='app-container'>
@@ -41,7 +53,8 @@ function App() {
           </div>
         </div>
 
-          <Box
+      <div data-aos="zoom-in">
+      <Box
         sx={{
           display: 'flex',
           justifyContent: 'center',
@@ -162,6 +175,7 @@ function App() {
     </Grid>
   </Paper>
 </Box>
+</div>
 
         <div className="cards-container">
           <MusicCard 
