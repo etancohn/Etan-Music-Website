@@ -21,6 +21,7 @@ const PopCarousel = () => {
     infinite: true,
     // fade: true,
     speed: 500,
+    lazyLoad: 'onDemand',
     slidesToShow: 3, // Change for mobile
     slidesToScroll: 2,
     waitForAnimate: false,

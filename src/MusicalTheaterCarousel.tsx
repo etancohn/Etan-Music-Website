@@ -20,6 +20,7 @@ const MusicalTheaterCarousel = () => {
     dots: true,
     arrows: true,
     infinite: true,
+    lazyLoad: 'onDemand',
     // fade: true,
     speed: 500,
     slidesToShow: 3, // Change for mobile
