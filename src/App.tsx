@@ -3,7 +3,7 @@
 import './App.css'
 import MenuAppBar from './AppBar'
 import MusicCard from './MusicCard';
-import { recitalsExpandedContent, sessionWorkDescription } from './assets/descriptions.tsx';
+import { recitalsDescription, recitalsExpandedContent, sessionWorkDescription } from './assets/descriptions.tsx';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -234,15 +234,16 @@ function App() {
             expandText='Recent Shows'
           />
           <MusicCard 
-            title='Session Work & Recordings' 
+            title='Katie and the Roses' 
             description={sessionWorkDescription} 
             // secondDescription={secondMusicalTheaterDescription} 
           />
           <MusicCard 
-            title='Recitals & Live Performances' 
-            description={<div className='card-middle'></div>} 
+            title='Fox and the Cosmic Caravan' 
+            description={recitalsDescription} 
             // secondDescription={secondMusicalTheaterDescription} 
-            expandedContent={recitalsExpandedContent}
+            expandedContent={bandsExpandedContent}
+            // expandedContent={recitalsExpandedContent}
             expandText='Videos'
           />
           {/* <MusicCard 
@@ -253,7 +254,7 @@ function App() {
           <MusicCard 
             title='Bands & Collaborations' 
             description={bandsDescription} 
-            expandedContent={bandsExpandedContent}
+            // expandedContent={bandsExpandedContent}
             expandText='Videos'
             // secondDescription={secondMusicalTheaterDescription} 
           />

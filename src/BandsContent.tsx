@@ -42,7 +42,7 @@ export const bandsExpandedContent = <div>
         />
     </div>
 
-    <div style={{ fontWeight: 'bold', textDecoration: 'underline', marginTop: '1.3rem' }}>CMU Klezmer Band</div>
+    {/* <div style={{ fontWeight: 'bold', textDecoration: 'underline', marginTop: '1.3rem' }}>CMU Klezmer Band</div>
     <div className="band-vids-container">
         <BandVideo 
             videoId="I10UBhVukP0" 
@@ -52,7 +52,7 @@ export const bandsExpandedContent = <div>
             videoId="EoweI1uCsw8"
             description="'Bessarabia' at Matthew Rygelski's Junior CMU Recital"
         />
-    </div>
+    </div> */}
 </div>
 
 export const bandsDescription = <div className='card-middle'>
@@ -77,7 +77,7 @@ export const bandsDescription = <div className='card-middle'>
 
         {/* <Divider /> */}
 
-        <div className="klezmer-band-container">
+        {/* <div className="klezmer-band-container">
             <Typography><span style={{ fontWeight: 'bold' }}>CMU Klezmer Band: </span>Founded and played drums.</Typography>
             <Paper 
                 className='klezmer-band-photo'
@@ -93,6 +93,6 @@ export const bandsDescription = <div className='card-middle'>
                     alt='Cosmic Caravan band'
                 />
             </Paper>
-        </div>
+        </div> */}
     </div>
 </div>

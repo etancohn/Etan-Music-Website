@@ -66,15 +66,29 @@ export const recitalsExpandedContent = <div>
 
 export const sessionWorkDescription = <div className='card-middle'>
     {/* <span> an album with his band.</span> */}
-    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
+    {/* <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
         <SpotifyPlayer />
-    </div>
+    </div> */}
     {/* <SoundCloudPlaylist playlistUrl='https://soundcloud.com/joshua-fried-599198325/sets/desdemona' /> */}
     {/* <SoundCloudPlayer trackUrl='https://soundcloud.com/joshua-fried-599198325/sets/desdemona' /> */}
 </div>
 
 export const recitalsDescription = <div className='card-middle'>
-    <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-    Etan did a lot of recitals through Carnegie Mellon's School of Music.
-    </Typography>
+        <Typography 
+            style={{
+                marginBottom: '1rem',
+                width: '90%',
+            }}>Rock band in college. Gigged around Carnegie Mellon and Pittsburgh, and created an album.</Typography>
+            <span
+        style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+        }}
+    >
+        <SpotifyPlayer />
+    </span>
+    {/* <Typography variant="body2" sx={{ color: 'text.secondary' }}> */}
+    {/* Etan did a lot of recitals through Carnegie Mellon's School of Music. */}
+    {/* </Typography> */}
 </div>

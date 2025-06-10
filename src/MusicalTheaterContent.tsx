@@ -2,7 +2,7 @@ import { Typography } from "@mui/material"
 import ResumeLine from "./ResumeLine"
 
 export const mtExpandedContent = <div>
-    <Typography style={{ fontWeight: 'bold', textDecoration: 'underline', }}>Shows (* = upcoming)</Typography>
+    <Typography style={{ fontWeight: 'bold', textDecoration: 'underline', }}>Recent Shows (* = upcoming)</Typography>
     <div style={{ marginLeft: '0.5rem', marginTop: '0.5rem' }}>
         <ResumeLine 
             isUpcoming={true} 
