@@ -4,6 +4,8 @@ import './index.css'
 import App from './App.tsx'
 import { ThemeProvider, createTheme } from '@mui/material'
 
+export const darkGreen = "#015112"
+
 const theme = createTheme({
   palette: {
     primary: {

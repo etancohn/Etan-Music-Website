@@ -19,8 +19,15 @@ import { Paper, Box, Grid, Typography } from '@mui/material';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You need to import the CSS too
 import { useEffect } from 'react';
+import { darkGreen } from './main.tsx';
+import { motion } from "framer-motion";
 
 function App() {
+
+  const headerVariants = {
+    initial: { opacity: 0, y: -10 },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }, // Adjust duration as needed
+  };
 
   useEffect(() => {
     AOS.init({
@@ -42,12 +49,29 @@ function App() {
             <Paper 
               elevation={2}
               style={{ 
-                  display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',
-                  backgroundColor: '#f3f4f5', paddingLeft: '50px', paddingRight: '50px', marginBottom: '1rem'
+                  display: 'flex', 
+                  flexDirection: 'column',
+                  justifyContent: 'center', 
+                  alignItems: 'center',
+                  // backgroundColor: '#f3f4f5',
+                  backgroundColor: 'white',
+                  paddingLeft: '50px', paddingRight: '50px', marginBottom: '1rem'
                 }}
               >
               <div style={{ marginBottom: '0rem', fontSize: '2rem', fontWeight: 900, color: 'gray' }}>Etan Cohn</div>
-              <div style={{ color: 'gray', marginBottom: '0.5rem' }}>Drummer based in Cambridge, MA</div>
+              <div style={{ color: 'gray', marginBottom: '0.5rem' }}>
+              {/* <img 
+                  src="./src/assets/drumsticks1.png" 
+                  alt="Drumsticks" 
+                  style={{ 
+                    width: '55px', 
+                    height: '40px', 
+                    marginRight: '0.1rem', 
+                    marginTop: '-0.3rem',
+                  }} 
+                /> */}
+                Drummer based in Cambridge, MA
+                </div>
               {/* <Avatar sx={{ width: 80, height: 80, boxShadow: 0, marginBottom: '1rem' }} src="/src/assets/etan-drums-ww.jpeg" /> */}
             </Paper>
           </div>
@@ -87,7 +111,7 @@ function App() {
               textAlign: 'center',
               mb: { xs: 2, md: 3 },
               fontWeight: 700,
-              color: 'black',
+              color: 'gray',
               letterSpacing: '-0.02em',
               position: 'relative', // Needed for pseudo-element
               pb: 0.5, // Padding at the bottom for the underline
@@ -97,7 +121,7 @@ function App() {
                 bottom: 0,
                 left: '50%',
                 transform: 'translateX(-50%)',
-                width: '150px', // Length of the underline
+                width: '80px', // Length of the underline
                 height: '4px', // Thickness of the underline
                 bgcolor: "darkGreen", // Your dark green color
                 borderRadius: '2px', // Slightly rounded ends
@@ -134,7 +158,8 @@ function App() {
             sx={{
               mt: 1.5, // Margin top for space between video and text
               fontWeight: 500, // Medium boldness
-              color: 'text.secondary', // Muted text color
+              fontStyle: 'italic',
+              color: 'gray', // Muted text color
               lineHeight: 1.4, // Good line spacing
             }}
           >
@@ -164,7 +189,7 @@ function App() {
             sx={{
               mt: 1.5,
               fontWeight: 500,
-              color: 'text.secondary',
+              color: 'gray',
               lineHeight: 1.4,
             }}
           >
@@ -176,6 +201,26 @@ function App() {
   </Paper>
 </Box>
 </div>
+
+      <div 
+          style={{
+            marginTop: 50,
+            marginBottom: 20,
+          }}
+        >
+          <motion.h2
+              variants={headerVariants}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: false }}
+              style={{
+                  fontSize: '3rem',
+                  color: 'gray',
+              }}
+          >
+              Experience
+          </motion.h2>
+        </div>
 
         <div className="cards-container">
           <MusicCard 
@@ -214,6 +259,26 @@ function App() {
             description={<div className='card-middle'></div>} 
             // secondDescription={secondMusicalTheaterDescription} 
           /> */}
+        </div>
+
+        <div 
+          style={{
+            marginTop: 50,
+            marginBottom: 20,
+          }}
+        >
+          <motion.h2
+              variants={headerVariants}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: false }}
+              style={{
+                  fontSize: '3rem',
+                  color: 'gray',
+              }}
+          >
+              Covers
+          </motion.h2>
         </div>
       </div>
     </div>
