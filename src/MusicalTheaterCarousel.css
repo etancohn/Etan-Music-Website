@@ -1,0 +1,72 @@
+.carousel-container {
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 1000px;
+    text-align: center;
+  }
+  
+  .carousel-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  .carousel-slide {
+    padding: 0 10px;
+  }
+  
+  .video-wrapper {
+    background: white;
+    border-radius: 12px;
+    padding: 10px;
+    /* box-shadow: 0 4px 20px rgba(0,0,0,0.1); */
+  }
+  
+.video-title {
+    margin-top: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+/* Make sure arrows are styled */
+.slick-prev:before,
+.slick-next:before {
+  color: #015112;
+  font-size: 28px;
+}
+
+/* Optional hover effect */
+.slick-prev:hover:before,
+.slick-next:hover:before {
+  color: #015112;
+}
+
+/* Dots alignment tweak */
+.custom-dot-container {
+  bottom: -35px;
+}
+
+.video-wrapper:hover {
+    box-shadow: 0 4px 20px rgba(29, 71, 52, 0.3);
+    transform: translateY(-2px);
+    transition: all 0.2s ease;
+}
+
+
+/* All dots */
+.custom-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #015112;
+    margin-top: 1rem;
+    border-radius: 50%;
+    opacity: 0.4;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  
+  /* Active dot (slick applies 'slick-active' to <li>) */
+  .custom-dot-container li.slick-active .custom-dot {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+  

@@ -21,6 +21,9 @@ import 'aos/dist/aos.css'; // You need to import the CSS too
 import { useEffect } from 'react';
 import { darkGreen } from './main.tsx';
 import { motion } from "framer-motion";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import MusicalTheaterCarousel from './MusicalTheaterCarousel.tsx';
 
 function App() {
 
@@ -277,11 +280,19 @@ function App() {
                   color: 'gray',
               }}
           >
-              Covers
+              Musical Theater Covers
           </motion.h2>
         </div>
+
+        <div data-aos="fade-left">
+          <MusicalTheaterCarousel />
+        </div>
+
+
       </div>
     </div>
+
+    <div style={{ height: '5rem'}}></div>
     <Footer />
     </>
   )
