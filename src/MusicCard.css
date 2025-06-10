@@ -29,6 +29,12 @@
 
 @media (max-width: 460px) {
     .card {
+      width: 400px;
+    }
+}
+
+@media (max-width: 350px) {
+    .card {
       width: 300px;
     }
 }
