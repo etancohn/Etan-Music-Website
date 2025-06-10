@@ -62,7 +62,7 @@ function MusicCard(props: MusicCardProps) {
           // sx={{ width: 430, height: 300 }}
           sx={{ 
             // width: 730, 
-            height: 400 
+            // height: 700 
           }}
         >
             <CardHeader 

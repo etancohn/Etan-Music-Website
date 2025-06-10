@@ -65,6 +65,7 @@ export const recitalsExpandedContent = <div>
 </div>
 
 export const sessionWorkDescription = <div className='card-middle'>
+    Drummer of <a href="https://katieandtheroses.netlify.app/">Katie and the Roses</a>, a new Boston funk/rock band (more to come soon 👀).
     {/* <span> an album with his band.</span> */}
     {/* <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
         <SpotifyPlayer />
@@ -77,8 +78,8 @@ export const recitalsDescription = <div className='card-middle'>
         <Typography 
             style={{
                 marginBottom: '1rem',
-                width: '90%',
-            }}>Rock band in college. Gigged around Carnegie Mellon and Pittsburgh, and created an album.</Typography>
+                width: '95%',
+            }}>Rock band that gigged around Carnegie Mellon and Pittsburgh. Created an album, Cosmic Caravan, released in 2023.</Typography>
             <span
         style={{
             display: 'flex',

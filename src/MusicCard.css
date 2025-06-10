@@ -2,7 +2,8 @@
 
 .card {
     border-top: 10px solid #015112!important;
-    width: 700px;
+    width: 850px;
+    /* height: 300px!important; */
     /* border-top: 10px solid #145d41!important; */
     /* max-height: 310px; */
 }

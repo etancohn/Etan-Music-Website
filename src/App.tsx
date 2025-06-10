@@ -251,13 +251,13 @@ function App() {
             description={<div className='card-middle'></div>} 
             // secondDescription={secondMusicalTheaterDescription} 
           /> */}
-          <MusicCard 
+          {/* <MusicCard 
             title='Bands & Collaborations' 
             description={bandsDescription} 
             // expandedContent={bandsExpandedContent}
             expandText='Videos'
             // secondDescription={secondMusicalTheaterDescription} 
-          />
+          /> */}
           {/* <MusicCard 
             title='Miscellaneous' 
             description={<div className='card-middle'></div>} 
