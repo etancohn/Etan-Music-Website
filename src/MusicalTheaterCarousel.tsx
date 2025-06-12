@@ -8,6 +8,7 @@ const videos = [
   { title: "Satisfied - Hamilton", url: 'https://www.youtube.com/embed/lF7g9NMkc1w?feature=share' },
   { title: "When You're Home - In The Heights", url: 'https://www.youtube.com/embed/Re0Eo5_5N4c' },
   { title: "What I Did For Love - A Chorus Line", url: 'https://www.youtube.com/embed/UCUGC0GWVj0?feature=share' },
+  { title: "Kiss of the Spider Woman Medley", url: 'https://www.youtube.com/embed/k7zQBmHtmNM' },
   { title: "Corner of the Sky - Pippin", url: 'https://www.youtube.com/embed/G2r0Tn_Kcms?feature=share' },
   { title: "Popular - Wicked", url: 'https://www.youtube.com/embed/0MPV6q_WHmY?feature=share' },
   { title: "Wish I Were Here - Next To Normal", url: 'https://www.youtube.com/embed/Nkv8QxUHRm4' },
