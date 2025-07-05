@@ -4,14 +4,24 @@ import ResumeLine from "./ResumeLine"
 export const mtExpandedContent = <div>
     <Typography style={{ fontWeight: 'bold', textDecoration: 'underline', }}>Recent Shows (* = upcoming)</Typography>
     <div style={{ marginLeft: '0.5rem', marginTop: '0.5rem' }}>
+        <ResumeLine
+            isUpcoming={true}
+            year="2025"
+            show="Wizard of Oz"
+            theater="The Un-Common Theatre Company"
+        />
+        <ResumeLine
+            isUpcoming={true}
+            year="2025"
+            show="Reefer Madness"
+            theater="The Rockwell"
+        />
         <ResumeLine 
-            isUpcoming={true} 
             year="2025"
             show="Songs for a New World"
             theater="Concord Players"
         />
         <ResumeLine 
-            isUpcoming={true} 
             year="2025"
             show="Beetlejuice Jr."
             theater="North Shore Childrens Theatre"

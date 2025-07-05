@@ -220,6 +220,8 @@ function App() {
               style={{
                   fontSize: '3rem',
                   color: 'gray',
+                  // fontFamily: "Fredoka One",
+                  // fontFamily: "'IBM Plex Sans', sans-serif"
               }}
           >
               Experience
