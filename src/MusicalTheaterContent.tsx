@@ -5,16 +5,77 @@ export const mtExpandedContent = <div>
     <Typography style={{ fontWeight: 'bold', textDecoration: 'underline', }}>Recent Shows (* = upcoming)</Typography>
     <div style={{ marginLeft: '0.5rem', marginTop: '0.5rem' }}>
         <ResumeLine
+            year="2026"
             isUpcoming={true}
+            show="Come From Away"
+            theater="Winnipisaukee Playhouse"
+        />
+        <ResumeLine
+            year="2026"
+            isUpcoming={true}
+            show="Mary Poppins"
+            theater="Friendly Society for the Performing Arts"
+        />
+        <ResumeLine
+            year="2026"
+            isUpcoming={true}
+            show="Mean Girls"
+            theater="Wilmington High School"
+        />
+        <ResumeLine
+            year="2026"
+            show="Legally Blonde"
+            theater="Suffolk University"
+        />
+        <ResumeLine
+            year="2026"
+            show="Beetlejuice Jr."
+            theater="Greater Boston Stage Company"
+        />
+        <ResumeLine
+            year="2026"
+            show="Wizard of Oz Jr."
+            theater="Greater Boston Stage Company"
+        />
+        <ResumeLine
+            year="2026"
+            show="Shrek Jr."
+            theater="Wilmington Middle School"
+        />
+        <ResumeLine
             year="2025"
             show="Wizard of Oz"
             theater="The Un-Common Theatre Company"
         />
         <ResumeLine
-            isUpcoming={true}
+            year="2025"
+            show="Something Rotten!"
+            theater="A Common Thread Theater"
+        />
+        <ResumeLine
+            year="2025"
+            show="Hadestown Jr."
+            theater="Misfit Artist Company"
+        />
+        <ResumeLine
             year="2025"
             show="Reefer Madness"
             theater="The Rockwell"
+        />
+        <ResumeLine
+            year="2025"
+            show="Legally Blonde"
+            theater="Greater Boston Stage Company"
+        />
+        <ResumeLine
+            year="2025"
+            show="Bye Bye Birdie"
+            theater="Greater Boston Stage Company"
+        />
+        <ResumeLine
+            year="2025"
+            show="Legally Blonde"
+            theater="Chelmsford Center for the Arts"
         />
         <ResumeLine 
             year="2025"
