@@ -2,7 +2,7 @@
 
 .card {
     border-top: 10px solid #015112!important;
-    width: 850px;
+    width: 100%;
     /* height: 300px!important; */
     /* border-top: 10px solid #145d41!important; */
     /* max-height: 310px; */
@@ -21,20 +21,3 @@
     font-size: 17px;
 }
 
-@media (max-width: 768px) {
-    .card {
-      width: 400px;
-    }
-}
-
-@media (max-width: 460px) {
-    .card {
-      width: 300px;
-    }
-}
-
-/* @media (max-width: 350px) {
-    .card {
-      width: 300px;
-    }
-} */

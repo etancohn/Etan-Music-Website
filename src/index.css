@@ -1,12 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@700&display=swap');
 
+html, body {
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 600;
   background-color: white;
