@@ -6,19 +6,19 @@ export const mtExpandedContent = <div>
     <div style={{ marginLeft: '0.5rem', marginTop: '0.5rem' }}>
         <ResumeLine
             year="2026"
-            isUpcoming={true}
+            isUpcoming={false}
             show="Come From Away"
             theater="Winnipisaukee Playhouse"
         />
         <ResumeLine
             year="2026"
-            isUpcoming={true}
+            isUpcoming={false}
             show="Mary Poppins"
             theater="Friendly Society for the Performing Arts"
         />
         <ResumeLine
             year="2026"
-            isUpcoming={true}
+            isUpcoming={false}
             show="Mean Girls"
             theater="Wilmington High School"
         />
