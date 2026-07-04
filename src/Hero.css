@@ -330,12 +330,15 @@
 
 .hero-scroll-cue {
     align-self: center;
+    padding: 0.5rem 1rem 0.75rem;
+    text-decoration: none;
+}
+
+.hero-scroll-cue-inner {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.4rem;
-    padding: 0.5rem 1rem 0.75rem;
-    text-decoration: none;
 }
 
 .hero-scroll-label {

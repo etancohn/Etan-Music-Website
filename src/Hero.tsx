@@ -1,4 +1,10 @@
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import {
+    motion,
+    useReducedMotion,
+    useScroll,
+    useTransform,
+    type Variants,
+} from "framer-motion";
 import ReactPlayer from "react-player/youtube";
 import heroImg from "./assets/etan-hero.jpg";
 import "./Hero.css";
@@ -61,6 +67,11 @@ function PlayBadge() {
 
 function Hero() {
     const reduceMotion = useReducedMotion();
+    const { scrollY } = useScroll();
+    const cueOpacity = useTransform(scrollY, [0, 140], [1, 0]);
+    const cuePointerEvents = useTransform(scrollY, (y) =>
+        y > 120 ? ("none" as const) : ("auto" as const)
+    );
 
     return (
         <section className="hero">
@@ -146,23 +157,28 @@ function Hero() {
                 className="hero-scroll-cue"
                 href="#experience"
                 aria-label="Scroll to experience"
-                initial={{ opacity: reduceMotion ? 1 : 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.6, duration: 0.8 }}
+                style={{ opacity: cueOpacity, pointerEvents: cuePointerEvents }}
             >
-                <span className="hero-scroll-label">scroll</span>
-                <span className="hero-scroll-arrow" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="26" height="26">
-                        <path
-                            d="M4 9l8 7 8-7"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2.4"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        />
-                    </svg>
-                </span>
+                <motion.span
+                    className="hero-scroll-cue-inner"
+                    initial={{ opacity: reduceMotion ? 1 : 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.6, duration: 0.8 }}
+                >
+                    <span className="hero-scroll-label">scroll</span>
+                    <span className="hero-scroll-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="26" height="26">
+                            <path
+                                d="M4 9l8 7 8-7"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2.4"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+                        </svg>
+                    </span>
+                </motion.span>
             </motion.a>
         </section>
     );
