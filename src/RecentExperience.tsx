@@ -1,9 +1,10 @@
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import { CATEGORY_ORDER, TheaterCredit, theaterCredits } from './data/theaterCredits';
+import Reveal from './Reveal';
 import './RecentExperience.css';
 
 // Home page shows only the last couple of seasons; everything lives on #/experience.
-const RECENT_YEAR_MIN = 2025;
+const RECENT_YEAR_MIN = 2023;
 
 const SHORT_LABELS: Record<string, string> = {
     regional: 'Regional & Professional',
@@ -49,37 +50,39 @@ function RecentExperience() {
 
     return (
         <section className="recent-exp" aria-label="Recent pit experience">
-            <div className="recent-exp__head">
-                <div className="recent-exp__heading">
-                    <h2 className="recent-exp__title">Recent Pit Experience</h2>
-                    <ul className="recent-exp__legend">
-                        {CATEGORY_ORDER.map((cat) => (
-                            <li key={cat.key} className="recent-exp__legend-item">
-                                <span
-                                    className="recent-exp__dot"
-                                    data-cat={cat.key}
-                                    aria-hidden="true"
-                                />
-                                {SHORT_LABELS[cat.key] ?? cat.label}
-                            </li>
-                        ))}
-                    </ul>
+            <Reveal>
+                <div className="recent-exp__head">
+                    <div className="recent-exp__heading">
+                        <h2 className="recent-exp__title">Recent Pit Experience</h2>
+                        <ul className="recent-exp__legend">
+                            {CATEGORY_ORDER.map((cat) => (
+                                <li key={cat.key} className="recent-exp__legend-item">
+                                    <span
+                                        className="recent-exp__dot"
+                                        data-cat={cat.key}
+                                        aria-hidden="true"
+                                    />
+                                    {SHORT_LABELS[cat.key] ?? cat.label}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <a className="recent-exp__all" href="#/experience">
+                        Full experience
+                        <span aria-hidden="true"> →</span>
+                    </a>
                 </div>
-                <a className="recent-exp__all" href="#/experience">
-                    Full experience
-                    <span aria-hidden="true"> →</span>
+
+                <ul className="recent-exp__list">
+                    {recent.map((c) => (
+                        <RecentRow key={`${c.year}-${c.show}-${c.theater}`} credit={c} />
+                    ))}
+                </ul>
+
+                <a className="recent-exp__more" href="#/experience">
+                    + {earlierCount} earlier productions, bands &amp; recitals
                 </a>
-            </div>
-
-            <ul className="recent-exp__list">
-                {recent.map((c) => (
-                    <RecentRow key={`${c.year}-${c.show}-${c.theater}`} credit={c} />
-                ))}
-            </ul>
-
-            <a className="recent-exp__more" href="#/experience">
-                + {earlierCount} earlier productions, bands &amp; recitals
-            </a>
+            </Reveal>
         </section>
     );
 }

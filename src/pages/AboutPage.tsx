@@ -33,7 +33,7 @@ function AboutPage() {
                             alt="Etan Cohn behind the drum kit in a pit"
                         />
                         <div className="about-frame__caption">
-                            ♪&ensp;behind the kit for Winter Wonderettes
+                            ♪&ensp;behind the kit for Winter Wonderettes at Greater Boston Stage Company
                         </div>
                     </div>
                 </Reveal>

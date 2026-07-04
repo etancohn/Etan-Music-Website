@@ -104,7 +104,7 @@ function Hero() {
                             src={heroImg}
                             alt="Etan Cohn playing drums in a pit orchestra"
                         />
-                        <div className="hero-frame-caption">♪&ensp;in the pit for Come From Away at Winnipesaukee Playhouse regional theater</div>
+                        <div className="hero-frame-caption">♪&ensp;in the pit for Come From Away, at Winnipesaukee Playhouse regional theater</div>
                     </div>
                 </motion.div>
             </motion.div>
