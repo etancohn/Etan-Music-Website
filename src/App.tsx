@@ -32,7 +32,7 @@ function App() {
                 <ParticlesBackground />
                 <Header route={route} />
                 <main className="content-container">
-                    <AnimatePresence mode="wait" initial={false}>
+                    <AnimatePresence mode="wait">
                         <motion.div
                             key={route}
                             initial={{ opacity: 0, y: 16 }}
