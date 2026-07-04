@@ -76,6 +76,20 @@ export const theaterCredits: TheaterCredit[] = [
     // ── Community ────────────────────────────────────────────────────────────
     {
         year: 2026,
+        show: 'The Wild Party',
+        theater: 'Common Thread Theatre',
+        category: 'community',
+        isUpcoming: true,
+    },
+    {
+        year: 2026,
+        show: 'Come From Away',
+        theater: 'Concord Community Players',
+        category: 'community',
+        isUpcoming: true,
+    },
+    {
+        year: 2026,
         show: 'Mary Poppins',
         theater: 'Friendly Society for the Performing Arts',
         category: 'community', // TODO(category): confirm — community vs professional?
@@ -132,6 +146,20 @@ export const theaterCredits: TheaterCredit[] = [
     },
 
     // ── Youth & College ──────────────────────────────────────────────────────
+    {
+        year: 2026,
+        show: 'Footloose',
+        theater: 'Greater Boston Stage Company',
+        category: 'educational',
+        isUpcoming: true,
+    },
+    {
+        year: 2026,
+        show: '25th Annual Putnam County Spelling Bee',
+        theater: 'Greater Boston Stage Company',
+        category: 'educational',
+        isUpcoming: true,
+    },
     {
         year: 2026,
         show: 'Seussical',
