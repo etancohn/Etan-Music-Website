@@ -30,6 +30,7 @@ h1 {
 }
 
 h2 {
-  font-family: 'Fredoka One';
+  /* the serif look here is intentional — matches the site's original headers */
+  font-family: 'Times New Roman', serif;
   font-weight: 700;
 }
