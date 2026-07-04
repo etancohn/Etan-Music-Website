@@ -7,10 +7,10 @@ function CoversPage() {
     return (
         <div className="page">
             <div className="page__eyebrow">Drum Covers</div>
-            <h1 className="page__title">Behind the kit, one song at a time.</h1>
+            <h1 className="page__title">Drum Covers</h1>
             <p className="page__lede">
-                Full drum covers recorded from the throne — musical theater charts
-                first, then pop. Tap any card to play it right here.
+                Check out some drum covers I recorded — musical theater charts and pop.
+                Tap any card to play it right here.
             </p>
 
             <section className="page-section" aria-label="Musical theater covers">

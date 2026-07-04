@@ -10,29 +10,6 @@ import cosmicCaravanPic from '../assets/cosmic-caravan-pic.jpeg';
 import './pages.css';
 import './ExperiencePage.css';
 
-function StatsRow() {
-    const productions = theaterCredits.length;
-    const theaters = new Set(theaterCredits.map((c) => c.theater)).size;
-    const firstYear = Math.min(...theaterCredits.map((c) => c.year));
-
-    const stats = [
-        { value: `${productions}`, label: 'productions' },
-        { value: `${theaters}`, label: 'theaters & companies' },
-        { value: `since ${firstYear}`, label: 'in the pit' },
-    ];
-
-    return (
-        <ul className="exp-stats">
-            {stats.map((s) => (
-                <li key={s.label} className="exp-stats__item">
-                    <span className="exp-stats__value">{s.value}</span>
-                    <span className="exp-stats__label">{s.label}</span>
-                </li>
-            ))}
-        </ul>
-    );
-}
-
 function PerformanceRow({ year, title, venue, youtubeLink }: (typeof notablePerformances)[number]) {
     return (
         <li className="perf-row">
@@ -56,13 +33,10 @@ function ExperiencePage() {
     return (
         <div className="page">
             <div className="page__eyebrow">Experience</div>
-            <h1 className="page__title">In the pit, on stage, and in the studio.</h1>
+            <h1 className="page__title">Pit and Band Experience</h1>
             <p className="page__lede">
-                Musical theater credits across regional, community, and educational
-                productions — plus bands, cabarets, and recitals.
+                Take a look at my recent experience across pit gigs and bands.
             </p>
-
-            <StatsRow />
 
             <section className="page-section" aria-label="Musical theater credits">
                 <h2 className="page-section__label">
@@ -103,21 +77,6 @@ function ExperiencePage() {
                             />
                         ))}
                     </div>
-                </Reveal>
-
-                <Reveal className="band-block band-block--compact">
-                    <h3 className="band-block__name">Katie and the Roses</h3>
-                    <p className="band-block__desc">
-                        Drummer in{' '}
-                        <a
-                            href="https://katieandtheroses.netlify.app/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Katie and the Roses
-                        </a>
-                        , a new Boston funk/rock band (more to come soon 👀).
-                    </p>
                 </Reveal>
             </section>
 
