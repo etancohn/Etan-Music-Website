@@ -1,0 +1,62 @@
+/* White-mat video card — sibling of the hero's .hero-card polaroid style */
+
+.video-card {
+    background: #ffffff;
+    padding: 8px 8px 0;
+    border-radius: 14px;
+    box-shadow: 0 18px 40px -18px rgba(18, 30, 22, 0.32);
+    transition:
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.45s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 26px 54px -20px rgba(18, 30, 22, 0.4);
+}
+
+.video-card__media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #1a1c1b;
+}
+
+.video-card__play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(1, 81, 18, 0.92);
+    color: #ffffff;
+    box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.55);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.video-card__play svg {
+    margin-left: 3px;
+}
+
+.video-card:hover .video-card__play {
+    transform: scale(1.12);
+}
+
+.video-card__caption {
+    padding: 0.55rem 0.35rem;
+    text-align: center;
+    font-size: 0.8rem;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: #8a8f94;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .video-card,
+    .video-card__play {
+        transition: none;
+    }
+}

@@ -1,10 +1,4 @@
-import {
-    motion,
-    useReducedMotion,
-    useScroll,
-    useTransform,
-    type Variants,
-} from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import ReactPlayer from "react-player/youtube";
 import heroImg from "./assets/etan-hero.jpg";
 import "./Hero.css";
@@ -40,7 +34,7 @@ const featuredReveal: Variants = {
     show: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.9 },
+        transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.55 },
     },
 };
 
@@ -67,11 +61,6 @@ function PlayBadge() {
 
 function Hero() {
     const reduceMotion = useReducedMotion();
-    const { scrollY } = useScroll();
-    const cueOpacity = useTransform(scrollY, [0, 140], [1, 0]);
-    const cuePointerEvents = useTransform(scrollY, (y) =>
-        y > 120 ? ("none" as const) : ("auto" as const)
-    );
 
     return (
         <section className="hero">
@@ -97,7 +86,7 @@ function Hero() {
                     </motion.p>
 
                     <motion.div className="hero-actions" variants={fadeUp}>
-                        <a className="hero-btn hero-btn-primary" href="#experience">
+                        <a className="hero-btn hero-btn-primary" href="#/experience">
                             See Experience
                         </a>
                         <a
@@ -151,34 +140,6 @@ function Hero() {
                     ))}
                 </div>
             </motion.div>
-
-            <motion.a
-                className="hero-scroll-cue"
-                href="#experience"
-                aria-label="Scroll to experience"
-                style={{ opacity: cueOpacity, pointerEvents: cuePointerEvents }}
-            >
-                <motion.span
-                    className="hero-scroll-cue-inner"
-                    initial={{ opacity: reduceMotion ? 1 : 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.6, duration: 0.8 }}
-                >
-                    <span className="hero-scroll-label">scroll</span>
-                    <span className="hero-scroll-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" width="26" height="26">
-                            <path
-                                d="M4 9l8 7 8-7"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2.4"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            />
-                        </svg>
-                    </span>
-                </motion.span>
-            </motion.a>
         </section>
     );
 }

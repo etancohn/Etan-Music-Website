@@ -1,0 +1,97 @@
+/* Shared shell for the tabbed pages (Experience, Drum Covers, About) */
+
+.page {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: clamp(2rem, 5vh, 3.25rem);
+    text-align: left;
+}
+
+.page__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: #015112;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+}
+
+.page__eyebrow::before {
+    content: "";
+    width: 2.2rem;
+    height: 2px;
+    border-radius: 1px;
+    background: #015112;
+}
+
+.page__title {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: clamp(2.1rem, 4.5vw, 2.9rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: #2e2f30;
+    margin: 0.7rem 0 0;
+}
+
+.page__lede {
+    color: #5f6368;
+    font-weight: 400;
+    font-size: 1.02rem;
+    line-height: 1.7;
+    max-width: 62ch;
+    margin: 1rem 0 0;
+}
+
+/* ---------- sections ---------- */
+
+.page-section {
+    margin-top: clamp(2.5rem, 6vh, 3.75rem);
+}
+
+.page-section__label {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #015112;
+    margin: 0 0 1.5rem;
+}
+
+.page-section__label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #cfd3d6;
+}
+
+.page-section__count {
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: #8a8f94;
+}
+
+/* ---------- video grid (covers + band videos) ---------- */
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.5rem;
+}
+
+@media (max-width: 600px) {
+    .video-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}

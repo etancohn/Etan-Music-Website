@@ -1,5 +1,6 @@
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import { getGroupedCredits, GroupedCredits, TheaterCredit } from './data/theaterCredits';
+import Reveal from './Reveal';
 import './TheaterCreditsSection.css';
 
 function YouTubeLink({ href, show }: { href: string; show: string }) {
@@ -45,7 +46,7 @@ function CondensedCredit({ credit }: { credit: TheaterCredit }) {
 function CreditGroup({ group }: { group: GroupedCredits }) {
     const total = group.featured.length + group.condensed.length;
     return (
-        <div className="credit-group" data-aos="fade-up">
+        <Reveal className="credit-group">
             <div className="credit-group__rail">
                 <h4 className="credit-group__label">{group.meta.label}</h4>
                 <span className="credit-group__count">
@@ -69,7 +70,7 @@ function CreditGroup({ group }: { group: GroupedCredits }) {
                     </div>
                 )}
             </div>
-        </div>
+        </Reveal>
     );
 }
 
