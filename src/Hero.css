@@ -1,17 +1,30 @@
 .hero {
+    --appbar-h: 64px;
     width: 100%;
     padding: 0 clamp(1.25rem, 4vw, 3rem);
+    min-height: calc(100vh - var(--appbar-h));
+    min-height: calc(100svh - var(--appbar-h));
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 599.95px) {
+    .hero {
+        --appbar-h: 56px;
+    }
 }
 
 .hero-inner {
     max-width: 1120px;
+    width: 100%;
     margin: 0 auto;
+    margin-block: auto;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
     align-items: center;
     column-gap: clamp(2.5rem, 6vw, 5rem);
     row-gap: 3rem;
-    padding: clamp(1.5rem, 5vh, 4rem) 0 2.5rem;
+    padding: clamp(1rem, 3vh, 2.5rem) 0 1.5rem;
 }
 
 /* ---------- text column ---------- */
@@ -210,13 +223,237 @@
     color: #8a8f94;
 }
 
+/* ---------- featured video panel ---------- */
+
+.hero-featured {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.5rem, 3vw, 2.75rem);
+    margin: 0 auto 0.75rem;
+    padding: 1rem clamp(1.25rem, 2.5vw, 2rem);
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(46, 47, 48, 0.08);
+    border-radius: 20px;
+    box-shadow: 0 22px 48px -26px rgba(18, 30, 22, 0.4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.hero-featured-head {
+    text-align: left;
+    flex-shrink: 0;
+}
+
+.hero-featured-label {
+    color: #015112;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    line-height: 1.6;
+    text-transform: uppercase;
+}
+
+.hero-featured-row {
+    display: flex;
+    justify-content: center;
+    gap: clamp(1.25rem, 2.5vw, 2.25rem);
+}
+
+/* mini-polaroid video card — a lighter sibling of .hero-frame */
+.hero-card {
+    background: #ffffff;
+    padding: 8px 8px 0;
+    border-radius: 14px;
+    box-shadow: 0 18px 40px -16px rgba(18, 30, 22, 0.35);
+    --tilt: 0deg;
+    transform: rotate(var(--tilt));
+    width: min(var(--card-w, 300px), 40vw);
+    transition:
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.45s ease;
+}
+
+.hero-card:nth-child(odd) {
+    --tilt: -1.2deg;
+}
+
+.hero-card:nth-child(even) {
+    --tilt: 1.4deg;
+}
+
+.hero-card:hover {
+    transform: rotate(0deg) translateY(-4px);
+    box-shadow: 0 26px 54px -18px rgba(18, 30, 22, 0.42);
+}
+
+.hero-card-media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #1a1c1b;
+}
+
+/* branded play badge over the light-mode thumbnail */
+.hero-play-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(1, 81, 18, 0.92);
+    color: #ffffff;
+    box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.55);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-play-badge svg {
+    margin-left: 3px;
+}
+
+.hero-card:hover .hero-play-badge {
+    transform: scale(1.12);
+}
+
+.hero-card-caption {
+    padding: 0.55rem 0.25rem;
+    text-align: center;
+    font-size: 0.8rem;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: #8a8f94;
+}
+
+/* ---------- scroll cue ---------- */
+
+.hero-scroll-cue {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem 0.75rem;
+    text-decoration: none;
+}
+
+.hero-scroll-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #8a8f94;
+}
+
+.hero-scroll-arrow {
+    display: flex;
+    color: rgba(1, 81, 18, 0.65);
+    animation: hero-scroll-arrow 1.8s ease-in-out infinite;
+    transition: color 0.3s ease;
+}
+
+.hero-scroll-cue:hover .hero-scroll-arrow {
+    color: #015112;
+}
+
+@keyframes hero-scroll-arrow {
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.65;
+    }
+    50% {
+        transform: translateY(7px);
+        opacity: 1;
+    }
+}
+
+/* ---------- short-viewport tiers (desktop) ---------- */
+
+@media (min-width: 901px) and (max-height: 920px) {
+    .hero-photo {
+        max-width: 470px;
+        justify-self: end;
+        width: 100%;
+    }
+
+    .hero-name {
+        font-size: clamp(2.5rem, 4.6vw, 3.6rem);
+    }
+
+    .hero-desc {
+        font-size: 0.98rem;
+        margin-top: 0.9rem;
+    }
+
+    .hero-actions {
+        margin-top: 1.4rem;
+    }
+
+    .hero-featured-row {
+        --card-w: 260px;
+    }
+}
+
+@media (min-width: 901px) and (max-height: 820px) {
+    .hero-photo {
+        max-width: 400px;
+    }
+
+    .hero-frame-caption {
+        display: none;
+    }
+
+    .hero-featured-row {
+        --card-w: 230px;
+    }
+
+    .hero-scroll-label {
+        display: none;
+    }
+}
+
 /* ---------- responsive ---------- */
 
 @media (max-width: 900px) {
+    .hero {
+        min-height: auto;
+    }
+
     .hero-inner {
         grid-template-columns: minmax(0, 1fr);
         row-gap: 2.5rem;
         padding-top: 1rem;
+    }
+
+    .hero-featured {
+        margin-top: 2.5rem;
+        flex-direction: column;
+        gap: 1.25rem;
+        width: 100%;
+        max-width: 640px;
+        padding: 1.5rem clamp(1rem, 4vw, 1.75rem);
+    }
+
+    .hero-featured-head {
+        text-align: center;
+    }
+
+    .hero-card {
+        width: min(var(--card-w, 300px), 38vw);
+    }
+
+    .hero-card:nth-child(odd) {
+        --tilt: -0.8deg;
+    }
+
+    .hero-card:nth-child(even) {
+        --tilt: 0.8deg;
+    }
+
+    .hero-scroll-cue {
+        display: none;
     }
 
     .hero-text {
@@ -247,6 +484,20 @@
     }
 }
 
+@media (max-width: 600px) {
+    .hero-featured-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.75rem;
+        width: 100%;
+    }
+
+    .hero-card {
+        width: 100%;
+        max-width: 380px;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .hero-frame::before,
     .hero-frame::after {
@@ -255,7 +506,14 @@
     }
 
     .hero-btn,
-    .hero-frame {
+    .hero-frame,
+    .hero-card,
+    .hero-play-badge {
         transition: none;
+    }
+
+    .hero-scroll-arrow {
+        animation: none;
+        opacity: 1;
     }
 }

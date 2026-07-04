@@ -13,8 +13,6 @@ import Footer from './Footer.tsx';
 import { mtExpandedContent, musicalTheaterDescription } from './MusicalTheaterContent.tsx';
 import { bandsExpandedContent } from './BandsContent.tsx';
 import ParticlesBackground from './ParticlesBackground.tsx';
-import ReactPlayer from 'react-player/youtube';
-import { Paper, Box, Grid, Typography } from '@mui/material';
 // @ts-ignore;
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You need to import the CSS too
@@ -51,135 +49,10 @@ function App() {
         
         <Hero />
 
-      <div data-aos="zoom-in">
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          width: '100%',
-          py: { xs: 3, md: 6 },
-          px: { xs: 2, md: 4 },
-          mt: 4,
-          mb: 6,
-        }}
-      >
-        <Paper
-          elevation={4}
-          sx={{
-            p: { xs: 2, md: 4 },
-            width: '100%',
-            maxWidth: 960,
-            borderRadius: 2,
-            bgcolor: 'background.paper',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: 3,
-          }}
-        >
-          {/* Section Title with Green Accent */}
-          {/* <Typography
-            variant="h4"
-            component="h2"
-            sx={{
-              textAlign: 'center',
-              mb: { xs: 2, md: 3 },
-              fontWeight: 700,
-              color: 'gray',
-              letterSpacing: '-0.02em',
-              position: 'relative', // Needed for pseudo-element
-              pb: 0.5, // Padding at the bottom for the underline
-              '&::after': { // The green underline
-                content: '""',
-                position: 'absolute',
-                bottom: 0,
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: '80px', // Length of the underline
-                height: '4px', // Thickness of the underline
-                bgcolor: "darkGreen", // Your dark green color
-                borderRadius: '2px', // Slightly rounded ends
-              },
-            }}
-          >
-            Videos
-          </Typography> */}
-
-    {/* Video Grid */}
-    <Grid container spacing={4} justifyContent="center">
-      {/* Video 1 */}
-      <Grid item xs={12} sm={6} md={4}> {/* Responsive sizing for each video */}
-        <Box sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          textAlign: 'center',
-          p: 1.5, // Padding around video and text
-          // Optional: If you want each video to have its own subtle card-like look within the Paper
-          // border: '1px solid #e0e0e0', // Light border
-          // borderRadius: 1, // Slight rounding
-          // bgcolor: '#f9f9f9', // Very subtle background
-        }}>
-          <ReactPlayer
-            url="https://www.youtube.com/watch?v=QetcQ_k17VM" // **USE YOUR ACTUAL YOUTUBE URLS HERE**
-            light={true} // Only loads iframe after click for performance
-            width="100%" // Important for responsiveness within the Grid item
-            height={180} // Adjust this height or use aspect ratio settings if preferred
-            controls
-          />
-          <Typography
-            variant="body1" // Standard body text size
-            sx={{
-              mt: 1.5, // Margin top for space between video and text
-              fontWeight: 500, // Medium boldness
-              fontStyle: 'italic',
-              color: 'gray', // Muted text color
-              lineHeight: 1.4, // Good line spacing
-            }}
-          >
-            Dancing Through Life - Wicked
-          </Typography>
-        </Box>
-      </Grid>
-
-      {/* Video 2 */}
-      <Grid item xs={12} sm={6} md={4}>
-        <Box sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          textAlign: 'center',
-          p: 1.5,
-        }}>
-          <ReactPlayer
-            url="https://www.youtube.com/watch?v=HpSeqORjsks" // **USE YOUR ACTUAL YOUTUBE URLS HERE**
-            light={true}
-            width="100%"
-            height={180}
-            controls={true}
-          />
-          <Typography
-            variant="body1"
-            sx={{
-              mt: 1.5,
-              fontWeight: 500,
-              color: 'gray',
-              lineHeight: 1.4,
-            }}
-          >
-            Performance at City Winery
-          </Typography>
-        </Box>
-      </Grid>
-    </Grid>
-  </Paper>
-</Box>
-</div>
-
       <div
           id="experience"
           style={{
-            marginTop: 50,
+            marginTop: 30,
             marginBottom: 20,
             scrollMarginTop: '2rem',
           }}

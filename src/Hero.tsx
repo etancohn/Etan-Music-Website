@@ -1,4 +1,5 @@
-import { motion, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
+import ReactPlayer from "react-player/youtube";
 import heroImg from "./assets/etan-hero.jpg";
 import "./Hero.css";
 
@@ -28,13 +29,45 @@ const photoReveal: Variants = {
     },
 };
 
+const featuredReveal: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.9 },
+    },
+};
+
+const featured = [
+    {
+        url: "https://www.youtube.com/watch?v=QetcQ_k17VM",
+        caption: "Dancing Through Life — Wicked",
+    },
+    {
+        url: "https://www.youtube.com/watch?v=HpSeqORjsks",
+        caption: "Live at City Winery",
+    },
+];
+
+function PlayBadge() {
+    return (
+        <span className="hero-play-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20">
+                <path d="M8 5.5v13l11-6.5z" fill="currentColor" />
+            </svg>
+        </span>
+    );
+}
+
 function Hero() {
+    const reduceMotion = useReducedMotion();
+
     return (
         <section className="hero">
             <motion.div
                 className="hero-inner"
                 variants={container}
-                initial="hidden"
+                initial={reduceMotion ? "show" : "hidden"}
                 animate="show"
             >
                 <div className="hero-text">
@@ -76,6 +109,61 @@ function Hero() {
                     </div>
                 </motion.div>
             </motion.div>
+
+            <motion.div
+                className="hero-featured"
+                variants={featuredReveal}
+                initial={reduceMotion ? "show" : "hidden"}
+                animate="show"
+            >
+                <div className="hero-featured-head">
+                    <div className="hero-featured-label">
+                        Featured
+                        <br />
+                        Videos
+                    </div>
+                </div>
+                <div className="hero-featured-row">
+                    {featured.map((video) => (
+                        <div key={video.url} className="hero-card">
+                            <div className="hero-card-media">
+                                <ReactPlayer
+                                    url={video.url}
+                                    light={true}
+                                    controls
+                                    width="100%"
+                                    height="100%"
+                                    playIcon={<PlayBadge />}
+                                />
+                            </div>
+                            <div className="hero-card-caption">{video.caption}</div>
+                        </div>
+                    ))}
+                </div>
+            </motion.div>
+
+            <motion.a
+                className="hero-scroll-cue"
+                href="#experience"
+                aria-label="Scroll to experience"
+                initial={{ opacity: reduceMotion ? 1 : 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.6, duration: 0.8 }}
+            >
+                <span className="hero-scroll-label">scroll</span>
+                <span className="hero-scroll-arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="26" height="26">
+                        <path
+                            d="M4 9l8 7 8-7"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.4"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        />
+                    </svg>
+                </span>
+            </motion.a>
         </section>
     );
 }
