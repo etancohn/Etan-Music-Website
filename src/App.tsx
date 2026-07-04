@@ -24,6 +24,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import MusicalTheaterCarousel from './MusicalTheaterCarousel.tsx';
 import PopCarousel from './PopCarousel.tsx';
+import Hero from './Hero.tsx';
 
 function App() {
 
@@ -48,38 +49,7 @@ function App() {
       {/* <SpotifyPlayer /> */}
       <div className="content-container">
         
-        <div className="avatar-container">
-          <div className='grow-hover'>
-            <Paper 
-              elevation={2}
-              style={{ 
-                  display: 'flex', 
-                  flexDirection: 'column',
-                  justifyContent: 'center', 
-                  alignItems: 'center',
-                  // backgroundColor: '#f3f4f5',
-                  backgroundColor: 'white',
-                  paddingLeft: '50px', paddingRight: '50px', marginBottom: '1rem'
-                }}
-              >
-              <div style={{ marginBottom: '0rem', fontSize: '2rem', fontWeight: 900, color: 'gray' }}>Etan Cohn</div>
-              <div style={{ color: 'gray', marginBottom: '0.5rem' }}>
-              {/* <img 
-                  src="./src/assets/drumsticks1.png" 
-                  alt="Drumsticks" 
-                  style={{ 
-                    width: '55px', 
-                    height: '40px', 
-                    marginRight: '0.1rem', 
-                    marginTop: '-0.3rem',
-                  }} 
-                /> */}
-                Drummer based in Cambridge, MA
-                </div>
-              {/* <Avatar sx={{ width: 80, height: 80, boxShadow: 0, marginBottom: '1rem' }} src="/src/assets/etan-drums-ww.jpeg" /> */}
-            </Paper>
-          </div>
-        </div>
+        <Hero />
 
       <div data-aos="zoom-in">
       <Box
@@ -206,10 +176,12 @@ function App() {
 </Box>
 </div>
 
-      <div 
+      <div
+          id="experience"
           style={{
             marginTop: 50,
             marginBottom: 20,
+            scrollMarginTop: '2rem',
           }}
         >
           <motion.h2
