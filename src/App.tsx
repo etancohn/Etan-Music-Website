@@ -8,14 +8,16 @@ import Footer from './Footer.tsx';
 import HomePage from './pages/HomePage.tsx';
 import ExperiencePage from './pages/ExperiencePage.tsx';
 import CoversPage from './pages/CoversPage.tsx';
-import AboutPage from './pages/AboutPage.tsx';
+// TODO: re-enable before public release
+// import AboutPage from './pages/AboutPage.tsx';
 import { Route, useRoute } from './router.ts';
 
 const PAGES: Record<Route, () => JSX.Element> = {
     home: HomePage,
     experience: ExperiencePage,
     covers: CoversPage,
-    about: AboutPage,
+    // TODO: re-enable before public release
+    // about: AboutPage,
 };
 
 function App() {

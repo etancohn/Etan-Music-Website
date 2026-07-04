@@ -10,7 +10,8 @@ const TABS: { route: Route; label: string }[] = [
     { route: 'home', label: 'Home' },
     { route: 'experience', label: 'Experience' },
     { route: 'covers', label: 'Drum Covers' },
-    { route: 'about', label: 'About' },
+    // TODO: re-enable before public release
+    // { route: 'about', label: 'About' },
 ];
 
 function Header({ route }: { route: Route }) {

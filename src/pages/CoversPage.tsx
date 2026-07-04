@@ -9,8 +9,7 @@ function CoversPage() {
             <div className="page__eyebrow">Drum Covers</div>
             <h1 className="page__title">Drum Covers</h1>
             <p className="page__lede">
-                Check out some drum covers I recorded — musical theater charts and pop.
-                Tap any card to play it right here.
+                Check out some drum covers I recorded across different styles.
             </p>
 
             <section className="page-section" aria-label="Musical theater covers">

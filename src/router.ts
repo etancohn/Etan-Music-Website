@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 
-export type Route = 'home' | 'experience' | 'covers' | 'about';
+// TODO: re-add 'about' before public release
+export type Route = 'home' | 'experience' | 'covers';
 
-const ROUTES: Route[] = ['home', 'experience', 'covers', 'about'];
+const ROUTES: Route[] = ['home', 'experience', 'covers'];
 
 export function parseHash(hash: string): Route {
     const clean = hash.replace(/^#\/?/, '').replace(/\/+$/, '').toLowerCase();
