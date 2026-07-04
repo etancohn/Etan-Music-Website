@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import EmailIcon from '@mui/icons-material/Email';
@@ -16,6 +16,7 @@ const TABS: { route: Route; label: string }[] = [
 
 function Header({ route }: { route: Route }) {
     const [scrolled, setScrolled] = useState(false);
+    const headerRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 10);
@@ -24,8 +25,27 @@ function Header({ route }: { route: Route }) {
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
+    // Publish the header's live height as --header-h so the hero can size its
+    // first screen to exactly fill the viewport below it (see Hero.css).
+    useEffect(() => {
+        const el = headerRef.current;
+        if (!el) return;
+        const setVar = () =>
+            document.documentElement.style.setProperty(
+                '--header-h',
+                `${el.offsetHeight}px`,
+            );
+        setVar();
+        const ro = new ResizeObserver(setVar);
+        ro.observe(el);
+        return () => ro.disconnect();
+    }, []);
+
     return (
-        <header className={`site-header${scrolled ? ' site-header--scrolled' : ''}`}>
+        <header
+            ref={headerRef}
+            className={`site-header${scrolled ? ' site-header--scrolled' : ''}`}
+        >
             <div className="site-header__inner">
                 <a className="site-header__brand" href="#/" aria-label="Etan Cohn — home">
                     <img className="site-header__logo" src={ercLogo} alt="" />

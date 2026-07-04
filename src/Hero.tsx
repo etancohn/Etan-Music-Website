@@ -1,7 +1,21 @@
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import ReactPlayer from "react-player/youtube";
 import heroImg from "./assets/etan-hero.jpg";
 import "./Hero.css";
+
+// Matches the 900px mobile breakpoint used throughout Hero.css.
+function useIsMobile() {
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+        const mq = window.matchMedia("(max-width: 900px)");
+        const update = () => setIsMobile(mq.matches);
+        update();
+        mq.addEventListener("change", update);
+        return () => mq.removeEventListener("change", update);
+    }, []);
+    return isMobile;
+}
 
 const container: Variants = {
     hidden: {},
@@ -38,6 +52,18 @@ const featuredReveal: Variants = {
     },
 };
 
+// Mobile-only scroll-triggered flip, reproducing the old AOS "flip-down" the
+// tiles used to have (rotateX from a tilted-back angle into place).
+const featuredFlip: Variants = {
+    hidden: { opacity: 0, rotateX: -100, transformPerspective: 2500 },
+    show: {
+        opacity: 1,
+        rotateX: 0,
+        transformPerspective: 2500,
+        transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    },
+};
+
 const featured = [
     {
         url: "https://www.youtube.com/watch?v=QetcQ_k17VM",
@@ -61,6 +87,23 @@ function PlayBadge() {
 
 function Hero() {
     const reduceMotion = useReducedMotion();
+    const isMobile = useIsMobile();
+
+    // On mobile the featured tile flips in on scroll; on desktop it keeps its
+    // fade-up on mount alongside the rest of the hero.
+    const featuredMotion =
+        isMobile && !reduceMotion
+            ? {
+                  variants: featuredFlip,
+                  initial: "hidden" as const,
+                  whileInView: "show" as const,
+                  viewport: { once: true, amount: 0.3 },
+              }
+            : {
+                  variants: featuredReveal,
+                  initial: reduceMotion ? "show" : "hidden",
+                  animate: "show" as const,
+              };
 
     return (
         <section className="hero">
@@ -70,7 +113,7 @@ function Hero() {
                 initial={reduceMotion ? "show" : "hidden"}
                 animate="show"
             >
-                <div className="hero-text">
+                <div className="hero-text hero-head">
                     <motion.div className="hero-overline" variants={fadeUp}>
                         Drummer&ensp;·&ensp;Boston, MA
                     </motion.div>
@@ -78,7 +121,19 @@ function Hero() {
                     <motion.h1 className="hero-name" variants={fadeUp}>
                         Etan Cohn
                     </motion.h1>
+                </div>
 
+                <motion.div className="hero-photo" variants={photoReveal}>
+                    <div className="hero-frame">
+                        <img
+                            src={heroImg}
+                            alt="Etan Cohn playing drums in a pit orchestra"
+                        />
+                        <div className="hero-frame-caption">♪&ensp;in the pit for Come From Away, at Winnipesaukee Playhouse regional theater</div>
+                    </div>
+                </motion.div>
+
+                <div className="hero-text hero-body">
                     <motion.p className="hero-desc" variants={fadeUp}>
                         Pit musician and versatile professional drummer, with
                         experience across regional and community theaters and in
@@ -97,24 +152,9 @@ function Hero() {
                         </a>
                     </motion.div>
                 </div>
-
-                <motion.div className="hero-photo" variants={photoReveal}>
-                    <div className="hero-frame">
-                        <img
-                            src={heroImg}
-                            alt="Etan Cohn playing drums in a pit orchestra"
-                        />
-                        <div className="hero-frame-caption">♪&ensp;in the pit for Come From Away, at Winnipesaukee Playhouse regional theater</div>
-                    </div>
-                </motion.div>
             </motion.div>
 
-            <motion.div
-                className="hero-featured"
-                variants={featuredReveal}
-                initial={reduceMotion ? "show" : "hidden"}
-                animate="show"
-            >
+            <motion.div className="hero-featured" {...featuredMotion}>
                 <div className="hero-featured-head">
                     <div className="hero-featured-label">
                         Featured

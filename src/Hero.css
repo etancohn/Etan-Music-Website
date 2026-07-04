@@ -11,10 +11,25 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    /* Head + body stack in the left column; photo spans both rows on the right.
+       Splitting the text this way lets the photo slot between name and blurb
+       on mobile (see the 900px breakpoint). */
+    grid-template-areas:
+        "head photo"
+        "body photo";
     align-items: center;
+    align-content: center;
     column-gap: clamp(2.5rem, 6vw, 5rem);
-    row-gap: 2.5rem;
+    row-gap: 0;
     padding: clamp(1.75rem, 5vh, 3rem) 0 clamp(1.5rem, 4vh, 2.5rem);
+}
+
+.hero-head {
+    grid-area: head;
+}
+
+.hero-body {
+    grid-area: body;
 }
 
 /* ---------- text column ---------- */
@@ -108,6 +123,7 @@
 /* ---------- photo column ---------- */
 
 .hero-photo {
+    grid-area: photo;
     position: relative;
     isolation: isolate;
     max-width: 440px;
@@ -334,8 +350,25 @@
 @media (max-width: 900px) {
     .hero-inner {
         grid-template-columns: minmax(0, 1fr);
-        row-gap: 2.5rem;
+        grid-template-areas:
+            "head"
+            "photo"
+            "body";
+        row-gap: 1.75rem;
         padding-top: 1rem;
+        /* Fill the viewport below the sticky header so the first screen ends
+           right after the buttons, pushing the featured-videos panel below the
+           fold — mirroring desktop, where the fold lands after that panel.
+           --header-h is published live by the Header component. align-content:
+           center (inherited) keeps a little air below the buttons instead of
+           letting them touch the bottom edge. */
+        min-height: calc(100svh - var(--header-h, 4.5rem));
+    }
+
+    /* photo now sits directly under the name, so it no longer needs the top
+       margin that separated it from the blurb */
+    .hero-body .hero-desc {
+        margin-top: 0;
     }
 
     .hero-featured {
