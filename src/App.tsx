@@ -10,7 +10,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 // import Youtube from 'react-youtube';
 import Footer from './Footer.tsx';
-import { mtExpandedContent, musicalTheaterDescription } from './MusicalTheaterContent.tsx';
+import TheaterCreditsSection from './TheaterCreditsSection.tsx';
 import { bandsExpandedContent } from './BandsContent.tsx';
 import ParticlesBackground from './ParticlesBackground.tsx';
 // @ts-ignore;
@@ -49,44 +49,16 @@ function App() {
         
         <Hero />
 
-      <div
-          id="experience"
-          style={{
-            marginTop: 30,
-            marginBottom: 20,
-            scrollMarginTop: '2rem',
-          }}
-        >
-          <motion.h2
-              variants={headerVariants}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: false }}
-              style={{
-                  fontSize: '3rem',
-                  color: 'gray',
-                  // fontFamily: "Fredoka One",
-                  // fontFamily: "'IBM Plex Sans', sans-serif"
-              }}
-          >
-              Experience
-          </motion.h2>
+        <div id="experience" style={{ marginTop: 40, scrollMarginTop: '3rem' }}>
+          <TheaterCreditsSection />
         </div>
 
         <div className="cards-container">
-          <MusicCard 
-            title='Musical Theater' 
-            description={musicalTheaterDescription} 
-            // secondDescription={secondMusicalTheaterDescription} 
-            expandedContent={mtExpandedContent}
-            expandText='Recent Shows'
-          />
-          <MusicCard 
-            title='Fox and the Cosmic Caravan' 
-            description={recitalsDescription} 
-            // secondDescription={secondMusicalTheaterDescription} 
+          <MusicCard
+            title='Fox and the Cosmic Caravan'
+            description={recitalsDescription}
+            // secondDescription={secondMusicalTheaterDescription}
             expandedContent={bandsExpandedContent}
-            // expandedContent={recitalsExpandedContent}
             expandText='Videos'
           />
           {/* <MusicCard 

@@ -1,0 +1,166 @@
+.theater-credits {
+    width: 90%;
+    max-width: 1100px;
+    margin: 1rem auto 0;
+    text-align: left;
+}
+
+/* ── Category bands: left rail + credits ───────────────────────────── */
+
+.credit-group {
+    display: grid;
+    grid-template-columns: 210px 1fr;
+    column-gap: 3rem;
+    padding: 2.25rem 0;
+    border-top: 1px solid #cfd3d6;
+}
+
+.credit-group:first-of-type {
+    border-top: none;
+    padding-top: 0.5rem;
+}
+
+.credit-group__rail {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.credit-group__label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    color: #015112;
+    margin: 0;
+}
+
+.credit-group__count {
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: #8a8f94;
+}
+
+.credit-group__grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2.5rem;
+    row-gap: 1rem;
+}
+
+.credit-row__top {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+}
+
+.credit-row__show {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #2e2f30;
+}
+
+.credit-row__meta {
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: #5f6368;
+    margin-top: 0.15rem;
+}
+
+.credit-pill {
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #015112;
+    background: rgba(1, 81, 18, 0.08);
+    border: 1px solid rgba(1, 81, 18, 0.35);
+    border-radius: 999px;
+    padding: 0.1rem 0.5rem;
+    line-height: 1.4;
+    white-space: nowrap;
+    align-self: center;
+}
+
+/* ── Earlier (condensed) credits ───────────────────────────────────── */
+
+.credit-group__earlier {
+    margin-top: 1.5rem;
+}
+
+.credit-group__earlier-label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #8a8f94;
+    margin-bottom: 0.4rem;
+}
+
+.credit-group__earlier-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2.5rem;
+    row-gap: 0.25rem;
+}
+
+.condensed-credit {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #5f6368;
+    line-height: 1.5;
+}
+
+.condensed-credit__show {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 0.88rem;
+}
+
+.credit-yt-link {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    align-self: center;
+}
+
+.credit-yt-link svg {
+    color: red;
+    font-size: 1.15rem;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+    .credit-group {
+        grid-template-columns: 1fr;
+        row-gap: 1.25rem;
+    }
+
+    .credit-group__rail {
+        flex-direction: row;
+        align-items: baseline;
+        gap: 0.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .theater-credits__stats {
+        gap: 2.5rem;
+    }
+
+    .credit-group__grid,
+    .credit-group__earlier-list {
+        grid-template-columns: 1fr;
+    }
+}

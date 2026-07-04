@@ -91,10 +91,9 @@ function Hero() {
                     </motion.h1>
 
                     <motion.p className="hero-desc" variants={fadeUp}>
-                        At home in the pit orchestra — drumming for musical
-                        theater on regional and community stages across Greater
-                        Boston, with plenty of band experience beyond the
-                        theater.
+                        Pit musician and versatile professional drummer, with
+                        experience across regional and community theaters and in
+                        bands.
                     </motion.p>
 
                     <motion.div className="hero-actions" variants={fadeUp}>
