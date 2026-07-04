@@ -123,6 +123,14 @@
     color: #2e2f30;
 }
 
+.recent-exp__note {
+    flex-shrink: 0;
+    font-size: 0.78rem;
+    font-weight: 500;
+    font-style: italic;
+    color: #8a8f94;
+}
+
 .recent-exp__theater {
     min-width: 0;
     overflow: hidden;

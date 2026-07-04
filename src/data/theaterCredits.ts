@@ -18,7 +18,7 @@ export interface CategoryMeta {
 export const CATEGORY_ORDER: CategoryMeta[] = [
     { key: 'regional', label: 'Regional & Professional' },
     { key: 'community', label: 'Community' },
-    { key: 'educational', label: 'Educational & Youth' },
+    { key: 'educational', label: 'Youth & College' },
 ];
 
 // Credits from this year onward render as full rows; earlier ones as a condensed list.
@@ -30,6 +30,13 @@ export const theaterCredits: TheaterCredit[] = [
     // ── Regional & Professional ──────────────────────────────────────────────
     {
         year: 2026,
+        show: 'Hairspray',
+        theater: 'Umbrella Arts Center',
+        category: 'regional',
+        note: 'sub',
+    },
+    {
+        year: 2026,
         show: 'Come From Away',
         theater: 'Winnipisaukee Playhouse',
         category: 'regional',
@@ -38,25 +45,25 @@ export const theaterCredits: TheaterCredit[] = [
         year: 2025,
         show: 'Legally Blonde',
         theater: 'Greater Boston Stage Company',
-        category: 'regional',
+        category: 'educational',
     },
     {
         year: 2025,
         show: 'Bye Bye Birdie',
         theater: 'Greater Boston Stage Company',
-        category: 'regional',
+        category: 'educational',
     },
     {
         year: 2025,
         show: 'Reefer Madness',
         theater: 'The Rockwell',
-        category: 'regional',
+        category: 'community',
     },
     {
         year: 2025,
         show: "The Guy Who Didn't Like Musicals",
         theater: 'Boston Center for the Arts',
-        category: 'regional',
+        category: 'community',
     },
     {
         year: 2024,
@@ -83,7 +90,7 @@ export const theaterCredits: TheaterCredit[] = [
         year: 2025,
         show: 'Legally Blonde',
         theater: 'Chelmsford Center for the Arts',
-        category: 'community',
+        category: 'educational',
     },
     {
         year: 2025,
@@ -124,7 +131,14 @@ export const theaterCredits: TheaterCredit[] = [
         note: 'sub',
     },
 
-    // ── Educational & Youth ──────────────────────────────────────────────────
+    // ── Youth & College ──────────────────────────────────────────────────────
+    {
+        year: 2026,
+        show: 'Seussical',
+        theater: 'Wheelock Family Theater',
+        category: 'educational',
+        note: 'sub',
+    },
     {
         year: 2026,
         show: 'Mean Girls',

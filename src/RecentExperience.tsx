@@ -9,7 +9,7 @@ const RECENT_YEAR_MIN = 2023;
 const SHORT_LABELS: Record<string, string> = {
     regional: 'Regional & Professional',
     community: 'Community',
-    educational: 'Educational & Youth',
+    educational: 'Youth & College',
 };
 
 function RecentRow({ credit }: { credit: TheaterCredit }) {
@@ -25,6 +25,9 @@ function RecentRow({ credit }: { credit: TheaterCredit }) {
             />
             <span className="recent-exp__year">{credit.year}</span>
             <span className="recent-exp__show">{credit.show}</span>
+            {credit.note && (
+                <span className="recent-exp__note">({credit.note})</span>
+            )}
             <span className="recent-exp__theater">{credit.theater}</span>
             {credit.isUpcoming && <span className="recent-exp__pill">Upcoming</span>}
             {credit.youtubeLink && (
