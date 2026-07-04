@@ -29,7 +29,13 @@ function ParticlesBackground() {
                     // value: "rgb(18, 20, 19)", // A darker background often looks good
                 },
             },
-            fpsLimit: 60,
+            // Halved from 60: the particles drift slowly, so 30fps is visually
+            // identical but costs half the full-screen canvas repaints.
+            fpsLimit: 30,
+            // Stop the rAF loop entirely when the tab is backgrounded or the
+            // canvas is scrolled out of view — no wasted frames when unseen.
+            pauseOnBlur: true,
+            pauseOnOutsideViewport: true,
             interactivity: {
                 events: {
                     onClick: {
@@ -119,7 +125,10 @@ function ParticlesBackground() {
                     // random: true, // Deprecated, use value: {min, max} instead
                 },
             },
-            detectRetina: true,
+            // The particles are huge, near-invisible (opacity 0.04-0.06) blurred
+            // blobs, so retina scaling doubles the canvas pixel count for no
+            // perceptible gain. Off = ~4x less fill work per frame on HiDPI.
+            detectRetina: false,
         }),
         [], // Memoize options
     );
