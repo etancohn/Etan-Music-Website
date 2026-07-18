@@ -1,0 +1,192 @@
+/* Single-bar footer that bookends the header: same faux frosted-glass
+   gradient (no backdrop-filter — see .site-header for why), same hairline
+   border and 1100px column, so the page opens and closes on the same
+   surface. */
+
+.site-footer {
+    margin-top: 4.5rem;
+    background: linear-gradient(
+        to bottom,
+        rgba(250, 251, 251, 0.95),
+        rgba(243, 245, 244, 0.98)
+    );
+    border-top: 1px solid rgba(46, 47, 48, 0.08);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    text-align: left; /* #root centers text globally */
+}
+
+.site-footer__inner {
+    max-width: 1100px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 1.85rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    flex-wrap: wrap;
+}
+
+/* ---------- brand + tagline ---------- */
+
+.site-footer__left {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+}
+
+.site-footer__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #2e2f30;
+    text-decoration: none;
+    transition: opacity 0.25s ease;
+}
+
+.site-footer__brand:hover {
+    color: #2e2f30;
+    opacity: 0.75;
+}
+
+.site-footer__logo {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    display: block;
+}
+
+/* small green note doubling as the brand/tagline separator */
+.site-footer__divider {
+    font-size: 0.85rem;
+    line-height: 1;
+    color: rgba(1, 81, 18, 0.5);
+}
+
+.site-footer__tagline {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #5f6368;
+    white-space: nowrap;
+}
+
+/* ---------- contact + social + copyright ---------- */
+
+.site-footer__right {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    flex-wrap: wrap;
+}
+
+.site-footer__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #5f6368;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.25s ease;
+}
+
+.site-footer__link:hover {
+    color: #015112;
+}
+
+.site-footer__link svg {
+    font-size: 1.05rem;
+    color: #9aa0a5;
+    transition: color 0.25s ease;
+}
+
+.site-footer__link:hover svg {
+    color: #015112;
+}
+
+.site-footer__social {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.site-footer__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: #5f6368;
+    transition:
+        color 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.site-footer__icon:hover {
+    color: #015112;
+    background: rgba(1, 81, 18, 0.08);
+}
+
+.site-footer__copyright {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #8a8f94;
+    white-space: nowrap;
+}
+
+/* ---------- focus ---------- */
+
+.site-footer__brand:focus-visible,
+.site-footer__link:focus-visible,
+.site-footer__icon:focus-visible {
+    outline: 2px solid #015112;
+    outline-offset: -2px;
+    border-radius: 6px;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 760px) {
+    .site-footer__inner {
+        flex-direction: column;
+        gap: 0.9rem;
+        padding: 1.6rem 0 1.5rem;
+        text-align: center;
+    }
+
+    .site-footer__left {
+        flex-direction: column;
+        gap: 0.45rem;
+    }
+
+    .site-footer__divider {
+        display: none;
+    }
+
+    .site-footer__right {
+        flex-direction: column;
+        gap: 0.55rem;
+    }
+
+    .site-footer__social {
+        margin-top: 0.2rem;
+    }
+
+    .site-footer__copyright {
+        margin-top: 0.3rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .site-footer__brand,
+    .site-footer__icon,
+    .site-footer__link,
+    .site-footer__link svg {
+        transition: none;
+    }
+}

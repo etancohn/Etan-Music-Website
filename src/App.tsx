@@ -87,7 +87,6 @@ function App() {
                 </main>
             </div>
 
-            <div style={{ height: '4rem' }}></div>
             <Footer />
         </>
     );
