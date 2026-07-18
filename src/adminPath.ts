@@ -1,5 +1,5 @@
-// The hidden content-editor URL. Not linked anywhere on the site and kept
-// unguessable on purpose — share it only with people who should edit content.
-// (The real protection is Firebase Auth + security rules; the obscure path
-// just keeps the editor out of casual sight.)
+// The content-editor URL. Not linked anywhere on the public site. The path is
+// deliberately simple — the real protection is Firebase Auth + security rules
+// (allowlisted editors only), so a guessable path just lands visitors on a
+// sign-in wall. Swap in something obscure later if that ever feels warranted.
 export const ADMIN_PATH = '/dashboard';
