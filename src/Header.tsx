@@ -9,7 +9,7 @@ import './Header.css';
 const TABS: { route: Route; label: string }[] = [
     { route: 'home', label: 'Home' },
     { route: 'experience', label: 'Experience' },
-    { route: 'covers', label: 'Drum Covers' },
+    { route: 'media', label: 'Media' },
     // TODO: re-enable before public release
     // { route: 'about', label: 'About' },
 ];

@@ -32,65 +32,6 @@
     color: #8a8f94;
 }
 
-/* ---------- bands ---------- */
-
-.band-block {
-    margin-top: 0.5rem;
-}
-
-.band-block + .band-block {
-    margin-top: 2.5rem;
-    padding-top: 2rem;
-    border-top: 1px solid #e3e5e7;
-}
-
-.band-block__intro {
-    display: grid;
-    grid-template-columns: 260px minmax(0, 1fr);
-    gap: 2rem;
-    align-items: start;
-    margin-bottom: 1.75rem;
-}
-
-.band-block__photo {
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 18px 40px -18px rgba(18, 30, 22, 0.35);
-    background: #ffffff;
-    padding: 8px;
-}
-
-.band-block__name {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    color: #2e2f30;
-    margin: 0;
-}
-
-.band-block__desc {
-    color: #5f6368;
-    font-weight: 400;
-    font-size: 0.95rem;
-    line-height: 1.65;
-    max-width: 56ch;
-    margin: 0.6rem 0 1rem;
-}
-
-.band-block__desc a {
-    color: #015112;
-    font-weight: 600;
-}
-
-.band-block--compact .band-block__desc {
-    margin-bottom: 0;
-}
-
-.band-block__videos {
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-}
-
 /* ---------- cabarets & recitals ---------- */
 
 .perf-list {
@@ -131,15 +72,6 @@
 /* ---------- responsive ---------- */
 
 @media (max-width: 760px) {
-    .band-block__intro {
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
-    }
-
-    .band-block__photo {
-        max-width: 340px;
-    }
-
     .perf-list {
         grid-template-columns: 1fr;
     }

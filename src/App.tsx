@@ -7,7 +7,7 @@ import Header from './Header.tsx';
 import Footer from './Footer.tsx';
 import HomePage from './pages/HomePage.tsx';
 import ExperiencePage from './pages/ExperiencePage.tsx';
-import CoversPage from './pages/CoversPage.tsx';
+import MediaPage from './pages/MediaPage.tsx';
 // TODO: re-enable before public release
 // import AboutPage from './pages/AboutPage.tsx';
 import { Route, parseHash, useRoute } from './router.ts';
@@ -23,7 +23,7 @@ const isAdminPath = () => window.location.pathname.replace(/\/+$/, '') === ADMIN
 const PAGES: Record<Route, () => JSX.Element> = {
     home: HomePage,
     experience: ExperiencePage,
-    covers: CoversPage,
+    media: MediaPage,
     // TODO: re-enable before public release
     // about: AboutPage,
 };

@@ -1,11 +1,8 @@
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import TheaterCreditsSection from '../TheaterCreditsSection';
-import SpotifyPlayer from '../SpotifyPlayer';
-import VideoCard from '../VideoCard';
 import Reveal from '../Reveal';
 import { Performance } from '../data/performances';
 import { useContent } from '../content.tsx';
-import cosmicCaravanPic from '../assets/cosmic-caravan-pic.jpeg';
 import './pages.css';
 import './ExperiencePage.css';
 
@@ -29,14 +26,15 @@ function PerformanceRow({ year, title, venue, youtubeLink }: Performance) {
 }
 
 function ExperiencePage() {
-    const { theaterCredits, bands, performances } = useContent();
+    const { theaterCredits, performances } = useContent();
 
     return (
         <div className="page">
             <div className="page__eyebrow">Experience</div>
-            <h1 className="page__title">Pit and Band Experience</h1>
+            <h1 className="page__title">Performance Experience</h1>
             <p className="page__lede">
-                Take a look at my recent experience across pit gigs and bands.
+                Take a look at my experience across musical theater pits,
+                cabarets, and recitals.
             </p>
 
             <section className="page-section" aria-label="Musical theater credits">
@@ -47,34 +45,6 @@ function ExperiencePage() {
                     </span>
                 </h2>
                 <TheaterCreditsSection />
-            </section>
-
-            <section className="page-section" aria-label="Bands">
-                <h2 className="page-section__label">Bands</h2>
-
-                <Reveal className="band-block">
-                    <div className="band-block__intro">
-                        <img
-                            className="band-block__photo"
-                            src={bands.photoUrl || cosmicCaravanPic}
-                            alt={`${bands.name} performing`}
-                        />
-                        <div className="band-block__text">
-                            <h3 className="band-block__name">{bands.name}</h3>
-                            <p className="band-block__desc">{bands.description}</p>
-                            <SpotifyPlayer />
-                        </div>
-                    </div>
-                    <div className="video-grid band-block__videos">
-                        {bands.videos.map((v) => (
-                            <VideoCard
-                                key={v.youtubeId}
-                                youtubeId={v.youtubeId}
-                                caption={v.caption}
-                            />
-                        ))}
-                    </div>
-                </Reveal>
             </section>
 
             <section className="page-section" aria-label="Cabarets and recitals">

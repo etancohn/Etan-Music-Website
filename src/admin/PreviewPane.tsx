@@ -13,9 +13,9 @@ const VIEW_H = 800;
 const TAB_FOR_SECTION: Record<string, string> = {
     hero: 'home',
     theaterCredits: 'experience',
-    bands: 'experience',
+    bands: 'media',
     performances: 'experience',
-    covers: 'covers',
+    covers: 'media',
 };
 
 export default function PreviewPane({ draft, section }: { draft: SiteContent; section: string }) {
