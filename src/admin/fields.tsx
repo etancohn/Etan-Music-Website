@@ -193,13 +193,16 @@ function IconBtn({ onClick, disabled, title, danger, children }: {
 
 // Generic list-of-things editor: reorder with arrows, remove with confirm,
 // append with the button at the bottom. `renderItem(item, setItem, index)`
-// renders the fields for one entry.
+// renders the fields for one entry. With `addFirst`, the add button moves to
+// the top of the list and new entries are inserted first — for long lists
+// where additions are usually the newest thing.
 export function ListEditor<T>({
     items = [],
     onChange,
     renderItem,
     makeNew,
     addLabel = 'Add item',
+    addFirst = false,
     itemTitle,
     confirmText = 'Remove this item? It disappears from the site after you press Save.',
 }: {
@@ -208,6 +211,7 @@ export function ListEditor<T>({
     renderItem: (item: T, setItem: (next: T) => void, index: number) => ReactNode;
     makeNew: () => T;
     addLabel?: string;
+    addFirst?: boolean;
     itemTitle?: (item: T, index: number) => string;
     confirmText?: string;
 }) {
@@ -227,8 +231,16 @@ export function ListEditor<T>({
         if (!window.confirm(confirmText)) return;
         onChange(items.filter((_, k) => k !== i));
     };
+    const addBtn = (
+        <div>
+            <Btn onClick={() => onChange(addFirst ? [makeNew(), ...items] : [...items, makeNew()])}>
+                + {addLabel}
+            </Btn>
+        </div>
+    );
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            {addFirst && addBtn}
             {items.map((item, i) => (
                 <div key={i} style={{ border: '1px solid rgba(237,239,235,.12)', borderRadius: 4, background: 'rgba(237,239,235,.02)' }}>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, padding: '6px 10px', borderBottom: '1px solid rgba(237,239,235,.08)' }}>
@@ -244,9 +256,7 @@ export function ListEditor<T>({
                     <div style={{ padding: '14px 14px 2px' }}>{renderItem(item, (next) => setItem(i, next), i)}</div>
                 </div>
             ))}
-            <div>
-                <Btn onClick={() => onChange([...items, makeNew()])}>+ {addLabel}</Btn>
-            </div>
+            {!addFirst && addBtn}
         </div>
     );
 }

@@ -89,6 +89,7 @@ export function TheaterCreditsEditor({ value, onChange }: EditorProps<TheaterCre
                 onChange={(credits) => onChange({ ...value, credits })}
                 makeNew={(): TheaterCredit => ({ year: YEAR_NOW, show: '', theater: '', category: 'community' as CreditCategory })}
                 addLabel="Add production"
+                addFirst
                 itemTitle={(c) => (c.show ? `${c.year} · ${c.show}` : 'New production')}
                 confirmText="Remove this production? It disappears from the site after you press Save."
                 renderItem={(item, setItem) => (
