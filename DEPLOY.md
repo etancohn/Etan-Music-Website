@@ -31,6 +31,16 @@ npx -y firebase-tools@latest hosting:channel:deploy preview
 If a deploy breaks something, open the Firebase console → Hosting → Release
 history, and click "Rollback" on a previous release.
 
+## Security rules
+
+Firestore/Storage rules live in `firestore.rules` and `storage.rules`. After
+editing them:
+
+```bash
+npx -y firebase-tools@latest deploy --only firestore:rules
+npx -y firebase-tools@latest deploy --only storage   # once the Storage bucket exists
+```
+
 ## Notes
 
 - You must be logged in to the Firebase CLI (`npx -y firebase-tools@latest login`)
