@@ -1,0 +1,156 @@
+rules_version = '2';
+
+// ===============================================================
+// Assumed Data Model
+// ===============================================================
+//
+// Collection: content  (public site copy — no PII, deliberately world-readable)
+// Document IDs: exactly hero | theaterCredits | bands | performances | covers
+// Written only by the site owner from the hidden admin dashboard; each save
+// overwrites the whole document with a complete section object.
+//
+// content/hero:
+//   - overline: string (required, <200) — tagline above the name
+//   - description: string (required, <2000) — intro paragraph
+//   - photoCaption: string (required, <300)
+//   - featured: list (required, <=8) of { url, caption } maps
+//
+// content/theaterCredits:
+//   - featuredYearMin: int (required, 1900..2100)
+//   - credits: list (required, <=400) of
+//       { year, show, theater, category, note?, youtubeLink?, isUpcoming? }
+//
+// content/bands:
+//   - name: string (required, <200)
+//   - description: string (required, <2000)
+//   - videos: list (required, <=60) of { youtubeId, caption } maps
+//
+// content/performances:
+//   - items: list (required, <=300) of { year, title, venue, youtubeLink? }
+//
+// content/covers:
+//   - musicalTheater: list (required, <=120) of { youtubeId, title } maps
+//   - pop: list (required, <=120) of { youtubeId, title } maps
+//
+// Rules cannot iterate list contents, so per-element validation is bounded by
+// (a) writes being restricted to the allowlisted owner and (b) the public
+// site shallow-merging docs over typed defaults and ignoring unknown fields.
+// List size caps bound the document size instead.
+//
+// ===============================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===========================================================
+    // Helper functions
+    // ===========================================================
+
+    // The only accounts allowed to write site content. Keep in sync with
+    // EDITOR_EMAILS in src/admin/AuthGate.tsx.
+    function isEditor() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email in [
+          'etan.cohn@gmail.com',
+          'cohnetan@gmail.com'
+        ];
+    }
+
+    function boundedString(value, maxLen) {
+      return value is string && value.size() <= maxLen;
+    }
+
+    function boundedList(value, maxSize) {
+      return value is list && value.size() <= maxSize;
+    }
+
+    // ===========================================================
+    // Domain validators (used by BOTH create and update via `write`)
+    // ===========================================================
+
+    function isValidHero(data) {
+      return data.keys().hasOnly(['overline', 'description', 'photoCaption', 'featured'])
+        && data.keys().hasAll(['overline', 'description', 'photoCaption', 'featured'])
+        && boundedString(data.overline, 200)
+        && boundedString(data.description, 2000)
+        && boundedString(data.photoCaption, 300)
+        && boundedList(data.featured, 8);
+    }
+
+    function isValidTheaterCredits(data) {
+      return data.keys().hasOnly(['featuredYearMin', 'credits'])
+        && data.keys().hasAll(['featuredYearMin', 'credits'])
+        && data.featuredYearMin is int
+        && data.featuredYearMin >= 1900
+        && data.featuredYearMin <= 2100
+        && boundedList(data.credits, 400);
+    }
+
+    function isValidBands(data) {
+      return data.keys().hasOnly(['name', 'description', 'videos'])
+        && data.keys().hasAll(['name', 'description', 'videos'])
+        && boundedString(data.name, 200)
+        && boundedString(data.description, 2000)
+        && boundedList(data.videos, 60);
+    }
+
+    function isValidPerformances(data) {
+      return data.keys().hasOnly(['items'])
+        && data.keys().hasAll(['items'])
+        && boundedList(data.items, 300);
+    }
+
+    function isValidCovers(data) {
+      return data.keys().hasOnly(['musicalTheater', 'pop'])
+        && data.keys().hasAll(['musicalTheater', 'pop'])
+        && boundedList(data.musicalTheater, 120)
+        && boundedList(data.pop, 120);
+    }
+
+    // ===========================================================
+    // Content documents — public read (site copy), owner-only write.
+    //
+    // The read rule must live on a wildcard match: the site fetches the
+    // whole collection in one query (`getDocs(collection(db, 'content'))`),
+    // and Firestore only authorizes list operations against a match that
+    // covers every document the query could return. Writes stay on per-id
+    // matches so unknown doc ids are unwritable and each section gets its
+    // own validator (grants from overlapping matches are OR'd together).
+    // ===========================================================
+
+    match /content/{section} {
+      allow read: if true;
+    }
+
+    match /content/hero {
+      allow write: if isEditor() && isValidHero(request.resource.data);
+      allow delete: if isEditor();
+    }
+
+    match /content/theaterCredits {
+      allow write: if isEditor() && isValidTheaterCredits(request.resource.data);
+      allow delete: if isEditor();
+    }
+
+    match /content/bands {
+      allow write: if isEditor() && isValidBands(request.resource.data);
+      allow delete: if isEditor();
+    }
+
+    match /content/performances {
+      allow write: if isEditor() && isValidPerformances(request.resource.data);
+      allow delete: if isEditor();
+    }
+
+    match /content/covers {
+      allow write: if isEditor() && isValidCovers(request.resource.data);
+      allow delete: if isEditor();
+    }
+
+    // Everything else: no access.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

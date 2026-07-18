@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
+import { ContentProvider } from './content.tsx'
 import { ThemeProvider, createTheme } from '@mui/material'
 
 export const darkGreen = "#015112"
@@ -18,7 +19,9 @@ const theme = createTheme({
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <ContentProvider>
+        <App />
+      </ContentProvider>
     </ThemeProvider>
   </StrictMode>,
 )

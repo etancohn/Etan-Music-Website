@@ -1,9 +1,11 @@
 import VideoCard from '../VideoCard';
 import Reveal from '../Reveal';
-import { musicalTheaterCovers, popCovers } from '../data/covers';
+import { useContent } from '../content.tsx';
 import './pages.css';
 
 function CoversPage() {
+    const { musicalTheater, pop } = useContent().covers;
+
     return (
         <div className="page">
             <div className="page__eyebrow">Drum Covers</div>
@@ -16,11 +18,11 @@ function CoversPage() {
                 <h2 className="page-section__label">
                     Musical Theater
                     <span className="page-section__count">
-                        {musicalTheaterCovers.length} covers
+                        {musicalTheater.length} covers
                     </span>
                 </h2>
                 <Reveal className="video-grid">
-                    {musicalTheaterCovers.map((v) => (
+                    {musicalTheater.map((v) => (
                         <VideoCard
                             key={v.youtubeId}
                             youtubeId={v.youtubeId}
@@ -33,10 +35,10 @@ function CoversPage() {
             <section className="page-section" aria-label="Pop covers">
                 <h2 className="page-section__label">
                     Pop
-                    <span className="page-section__count">{popCovers.length} covers</span>
+                    <span className="page-section__count">{pop.length} covers</span>
                 </h2>
                 <Reveal className="video-grid">
-                    {popCovers.map((v) => (
+                    {pop.map((v) => (
                         <VideoCard
                             key={v.youtubeId}
                             youtubeId={v.youtubeId}

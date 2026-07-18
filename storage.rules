@@ -1,0 +1,31 @@
+rules_version = '2';
+
+// Uploads made from the admin dashboard (photos etc). Public-read because the
+// site serves them to every visitor; writes restricted to the allowlisted
+// owner. Keep the email list in sync with firestore.rules and
+// src/admin/AuthGate.tsx.
+service firebase.storage {
+  match /b/{bucket}/o {
+    function isEditor() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email in [
+          'etan.cohn@gmail.com',
+          'cohnetan@gmail.com'
+        ];
+    }
+
+    match /uploads/{allPaths=**} {
+      allow read: if true;
+      // 20MB cap bounds abuse even from a compromised editor session.
+      allow write: if isEditor()
+        && request.resource.size < 20 * 1024 * 1024;
+      allow delete: if isEditor();
+    }
+
+    // Everything else: no access.
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

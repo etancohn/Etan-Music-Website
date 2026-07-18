@@ -1,5 +1,6 @@
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import { CATEGORY_ORDER, TheaterCredit, theaterCredits } from './data/theaterCredits';
+import { CATEGORY_ORDER, TheaterCredit } from './data/theaterCredits';
+import { useContent } from './content.tsx';
 import Reveal from './Reveal';
 import './RecentExperience.css';
 
@@ -46,10 +47,11 @@ function RecentRow({ credit }: { credit: TheaterCredit }) {
 }
 
 function RecentExperience() {
-    const recent = theaterCredits
+    const { credits } = useContent().theaterCredits;
+    const recent = credits
         .filter((c) => c.year >= RECENT_YEAR_MIN)
         .sort((a, b) => b.year - a.year);
-    const earlierCount = theaterCredits.length - recent.length;
+    const earlierCount = credits.length - recent.length;
 
     return (
         <section className="recent-exp" aria-label="Recent pit experience">

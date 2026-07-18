@@ -3,14 +3,13 @@ import TheaterCreditsSection from '../TheaterCreditsSection';
 import SpotifyPlayer from '../SpotifyPlayer';
 import VideoCard from '../VideoCard';
 import Reveal from '../Reveal';
-import { theaterCredits } from '../data/theaterCredits';
-import { cosmicCaravanVideos } from '../data/bands';
-import { notablePerformances } from '../data/performances';
+import { Performance } from '../data/performances';
+import { useContent } from '../content.tsx';
 import cosmicCaravanPic from '../assets/cosmic-caravan-pic.jpeg';
 import './pages.css';
 import './ExperiencePage.css';
 
-function PerformanceRow({ year, title, venue, youtubeLink }: (typeof notablePerformances)[number]) {
+function PerformanceRow({ year, title, venue, youtubeLink }: Performance) {
     return (
         <li className="perf-row">
             {year} · <span className="perf-row__title">{title}</span> · {venue}
@@ -30,6 +29,8 @@ function PerformanceRow({ year, title, venue, youtubeLink }: (typeof notablePerf
 }
 
 function ExperiencePage() {
+    const { theaterCredits, bands, performances } = useContent();
+
     return (
         <div className="page">
             <div className="page__eyebrow">Experience</div>
@@ -42,7 +43,7 @@ function ExperiencePage() {
                 <h2 className="page-section__label">
                     Musical Theater
                     <span className="page-section__count">
-                        {theaterCredits.length} productions
+                        {theaterCredits.credits.length} productions
                     </span>
                 </h2>
                 <TheaterCreditsSection />
@@ -56,20 +57,16 @@ function ExperiencePage() {
                         <img
                             className="band-block__photo"
                             src={cosmicCaravanPic}
-                            alt="Fox and the Cosmic Caravan performing"
+                            alt={`${bands.name} performing`}
                         />
                         <div className="band-block__text">
-                            <h3 className="band-block__name">Fox and the Cosmic Caravan</h3>
-                            <p className="band-block__desc">
-                                Rock band that gigged around Carnegie Mellon and
-                                Pittsburgh. Wrote and recorded the album{' '}
-                                <em>Cosmic Caravan</em>, released in 2023.
-                            </p>
+                            <h3 className="band-block__name">{bands.name}</h3>
+                            <p className="band-block__desc">{bands.description}</p>
                             <SpotifyPlayer />
                         </div>
                     </div>
                     <div className="video-grid band-block__videos">
-                        {cosmicCaravanVideos.map((v) => (
+                        {bands.videos.map((v) => (
                             <VideoCard
                                 key={v.youtubeId}
                                 youtubeId={v.youtubeId}
@@ -84,12 +81,12 @@ function ExperiencePage() {
                 <h2 className="page-section__label">
                     Cabarets &amp; Recitals
                     <span className="page-section__count">
-                        {notablePerformances.length} notable performances
+                        {performances.items.length} notable performances
                     </span>
                 </h2>
                 <Reveal>
                     <ul className="perf-list">
-                        {notablePerformances.map((p) => (
+                        {performances.items.map((p) => (
                             <PerformanceRow key={`${p.year}-${p.title}`} {...p} />
                         ))}
                     </ul>

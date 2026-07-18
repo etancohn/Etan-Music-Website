@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import ReactPlayer from "react-player/youtube";
 import heroImg from "./assets/etan-hero.jpg";
+import { useContent } from "./content.tsx";
 import "./Hero.css";
 
 // Matches the 900px mobile breakpoint used throughout Hero.css.
@@ -64,17 +65,6 @@ const featuredFlip: Variants = {
     },
 };
 
-const featured = [
-    {
-        url: "https://www.youtube.com/watch?v=QetcQ_k17VM",
-        caption: "Dancing Through Life — Wicked",
-    },
-    {
-        url: "https://www.youtube.com/watch?v=HpSeqORjsks",
-        caption: "Live at City Winery",
-    },
-];
-
 function PlayBadge() {
     return (
         <span className="hero-play-badge" aria-hidden="true">
@@ -88,6 +78,7 @@ function PlayBadge() {
 function Hero() {
     const reduceMotion = useReducedMotion();
     const isMobile = useIsMobile();
+    const { overline, description, photoCaption, featured } = useContent().hero;
 
     // On mobile the featured tile flips in on scroll; on desktop it keeps its
     // fade-up on mount alongside the rest of the hero.
@@ -115,7 +106,7 @@ function Hero() {
             >
                 <div className="hero-text hero-head">
                     <motion.div className="hero-overline" variants={fadeUp}>
-                        Drummer&ensp;·&ensp;Boston, MA
+                        {overline}
                     </motion.div>
 
                     <motion.h1 className="hero-name" variants={fadeUp}>
@@ -129,15 +120,13 @@ function Hero() {
                             src={heroImg}
                             alt="Etan Cohn playing drums in a pit orchestra"
                         />
-                        <div className="hero-frame-caption">♪&ensp;in the pit for Come From Away, at Winnipesaukee Playhouse regional theater</div>
+                        <div className="hero-frame-caption">{photoCaption}</div>
                     </div>
                 </motion.div>
 
                 <div className="hero-text hero-body">
                     <motion.p className="hero-desc" variants={fadeUp}>
-                        Pit musician and versatile professional drummer, with
-                        experience across regional and community theaters and in
-                        bands.
+                        {description}
                     </motion.p>
 
                     <motion.div className="hero-actions" variants={fadeUp}>

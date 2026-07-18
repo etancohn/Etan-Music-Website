@@ -334,15 +334,5 @@ export interface GroupedCredits {
     condensed: TheaterCredit[];
 }
 
-export function getGroupedCredits(): GroupedCredits[] {
-    return CATEGORY_ORDER.map((meta) => {
-        const sorted = theaterCredits
-            .filter((c) => c.category === meta.key)
-            .sort((a, b) => b.year - a.year);
-        return {
-            meta,
-            featured: sorted.filter((c) => c.year >= FEATURED_YEAR_MIN),
-            condensed: sorted.filter((c) => c.year < FEATURED_YEAR_MIN),
-        };
-    }).filter((g) => g.featured.length + g.condensed.length > 0);
-}
+// Grouping logic lives in ./content.ts (groupCredits), where it runs over
+// live content rather than only these bundled defaults.

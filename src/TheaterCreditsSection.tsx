@@ -1,5 +1,7 @@
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import { getGroupedCredits, GroupedCredits, TheaterCredit } from './data/theaterCredits';
+import { GroupedCredits, TheaterCredit } from './data/theaterCredits';
+import { groupCredits } from './data/content';
+import { useContent } from './content.tsx';
 import Reveal from './Reveal';
 import './TheaterCreditsSection.css';
 
@@ -75,7 +77,7 @@ function CreditGroup({ group }: { group: GroupedCredits }) {
 }
 
 function TheaterCreditsSection() {
-    const groups = getGroupedCredits();
+    const groups = groupCredits(useContent().theaterCredits);
     return (
         <section className="theater-credits" aria-label="Musical theater experience">
             {groups.map((g) => (
