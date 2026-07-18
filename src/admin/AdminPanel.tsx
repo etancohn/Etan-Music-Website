@@ -3,7 +3,7 @@ import { doc, setDoc } from 'firebase/firestore';
 import { signOut } from 'firebase/auth';
 import { db } from '../firebase';
 import { useContentContext } from '../content';
-import { SiteContent } from '../data/content';
+import { SiteContent, compareCreditsDesc } from '../data/content';
 import AuthGate, { auth } from './AuthGate';
 import { ACCENT, BG, Btn, FAINT, GREEN, MUTED, PANEL_FONT, RED, TEXT } from './fields';
 import PreviewPane from './PreviewPane';
@@ -32,6 +32,22 @@ const SECTIONS: SectionDef[] = [
 ];
 
 const clone = <T,>(v: T): T => JSON.parse(JSON.stringify(v));
+
+// Sections whose order is derived rather than hand-arranged get normalized
+// here — on draft load, save, and discard — so the editor list always "lines
+// up" the way the site will render it. (Not live while typing: a half-entered
+// date would make the row jump out from under the cursor.)
+function normalizeSection<K extends SectionKey>(id: K, value: SiteContent[K]): SiteContent[K] {
+    if (id === 'theaterCredits') {
+        const v = value as SiteContent['theaterCredits'];
+        return { ...v, credits: [...v.credits].sort(compareCreditsDesc) } as SiteContent[K];
+    }
+    return value;
+}
+
+function normalizeDraft(c: SiteContent): SiteContent {
+    return { ...c, theaterCredits: normalizeSection('theaterCredits', c.theaterCredits) };
+}
 
 // The live preview needs real horizontal room next to the form; below this
 // it comes out of the layout entirely rather than rendering postage-stamp size.
@@ -64,7 +80,7 @@ function Panel() {
     // Initialize the draft once the first Firestore fetch settles, so the form
     // starts from live content rather than the built-in defaults.
     useEffect(() => {
-        if (loaded) setDraft((d) => d ?? clone(content));
+        if (loaded) setDraft((d) => d ?? normalizeDraft(clone(content)));
     }, [loaded, content]);
 
     useEffect(() => {
@@ -107,10 +123,13 @@ function Panel() {
             // rejects. The race matters: when offline, the SDK queues the
             // write and the promise never settles — surface an error instead
             // of spinning forever.
+            const payload = normalizeSection(id, clone(draft[id]));
             await Promise.race([
-                setDoc(doc(db, 'content', id), clone(draft[id])),
+                setDoc(doc(db, 'content', id), payload),
                 new Promise((_, reject) => setTimeout(() => reject(new Error('save timed out')), 12000)),
             ]);
+            // Reflect the saved (sorted) order back into the form.
+            setDraft((d) => (d ? { ...d, [id]: payload } : d));
             setDirty((f) => ({ ...f, [id]: false }));
             setStatus({ kind: 'ok', msg: 'Saved — your changes are live.' });
             reload();
@@ -123,7 +142,7 @@ function Panel() {
     // Discard drops unsaved edits by resetting the draft for this section back
     // to the currently-saved (live) content, which clears the dirty flag.
     const discard = (id: SectionKey) => {
-        setDraft((d) => (d ? { ...d, [id]: clone(content[id]) } : d));
+        setDraft((d) => (d ? { ...d, [id]: normalizeSection(id, clone(content[id])) } : d));
         setDirty((f) => ({ ...f, [id]: false }));
     };
 

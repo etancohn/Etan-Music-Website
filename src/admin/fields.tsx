@@ -214,6 +214,7 @@ export function ListEditor<T>({
     makeNew,
     addLabel = 'Add item',
     addFirst = false,
+    reorderable = true,
     itemTitle,
     confirmText = 'Remove this item? It disappears from the site after you press Save.',
 }: {
@@ -223,6 +224,9 @@ export function ListEditor<T>({
     makeNew: () => T;
     addLabel?: string;
     addFirst?: boolean;
+    // false when the list's order is derived (e.g. sorted by date on save),
+    // so manual arrows would just be undone.
+    reorderable?: boolean;
     itemTitle?: (item: T, index: number) => string;
     confirmText?: string;
 }) {
@@ -259,8 +263,12 @@ export function ListEditor<T>({
                             {itemTitle ? itemTitle(item, i) : `Item ${i + 1}`}
                         </span>
                         <span style={{ display: 'flex', gap: 6, flex: 'none' }}>
-                            <IconBtn onClick={() => move(i, -1)} disabled={i === 0} title="Move up">↑</IconBtn>
-                            <IconBtn onClick={() => move(i, 1)} disabled={i === items.length - 1} title="Move down">↓</IconBtn>
+                            {reorderable && (
+                                <>
+                                    <IconBtn onClick={() => move(i, -1)} disabled={i === 0} title="Move up">↑</IconBtn>
+                                    <IconBtn onClick={() => move(i, 1)} disabled={i === items.length - 1} title="Move down">↓</IconBtn>
+                                </>
+                            )}
                             <IconBtn onClick={() => remove(i)} title="Remove" danger>✕</IconBtn>
                         </span>
                     </div>
