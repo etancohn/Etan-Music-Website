@@ -24,6 +24,24 @@ interface EditorProps<T> {
 
 const YEAR_NOW = new Date().getFullYear();
 
+// Accepts a pasted YouTube link in any common shape (watch?v=, youtu.be,
+// shorts, embed, live) and returns just the 11-char video id; anything else
+// (including a bare id, or a half-typed value) passes through unchanged.
+function parseYouTubeId(input: string): string {
+    const m = input.trim().match(
+        /(?:youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/|live\/)|youtu\.be\/)([\w-]{11})/,
+    );
+    return m ? m[1] : input;
+}
+
+function YouTubeIdField({ value, onChange }: { value: string; onChange: (id: string) => void }) {
+    return (
+        <Field label="YouTube link" help="Paste the video's link straight from YouTube — the video ID is pulled out automatically. (A bare video ID works too.)">
+            <TextInput value={value} onChange={(v) => onChange(parseYouTubeId(v))} placeholder="https://www.youtube.com/watch?v=…" />
+        </Field>
+    );
+}
+
 export function HeroEditor({ value, onChange }: EditorProps<HeroContent>) {
     const set = <K extends keyof HeroContent>(k: K, v: HeroContent[K]) =>
         onChange({ ...value, [k]: v });
@@ -171,9 +189,7 @@ export function BandsEditor({ value, onChange }: EditorProps<BandsContent>) {
                 itemTitle={(v, i) => v.caption || `Video ${i + 1}`}
                 renderItem={(item, setItem) => (
                     <Row>
-                        <Field label="YouTube video ID" help="The part after “watch?v=” in the link, e.g. g6IVQ7syANc.">
-                            <TextInput value={item.youtubeId} onChange={(youtubeId) => setItem({ ...item, youtubeId })} />
-                        </Field>
+                        <YouTubeIdField value={item.youtubeId} onChange={(youtubeId) => setItem({ ...item, youtubeId })} />
                         <Field label="Caption">
                             <TextInput value={item.caption} onChange={(caption) => setItem({ ...item, caption })} />
                         </Field>
@@ -224,9 +240,7 @@ function CoverList({ items, onChange }: { items: CoverVideo[]; onChange: (items:
             itemTitle={(v, i) => v.title || `Cover ${i + 1}`}
             renderItem={(item, setItem) => (
                 <Row>
-                    <Field label="YouTube video ID" help="The part after “watch?v=” in the link.">
-                        <TextInput value={item.youtubeId} onChange={(youtubeId) => setItem({ ...item, youtubeId })} />
-                    </Field>
+                    <YouTubeIdField value={item.youtubeId} onChange={(youtubeId) => setItem({ ...item, youtubeId })} />
                     <Field label="Title" help="e.g. “Popular — Wicked”.">
                         <TextInput value={item.title} onChange={(title) => setItem({ ...item, title })} />
                     </Field>
