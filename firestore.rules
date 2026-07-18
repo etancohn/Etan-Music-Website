@@ -12,6 +12,7 @@ rules_version = '2';
 // content/hero:
 //   - overline: string (required, <200) — tagline above the name
 //   - description: string (required, <2000) — intro paragraph
+//   - photoUrl: string (optional, https, <=800) — uploaded hero photo
 //   - photoCaption: string (required, <300)
 //   - featured: list (required, <=8) of { url, caption } maps
 //
@@ -23,6 +24,7 @@ rules_version = '2';
 // content/bands:
 //   - name: string (required, <200)
 //   - description: string (required, <2000)
+//   - photoUrl: string (optional, https, <=800) — uploaded band photo
 //   - videos: list (required, <=60) of { youtubeId, caption } maps
 //
 // content/performances:
@@ -65,15 +67,24 @@ service cloud.firestore {
       return value is list && value.size() <= maxSize;
     }
 
+    // Optional https URL field: valid when absent, or a bounded https string.
+    function optionalHttpsUrl(data, field) {
+      return !(field in data)
+        || (data[field] is string
+            && data[field].size() <= 800
+            && data[field].matches('^https://.*'));
+    }
+
     // ===========================================================
     // Domain validators (used by BOTH create and update via `write`)
     // ===========================================================
 
     function isValidHero(data) {
-      return data.keys().hasOnly(['overline', 'description', 'photoCaption', 'featured'])
+      return data.keys().hasOnly(['overline', 'description', 'photoUrl', 'photoCaption', 'featured'])
         && data.keys().hasAll(['overline', 'description', 'photoCaption', 'featured'])
         && boundedString(data.overline, 200)
         && boundedString(data.description, 2000)
+        && optionalHttpsUrl(data, 'photoUrl')
         && boundedString(data.photoCaption, 300)
         && boundedList(data.featured, 8);
     }
@@ -88,10 +99,11 @@ service cloud.firestore {
     }
 
     function isValidBands(data) {
-      return data.keys().hasOnly(['name', 'description', 'videos'])
+      return data.keys().hasOnly(['name', 'description', 'photoUrl', 'videos'])
         && data.keys().hasAll(['name', 'description', 'videos'])
         && boundedString(data.name, 200)
         && boundedString(data.description, 2000)
+        && optionalHttpsUrl(data, 'photoUrl')
         && boundedList(data.videos, 60);
     }
 

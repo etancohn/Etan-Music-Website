@@ -78,7 +78,7 @@ function PlayBadge() {
 function Hero() {
     const reduceMotion = useReducedMotion();
     const isMobile = useIsMobile();
-    const { overline, description, photoCaption, featured } = useContent().hero;
+    const { overline, description, photoUrl, photoCaption, featured } = useContent().hero;
 
     // On mobile the featured tile flips in on scroll; on desktop it keeps its
     // fade-up on mount alongside the rest of the hero.
@@ -117,7 +117,7 @@ function Hero() {
                 <motion.div className="hero-photo" variants={photoReveal}>
                     <div className="hero-frame">
                         <img
-                            src={heroImg}
+                            src={photoUrl || heroImg}
                             alt="Etan Cohn playing drums in a pit orchestra"
                         />
                         <div className="hero-frame-caption">{photoCaption}</div>

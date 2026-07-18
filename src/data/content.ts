@@ -22,6 +22,8 @@ export interface FeaturedVideo {
 export interface HeroContent {
     overline: string;
     description: string;
+    // Uploaded photo URL; when absent the bundled hero photo is used.
+    photoUrl?: string;
     photoCaption: string;
     featured: FeaturedVideo[];
 }
@@ -35,6 +37,8 @@ export interface TheaterCreditsContent {
 export interface BandsContent {
     name: string;
     description: string;
+    // Uploaded photo URL; when absent the bundled band photo is used.
+    photoUrl?: string;
     videos: BandVideo[];
 }
 

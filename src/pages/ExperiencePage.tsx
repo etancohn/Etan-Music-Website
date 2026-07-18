@@ -56,7 +56,7 @@ function ExperiencePage() {
                     <div className="band-block__intro">
                         <img
                             className="band-block__photo"
-                            src={cosmicCaravanPic}
+                            src={bands.photoUrl || cosmicCaravanPic}
                             alt={`${bands.name} performing`}
                         />
                         <div className="band-block__text">

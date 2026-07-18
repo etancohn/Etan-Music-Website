@@ -11,6 +11,7 @@ import { Performance } from '../data/performances';
 import {
     Checkbox, Field, ListEditor, NumberInput, Row, Select, SubHeading, TextArea, TextInput,
 } from './fields';
+import ImageUpload from './ImageUpload';
 
 // One editor component per content section. Each receives the section's draft
 // value and reports the whole next value through onChange — AdminPanel owns
@@ -33,6 +34,13 @@ export function HeroEditor({ value, onChange }: EditorProps<HeroContent>) {
             </Field>
             <Field label="Intro paragraph">
                 <TextArea value={value.description} onChange={(v) => set('description', v)} />
+            </Field>
+            <Field label="Hero photo">
+                <ImageUpload
+                    url={value.photoUrl}
+                    folder="hero"
+                    onChange={(url) => set('photoUrl', url || undefined)}
+                />
             </Field>
             <Field label="Photo caption" help="The line under your hero photo.">
                 <TextInput value={value.photoCaption} onChange={(v) => set('photoCaption', v)} />
@@ -131,6 +139,13 @@ export function BandsEditor({ value, onChange }: EditorProps<BandsContent>) {
             </Field>
             <Field label="Description">
                 <TextArea value={value.description} onChange={(v) => set('description', v)} />
+            </Field>
+            <Field label="Band photo">
+                <ImageUpload
+                    url={value.photoUrl}
+                    folder="bands"
+                    onChange={(url) => set('photoUrl', url || undefined)}
+                />
             </Field>
 
             <SubHeading>Videos</SubHeading>
