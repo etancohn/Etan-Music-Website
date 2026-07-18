@@ -9,7 +9,7 @@ import { CATEGORY_ORDER, CreditCategory, TheaterCredit } from '../data/theaterCr
 import { CoverVideo } from '../data/covers';
 import { Performance } from '../data/performances';
 import {
-    Checkbox, Field, ListEditor, NumberInput, Row, Select, SubHeading, TextArea, TextInput,
+    Checkbox, DateInput, Field, ListEditor, NumberInput, Row, Select, SubHeading, TextArea, TextInput,
 } from './fields';
 import ImageUpload from './ImageUpload';
 
@@ -94,15 +94,27 @@ export function TheaterCreditsEditor({ value, onChange }: EditorProps<TheaterCre
                 confirmText="Remove this production? It disappears from the site after you press Save."
                 renderItem={(item, setItem) => (
                     <>
-                        <Row cols="90px 1fr 1fr">
-                            <Field label="Year">
-                                <NumberInput value={item.year} fallback={YEAR_NOW} onChange={(year) => setItem({ ...item, year })} />
-                            </Field>
+                        <Row cols="1fr 1fr">
                             <Field label="Show">
                                 <TextInput value={item.show} onChange={(show) => setItem({ ...item, show })} />
                             </Field>
                             <Field label="Theater">
                                 <TextInput value={item.theater} onChange={(theater) => setItem({ ...item, theater })} />
+                            </Field>
+                        </Row>
+                        <Row cols="1fr 110px">
+                            <Field label="Opening night" help="Shows are ordered by this date, newest first. Filling it in sets the year too.">
+                                <DateInput
+                                    value={item.startDate}
+                                    onChange={(startDate) => setItem({
+                                        ...item,
+                                        startDate: startDate || undefined,
+                                        year: startDate ? Number(startDate.slice(0, 4)) : item.year,
+                                    })}
+                                />
+                            </Field>
+                            <Field label="Year" help="Used when there's no date.">
+                                <NumberInput value={item.year} fallback={YEAR_NOW} onChange={(year) => setItem({ ...item, year })} />
                             </Field>
                         </Row>
                         <Row>

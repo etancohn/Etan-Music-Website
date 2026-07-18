@@ -94,6 +94,17 @@ export function NumberInput({ value, onChange, fallback }: { value: number; onCh
     );
 }
 
+export function DateInput({ value, onChange }: { value: string | undefined; onChange: (v: string) => void }) {
+    return (
+        <input
+            type="date"
+            value={value ?? ''}
+            onChange={(e) => onChange(e.target.value)}
+            style={{ ...INPUT_STYLE, colorScheme: 'dark' }}
+        />
+    );
+}
+
 export function Select<T extends string>({ value, onChange, options }: {
     value: T;
     onChange: (v: T) => void;

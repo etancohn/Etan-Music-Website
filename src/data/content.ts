@@ -96,14 +96,25 @@ export const defaultContent: SiteContent = {
     },
 };
 
-// Groups credits by category with featured/condensed split, preserving the
-// in-year order they were entered in. (Moved here from theaterCredits.ts so
-// it works over live content instead of only the bundled defaults.)
+// Newest-first credit ordering: by opening date when present. A credit
+// without a date sorts as Dec 31 of its year — undated entries are usually
+// upcoming/TBD, so they belong above that year's dated (past) shows.
+// ISO dates compare correctly as strings. Array.sort is stable, so credits
+// that tie keep the order they were entered in.
+const creditSortKey = (c: TheaterCredit) => c.startDate ?? `${c.year}-12-31`;
+
+export function compareCreditsDesc(a: TheaterCredit, b: TheaterCredit): number {
+    return creditSortKey(b).localeCompare(creditSortKey(a));
+}
+
+// Groups credits by category with featured/condensed split. (Moved here from
+// theaterCredits.ts so it works over live content instead of only the
+// bundled defaults.)
 export function groupCredits(section: TheaterCreditsContent): GroupedCredits[] {
     return CATEGORY_ORDER.map((meta) => {
         const sorted = section.credits
             .filter((c) => c.category === meta.key)
-            .sort((a, b) => b.year - a.year);
+            .sort(compareCreditsDesc);
         return {
             meta,
             featured: sorted.filter((c) => c.year >= section.featuredYearMin),

@@ -5,6 +5,9 @@ export interface TheaterCredit {
     show: string;
     theater: string;
     category: CreditCategory;
+    // Opening night, ISO 'YYYY-MM-DD'. Orders shows within a year; entries
+    // without one sort as late-in-their-year (they're usually upcoming/TBD).
+    startDate?: string;
     note?: string;           // e.g. "sub", "co-music director, drums", "original show"
     youtubeLink?: string;
     isUpcoming?: boolean;
@@ -30,6 +33,7 @@ export const theaterCredits: TheaterCredit[] = [
     // ── 2027 ─────────────────────────────────────────────────────────────────
     {
         year: 2027,
+        startDate: '2027-04-08',
         show: 'Urinetown',
         theater: 'Wilmington High School',
         category: 'educational',
@@ -37,6 +41,7 @@ export const theaterCredits: TheaterCredit[] = [
     },
     {
         year: 2027,
+        startDate: '2027-01-14',
         show: 'Frozen Jr.',
         theater: 'Wilmington Middle School',
         category: 'educational',
@@ -46,6 +51,7 @@ export const theaterCredits: TheaterCredit[] = [
     // ── 2026 ─────────────────────────────────────────────────────────────────
     {
         year: 2026,
+        startDate: '2026-11-20',
         show: 'Come From Away',
         theater: 'Concord Community Players',
         category: 'community',
@@ -67,6 +73,7 @@ export const theaterCredits: TheaterCredit[] = [
     },
     {
         year: 2026,
+        startDate: '2026-07-19',
         show: 'The Wild Party',
         theater: 'Common Thread Theatre',
         category: 'community',
@@ -74,12 +81,21 @@ export const theaterCredits: TheaterCredit[] = [
     },
     {
         year: 2026,
+        startDate: '2026-07-16',
+        show: 'The Sound of Music',
+        theater: 'Wellesley Theatre Project',
+        category: 'community',
+    },
+    {
+        year: 2026,
+        startDate: '2026-06-08',
         show: 'Come From Away',
-        theater: 'Winnipisaukee Playhouse',
+        theater: 'Winnipesaukee Playhouse',
         category: 'regional',
     },
     {
         year: 2026,
+        startDate: '2026-05-07',
         show: 'Seussical',
         theater: 'Wheelock Family Theater',
         category: 'educational',
@@ -87,6 +103,7 @@ export const theaterCredits: TheaterCredit[] = [
     },
     {
         year: 2026,
+        startDate: '2026-04-23',
         show: 'Hairspray',
         theater: 'Umbrella Arts Center',
         category: 'regional',
@@ -94,36 +111,42 @@ export const theaterCredits: TheaterCredit[] = [
     },
     {
         year: 2026,
+        startDate: '2026-04-11',
         show: 'Mary Poppins',
-        theater: 'Friendly Society for the Performing Arts',
+        theater: 'Weston Friendly Society for the Performing Arts',
         category: 'community', // TODO(category): confirm — community vs professional?
     },
     {
         year: 2026,
+        startDate: '2026-03-19',
         show: 'Mean Girls',
         theater: 'Wilmington High School',
         category: 'educational',
     },
     {
         year: 2026,
+        startDate: '2026-02-19',
         show: 'Legally Blonde',
         theater: 'Suffolk University',
         category: 'educational',
     },
     {
         year: 2026,
+        startDate: '2026-01-29',
         show: 'Wizard of Oz Jr.',
         theater: 'Greater Boston Stage Company',
         category: 'educational', // TODO(category): youth production at a professional venue — move to regional?
     },
     {
         year: 2026,
+        startDate: '2026-01-29',
         show: 'Beetlejuice Jr.',
         theater: 'Greater Boston Stage Company',
         category: 'educational', // TODO(category): same as above
     },
     {
         year: 2026,
+        startDate: '2026-01-14',
         show: 'Shrek Jr.',
         theater: 'Wilmington Middle School',
         category: 'educational',
@@ -138,60 +161,70 @@ export const theaterCredits: TheaterCredit[] = [
     },
     {
         year: 2025,
+        startDate: '2025-10-17',
         show: 'Something Rotten!',
         theater: 'A Common Thread Theater',
         category: 'community', // TODO(category): confirm
     },
     {
         year: 2025,
+        startDate: '2025-09-14',
         show: 'Hadestown Jr.',
         theater: 'Misfit Artist Company',
         category: 'educational', // TODO(category): confirm
     },
     {
         year: 2025,
+        startDate: '2025-08-14',
         show: 'Reefer Madness',
         theater: 'The Rockwell',
         category: 'community',
     },
     {
         year: 2025,
+        startDate: '2025-08-06',
         show: 'Legally Blonde',
         theater: 'Greater Boston Stage Company',
         category: 'educational',
     },
     {
         year: 2025,
+        startDate: '2025-08-06',
         show: 'Bye Bye Birdie',
         theater: 'Greater Boston Stage Company',
         category: 'educational',
     },
     {
         year: 2025,
+        startDate: '2025-07-17',
         show: 'Legally Blonde',
         theater: 'Chelmsford Center for the Arts',
         category: 'educational',
     },
     {
         year: 2025,
+        startDate: '2025-06-20',
         show: 'Songs for a New World',
         theater: 'Concord Players',
         category: 'community',
     },
     {
         year: 2025,
+        startDate: '2025-06-13',
         show: 'Beetlejuice Jr.',
         theater: 'North Shore Childrens Theatre',
         category: 'educational',
     },
     {
         year: 2025,
+        startDate: '2025-06-05',
         show: 'The Lightning Thief',
         theater: 'Cambridge School of Weston',
         category: 'educational',
     },
     {
         year: 2025,
+        startDate: '2025-05-09',
         show: 'Fun Home',
         theater: 'Burlington Players',
         category: 'community',
@@ -199,6 +232,7 @@ export const theaterCredits: TheaterCredit[] = [
     },
     {
         year: 2025,
+        startDate: '2025-04-06',
         show: 'Honk',
         theater: 'Ayer-Shirley High School',
         category: 'educational',
@@ -206,18 +240,21 @@ export const theaterCredits: TheaterCredit[] = [
     },
     {
         year: 2025,
+        startDate: '2025-04-04',
         show: 'Cinderella',
         theater: 'Chelsea High School',
         category: 'educational',
     },
     {
         year: 2025,
+        startDate: '2025-03-07',
         show: 'Something Rotten!',
         theater: 'Curtain Call Theatre',
         category: 'community',
     },
     {
         year: 2025,
+        startDate: '2025-02-13',
         show: "The Guy Who Didn't Like Musicals",
         theater: 'Boston Center for the Arts',
         category: 'community',
@@ -226,6 +263,7 @@ export const theaterCredits: TheaterCredit[] = [
     // ── 2024 ─────────────────────────────────────────────────────────────────
     {
         year: 2024,
+        startDate: '2024-11-26',
         show: 'Winter Wonderettes',
         theater: 'Greater Boston Stage Company',
         category: 'regional',
@@ -233,24 +271,28 @@ export const theaterCredits: TheaterCredit[] = [
     },
     {
         year: 2024,
+        startDate: '2024-07-26',
         show: 'Kiss of the Spider Woman',
         theater: 'A Common Thread Theater',
         category: 'community', // TODO(category): confirm
     },
     {
         year: 2024,
+        startDate: '2024-05-30',
         show: 'The Prom',
         theater: 'Cambridge School of Weston',
         category: 'educational',
     },
     {
         year: 2024,
+        startDate: '2024-05-03',
         show: 'Cabaret',
         theater: 'Vokes Theater',
         category: 'community',
     },
     {
         year: 2024,
+        startDate: '2024-02-22',
         show: 'Newsies',
         theater: 'Suffolk University',
         category: 'educational',

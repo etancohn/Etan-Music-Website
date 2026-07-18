@@ -1,5 +1,6 @@
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import { CATEGORY_ORDER, TheaterCredit } from './data/theaterCredits';
+import { compareCreditsDesc } from './data/content';
 import { useContent } from './content.tsx';
 import Reveal from './Reveal';
 import './RecentExperience.css';
@@ -50,7 +51,7 @@ function RecentExperience() {
     const { credits } = useContent().theaterCredits;
     const recent = credits
         .filter((c) => c.year >= RECENT_YEAR_MIN)
-        .sort((a, b) => b.year - a.year);
+        .sort(compareCreditsDesc);
     const earlierCount = credits.length - recent.length;
 
     return (
