@@ -2,7 +2,6 @@ import { CSSProperties, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import EmailIcon from '@mui/icons-material/Email';
-import ercLogo from './assets/erc.png';
 import { Route, routeHref } from './router';
 import './Header.css';
 
@@ -101,7 +100,7 @@ function Header({ route }: { route: Route }) {
                         aria-label="Etan Cohn — home"
                         onClick={() => setMenuOpen(false)}
                     >
-                        <img className="site-header__logo" src={ercLogo} alt="" />
+                        <img className="site-header__logo" src="/favicon.svg" alt="" />
                         <span>Etan Cohn</span>
                     </a>
 

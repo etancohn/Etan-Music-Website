@@ -2,7 +2,6 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import EmailIcon from '@mui/icons-material/EmailOutlined';
 import PhoneIcon from '@mui/icons-material/LocalPhoneOutlined';
-import ercLogo from './assets/erc.png';
 import { useContent } from './content';
 import './Footer.css';
 
@@ -33,7 +32,7 @@ export default function Footer() {
                         href="#/"
                         aria-label="Etan Cohn — home"
                     >
-                        <img className="site-footer__logo" src={ercLogo} alt="" />
+                        <img className="site-footer__logo" src="/favicon.svg" alt="" />
                         <span>Etan Cohn</span>
                     </a>
                     <span className="site-footer__divider" aria-hidden="true">
