@@ -134,36 +134,43 @@
 .hero-socials {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 0.7rem;
     margin-top: 2.25rem;
 }
 
+/* Small raised tiles in the same white-card material as the polaroid and
+   video cards; on hover they fill with the accent and tilt like the photo. */
 .hero-social {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
-    /* Tinted with the accent at rest so they read as part of the palette
-       rather than greyed-out; fill solid on hover like the header's email. */
-    border: 1px solid rgba(var(--accent-rgb), 0.28);
-    background: rgba(var(--accent-rgb), 0.06);
-    color: var(--accent);
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    color: var(--text);
+    box-shadow:
+        0 6px 16px -8px rgba(var(--shadow-rgb), calc(0.35 * var(--shadow-k))),
+        var(--ring);
     transition:
-        color 0.25s ease,
-        border-color 0.25s ease,
-        background-color 0.25s ease,
-        box-shadow 0.25s ease,
-        transform 0.25s ease;
+        color 0.3s ease,
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hero-social:hover {
     color: var(--on-accent);
-    border-color: var(--accent-solid);
     background: var(--accent-solid);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 22px -8px rgba(var(--accent-rgb), 0.55);
+    border-color: var(--accent-solid);
+    transform: translateY(-3px) rotate(-8deg);
+    box-shadow: 0 12px 24px -10px rgba(var(--accent-rgb), 0.6);
+}
+
+.hero-social:nth-child(even):hover {
+    transform: translateY(-3px) rotate(8deg);
 }
 
 .hero-social:focus-visible {
@@ -174,7 +181,9 @@
 /* ---------- scroll cue ---------- */
 
 /* Letterspaced hint over a bouncing chevron, pinned to the bottom of the first
-   screen. Fades out on the first scroll (.is-hidden). */
+   screen. The one-time entrance fade lives on the children and the scroll
+   fade on the button, so returning to the top brings it straight back
+   instead of replaying the entrance delay. */
 .hero-cue {
     position: absolute;
     left: 50%;
@@ -188,15 +197,12 @@
     background: none;
     cursor: pointer;
     translate: -50% 0;
-    opacity: 0;
-    animation: hero-cue-in 0.8s ease 1.4s forwards;
     transition: opacity 0.4s ease, visibility 0s;
 }
 
 .hero-cue.is-hidden {
-    opacity: 0 !important;
+    opacity: 0;
     visibility: hidden;
-    animation: none;
     transition: opacity 0.4s ease, visibility 0s linear 0.4s;
 }
 
@@ -206,6 +212,7 @@
     letter-spacing: 0.26em;
     text-transform: uppercase;
     color: var(--text-3);
+    animation: hero-cue-in 0.8s ease 1.4s both;
     transition: color 0.25s ease;
 }
 
@@ -216,7 +223,9 @@
 .hero-cue-arrow {
     display: flex;
     color: var(--accent);
-    animation: hero-cue-bounce 1.8s ease-in-out 2.2s infinite;
+    animation:
+        hero-cue-in 0.8s ease 1.5s both,
+        hero-cue-bounce 1.8s ease-in-out 2.3s infinite;
 }
 
 .hero-cue:focus-visible {
@@ -226,8 +235,8 @@
 }
 
 @keyframes hero-cue-in {
-    to {
-        opacity: 1;
+    from {
+        opacity: 0;
     }
 }
 
@@ -581,12 +590,12 @@
 
 @media (prefers-reduced-motion: reduce) {
     .hero-frame::before,
-    .hero-frame::after,
-    .hero-cue {
+    .hero-frame::after {
         animation: none;
         opacity: 1;
     }
 
+    .hero-cue-label,
     .hero-cue-arrow {
         animation: none;
     }

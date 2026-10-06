@@ -210,8 +210,8 @@ function Hero() {
                     </motion.div>
                 </div>
 
-                {/* Desktop-only hint that there's more below; fades out on the
-                    first scroll. */}
+                {/* Desktop-only hint that there's more below; hidden while the
+                    page is scrolled, back again at the top. */}
                 <button
                     type="button"
                     className={`hero-cue${scrolled ? " is-hidden" : ""}`}
@@ -220,7 +220,7 @@ function Hero() {
                     }
                     tabIndex={scrolled ? -1 : undefined}
                 >
-                    <span className="hero-cue-label">Featured Videos</span>
+                    <span className="hero-cue-label">Scroll</span>
                     <span className="hero-cue-arrow" aria-hidden="true">
                         <svg viewBox="0 0 24 24" width="18" height="18">
                             <path
