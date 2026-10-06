@@ -149,37 +149,153 @@
 /* ---------- responsive ---------- */
 
 @media (max-width: 720px) {
-    .site-header__inner {
-        grid-template-columns: 1fr auto;
-        row-gap: 0;
-    }
-
-    .site-header__brand {
-        grid-column: 1;
-        grid-row: 1;
-        padding-bottom: 0.15rem;
-    }
-
-    .site-header__social {
-        grid-column: 2;
-        grid-row: 1;
-    }
-
+    /* Tabs move into the hamburger overlay (see "mobile menu" below). */
     .site-header__nav {
-        grid-column: 1 / -1;
-        grid-row: 2;
-        justify-content: center;
-        gap: clamp(1rem, 5vw, 1.75rem);
-        overflow-x: auto;
-        scrollbar-width: none;
-    }
-
-    .site-header__nav::-webkit-scrollbar {
         display: none;
     }
 
-    .site-header__tab {
-        padding: 0.15rem 0.1rem 0.7rem;
-        font-size: 0.88rem;
+    .site-header__inner {
+        grid-template-columns: 1fr auto;
+    }
+}
+
+/* ---------- mobile menu ---------- */
+
+/* Hamburger — hidden until the tab row collapses at 720px. */
+.site-header__toggle {
+    position: relative;
+    display: none;
+    width: 34px;
+    height: 34px;
+    margin-left: 0.15rem;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+.site-header__toggle:hover {
+    background: rgba(1, 81, 18, 0.08);
+}
+
+.site-header__toggle:focus-visible {
+    outline: 2px solid #015112;
+    outline-offset: -2px;
+}
+
+.site-header__toggle span {
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    height: 2px;
+    border-radius: 2px;
+    background: #2e2f30;
+    transition:
+        transform 0.4s cubic-bezier(0.7, 0, 0.2, 1),
+        opacity 0.25s ease;
+}
+
+.site-header__toggle span:nth-child(1) {
+    top: 11px;
+}
+
+.site-header__toggle span:nth-child(2) {
+    top: 16px;
+}
+
+.site-header__toggle span:nth-child(3) {
+    top: 21px;
+}
+
+.site-header__toggle.is-open span:nth-child(1) {
+    transform: translateY(5px) rotate(45deg);
+}
+
+.site-header__toggle.is-open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0.4);
+}
+
+.site-header__toggle.is-open span:nth-child(3) {
+    transform: translateY(-5px) rotate(-45deg);
+}
+
+/* Full-screen overlay that sits just under the sticky header, so the brand
+   and the X stay visible on top. Links stagger in on open and snap out on
+   close so the page transition underneath stays visible. */
+.site-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 199;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: calc(var(--header-h, 60px) + 1rem) 8% max(2rem, env(safe-area-inset-bottom));
+    background: linear-gradient(160deg, #ffffff, #eef1ef);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.3s ease,
+        visibility 0s linear 0.3s;
+}
+
+.site-menu.is-open {
+    opacity: 1;
+    visibility: visible;
+    transition:
+        opacity 0.35s ease,
+        visibility 0s;
+}
+
+.site-menu__link {
+    padding: 0.5rem 0;
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #2e2f30;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateX(-24px);
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        color 0.25s ease;
+}
+
+.site-menu__link:hover {
+    color: #015112;
+}
+
+.site-menu__link.is-active {
+    color: #015112;
+}
+
+.site-menu.is-open .site-menu__link {
+    opacity: 1;
+    transform: none;
+    transition:
+        opacity 0.5s ease var(--stagger),
+        transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) var(--stagger),
+        color 0.25s ease;
+}
+
+.site-menu__link:focus-visible {
+    outline: 2px solid #015112;
+    outline-offset: 4px;
+    border-radius: 6px;
+}
+
+@media (max-width: 720px) {
+    .site-header__toggle {
+        display: block;
+    }
+
+    .site-menu {
+        display: flex;
     }
 }
