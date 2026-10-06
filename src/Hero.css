@@ -35,9 +35,12 @@
     align-self: end;
 }
 
+/* Shrink-wrapped to the description, so the buttons and icons centre under
+   that text block rather than across the whole (wider) column. */
 .hero-body {
     grid-area: body;
     align-self: start;
+    width: fit-content;
 }
 
 /* ---------- text column ---------- */
@@ -88,6 +91,7 @@
 .hero-actions {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 0.9rem;
     margin-top: 2rem;
 }
@@ -133,6 +137,7 @@
 
 .hero-socials {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 0.7rem;
     margin-top: 2.25rem;
@@ -497,6 +502,10 @@
 
     .hero-name {
         font-size: clamp(2.8rem, 11vw, 4.2rem);
+    }
+
+    .hero-body {
+        width: auto;
     }
 
     /* photo now sits directly under the name, so it no longer needs the top
