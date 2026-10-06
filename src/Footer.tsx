@@ -1,9 +1,10 @@
 import EmailIcon from '@mui/icons-material/EmailOutlined';
 import PhoneIcon from '@mui/icons-material/LocalPhoneOutlined';
 import { useContent } from './content';
-import { SOCIALS } from './socials';
 import './Footer.css';
 
+// Two-column footer in the same shape as the Chris Renaud and Alex Irwin
+// sites: brand + contact on the left, copyright on the right.
 export default function Footer() {
     // The hero tagline ("Drummer · Boston, MA") is admin-editable, so the
     // footer stays in sync with it instead of hardcoding a second copy.
@@ -12,22 +13,10 @@ export default function Footer() {
     return (
         <footer className="site-footer">
             <div className="site-footer__inner">
-                <div className="site-footer__left">
-                    <a
-                        className="site-footer__brand"
-                        href="#/"
-                        aria-label="Etan Cohn — home"
-                    >
-                        <img className="site-footer__logo" src="/favicon.svg" alt="" />
-                        <span>Etan Cohn</span>
+                <div className="site-footer__contact">
+                    <a className="site-footer__brand" href="#/">
+                        Etan Cohn
                     </a>
-                    <span className="site-footer__divider" aria-hidden="true">
-                        ♪
-                    </span>
-                    <span className="site-footer__tagline">{overline}</span>
-                </div>
-
-                <div className="site-footer__right">
                     <a
                         className="site-footer__link"
                         href="mailto:etan.cohn@gmail.com"
@@ -39,23 +28,13 @@ export default function Footer() {
                         <PhoneIcon fontSize="inherit" />
                         (972) 310-6503
                     </a>
-                    <div className="site-footer__social">
-                        {SOCIALS.map(({ href, label, Icon }) => (
-                            <a
-                                key={href}
-                                className="site-footer__icon"
-                                href={href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label={label}
-                            >
-                                <Icon fontSize="small" />
-                            </a>
-                        ))}
-                    </div>
+                </div>
+
+                <div className="site-footer__col site-footer__col--end">
                     <span className="site-footer__copyright">
                         © {new Date().getFullYear()} Etan Cohn
                     </span>
+                    <span className="site-footer__tagline">{overline}</span>
                 </div>
             </div>
         </footer>

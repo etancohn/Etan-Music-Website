@@ -1,17 +1,10 @@
-/* Single-bar footer that bookends the header: same faux frosted-glass
-   gradient (no backdrop-filter — see .site-header for why), same hairline
-   border and 1100px column, so the page opens and closes on the same
-   surface. */
+/* Quiet two-column footer, same shape as the Chris Renaud and Alex Irwin
+   sites: a hairline rule over the page background, brand + contact on the
+   left, copyright + tagline on the right, on the header's 1100px column. */
 
 .site-footer {
     margin-top: 4.5rem;
-    background: linear-gradient(
-        to bottom,
-        rgba(250, 251, 251, 0.95),
-        rgba(243, 245, 244, 0.98)
-    );
     border-top: 1px solid var(--hairline);
-    box-shadow: inset 0 1px 0 rgba(var(--glass-rgb), 0.8);
     text-align: left; /* #root centers text globally */
 }
 
@@ -19,7 +12,7 @@
     max-width: 1100px;
     width: 90%;
     margin: 0 auto;
-    padding: 1.85rem 0;
+    padding: 1.75rem 0 2.25rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -27,176 +20,109 @@
     flex-wrap: wrap;
 }
 
-/* ---------- brand + tagline ---------- */
+/* ---------- brand + contact ---------- */
 
-.site-footer__left {
+.site-footer__contact {
     display: flex;
     align-items: center;
-    gap: 0.9rem;
+    gap: 0.6rem 1.5rem;
+    flex-wrap: wrap;
 }
 
 .site-footer__brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
     font-size: 1rem;
     font-weight: 700;
     letter-spacing: -0.02em;
     color: var(--text);
     text-decoration: none;
-    transition: opacity 0.25s ease;
-}
-
-.site-footer__brand:hover {
-    color: var(--text);
-    opacity: 0.75;
-}
-
-.site-footer__logo {
-    width: 26px;
-    height: 26px;
-    border-radius: 6px;
-    display: block;
-}
-
-/* small green note doubling as the brand/tagline separator */
-.site-footer__divider {
-    font-size: 0.85rem;
-    line-height: 1;
-    color: rgba(var(--accent-rgb), 0.5);
-}
-
-.site-footer__tagline {
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: var(--text-2);
-    white-space: nowrap;
-}
-
-/* ---------- contact + social + copyright ---------- */
-
-.site-footer__right {
-    display: flex;
-    align-items: center;
-    gap: 1.4rem;
-    flex-wrap: wrap;
+    transition: color 0.25s ease;
 }
 
 .site-footer__link {
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    font-size: 0.88rem;
-    font-weight: 500;
+    font-size: 0.85rem;
     color: var(--text-2);
     text-decoration: none;
     white-space: nowrap;
     transition: color 0.25s ease;
 }
 
-.site-footer__link:hover {
-    color: var(--accent);
-}
-
 .site-footer__link svg {
-    font-size: 1.05rem;
+    font-size: 1rem;
     color: var(--text-4);
     transition: color 0.25s ease;
 }
 
+.site-footer__brand:hover,
+.site-footer__link:hover,
 .site-footer__link:hover svg {
     color: var(--accent);
 }
 
-.site-footer__social {
+/* ---------- copyright + tagline ---------- */
+
+.site-footer__col {
     display: flex;
-    align-items: center;
-    gap: 0.2rem;
+    flex-direction: column;
+    gap: 0.25rem;
 }
 
-.site-footer__icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    color: var(--text-2);
-    transition:
-        color 0.25s ease,
-        background-color 0.25s ease;
-}
-
-.site-footer__icon:hover {
-    color: var(--accent);
-    background: rgba(var(--accent-rgb), 0.08);
+.site-footer__col--end {
+    align-items: flex-end;
+    text-align: right;
 }
 
 .site-footer__copyright {
-    font-size: 0.82rem;
-    font-weight: 500;
+    font-size: 0.8rem;
     color: var(--text-3);
-    white-space: nowrap;
+}
+
+.site-footer__tagline {
+    font-size: 0.75rem;
+    color: var(--text-4);
 }
 
 /* ---------- focus ---------- */
 
 .site-footer__brand:focus-visible,
-.site-footer__link:focus-visible,
-.site-footer__icon:focus-visible {
+.site-footer__link:focus-visible {
     outline: 2px solid var(--accent);
-    outline-offset: -2px;
-    border-radius: 6px;
+    outline-offset: 3px;
+    border-radius: 4px;
 }
 
 /* ---------- responsive ---------- */
 
+/* Centered stack on phones, like the Chris Renaud footer. */
 @media (max-width: 760px) {
     .site-footer__inner {
         flex-direction: column;
-        gap: 0.9rem;
-        padding: 1.6rem 0 1.5rem;
+        gap: 1.25rem;
+        padding: 2rem 0 2.25rem;
         text-align: center;
     }
 
-    .site-footer__left {
+    .site-footer__contact {
         flex-direction: column;
-        gap: 0.45rem;
+        gap: 0.4rem;
     }
 
-    .site-footer__divider {
-        display: none;
+    .site-footer__brand {
+        margin-bottom: 0.35rem;
     }
 
-    .site-footer__right {
-        flex-direction: column;
-        gap: 0.55rem;
-    }
-
-    .site-footer__social {
-        margin-top: 0.2rem;
-    }
-
-    .site-footer__copyright {
-        margin-top: 0.3rem;
+    .site-footer__col--end {
+        align-items: center;
+        text-align: center;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .site-footer__brand,
-    .site-footer__icon,
     .site-footer__link,
     .site-footer__link svg {
         transition: none;
     }
-}
-
-/* ---------- dark mode ---------- */
-
-:root[data-theme="dark"] .site-footer {
-    background: linear-gradient(
-        to bottom,
-        rgba(var(--glass-rgb), 0.95),
-        rgba(var(--glass-2-rgb), 0.98)
-    );
 }
