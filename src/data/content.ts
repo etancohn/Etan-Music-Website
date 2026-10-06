@@ -51,14 +51,21 @@ export interface CoversContent {
     pop: CoverVideo[];
 }
 
+export interface FunFact {
+    label: string;
+    value: string;
+}
+
 export interface AboutContent {
-    heading: string;
     // One string per paragraph. Bare domains/URLs (e.g. "chrisrenaud.com")
     // render as links.
     paragraphs: string[];
     // Uploaded photo URL; when absent the bundled about photo is used.
     photoUrl?: string;
+    // Shown on the back of the photo, which flips over on hover/tap.
     photoCaption: string;
+    // The "fun facts" card under the photo. Empty list hides the card.
+    funFacts: FunFact[];
 }
 
 export interface SiteContent {
@@ -89,7 +96,6 @@ export const defaultContent: SiteContent = {
         ],
     },
     about: {
-        heading: 'Meet Etan.',
         paragraphs: [
             'Etan Cohn (he/him) is a drummer and percussionist based in Cambridge, Massachusetts. He specializes in musical theater pits and has played more than 30 productions in the past two years at regional and community theaters across Boston and New England, including Winnipesaukee Playhouse, Greater Boston Stage Company, and Seacoast Rep. He loves how musical theater lets him play across genres, from rock, funk, and pop to jazz and Latin.',
             'Outside of musical theater, Etan has played with bands, jazz combos, church services, and orchestras. He also enjoys the craft side of drumming, from transcribing existing parts to writing his own.',
@@ -97,7 +103,13 @@ export const defaultContent: SiteContent = {
             'When not behind a kit, Etan is a software engineer at State Street. He also builds websites for fellow musicians. Check out chrisrenaud.com, alexirwincomposer.com, and this site!',
         ],
         photoCaption:
-            '♪ behind the kit for Winter Wonderettes at Greater Boston Stage Company',
+            'Behind the kit for Winter Wonderettes at Greater Boston Stage Company',
+        funFacts: [
+            { label: 'Favorite musical to watch', value: 'Something Rotten' },
+            { label: 'Favorite musical to play', value: 'Legally Blonde' },
+            { label: 'Dream show', value: 'In The Heights' },
+            { label: 'Favorite band', value: 'Linkin Park' },
+        ],
     },
     theaterCredits: {
         featuredYearMin: FEATURED_YEAR_MIN,

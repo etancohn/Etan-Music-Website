@@ -92,9 +92,6 @@ export function AboutEditor({ value, onChange }: EditorProps<AboutContent>) {
         onChange({ ...value, [k]: v });
     return (
         <div>
-            <Field label="Heading" help="The big title, e.g. “Meet Etan.”">
-                <TextInput value={value.heading} onChange={(v) => set('heading', v)} />
-            </Field>
             <Field label="About photo">
                 <ImageUpload
                     url={value.photoUrl}
@@ -102,7 +99,7 @@ export function AboutEditor({ value, onChange }: EditorProps<AboutContent>) {
                     onChange={(url) => set('photoUrl', url || undefined)}
                 />
             </Field>
-            <Field label="Photo caption" help="The line under the photo.">
+            <Field label="Photo caption" help="Shown on the back of the photo, which flips over when visitors hover or tap it.">
                 <TextInput value={value.photoCaption} onChange={(v) => set('photoCaption', v)} />
             </Field>
 
@@ -118,6 +115,26 @@ export function AboutEditor({ value, onChange }: EditorProps<AboutContent>) {
                     <Field label="Paragraph" help="Website names like “chrisrenaud.com” become links automatically.">
                         <TextArea value={item} onChange={setItem} minRows={4} />
                     </Field>
+                )}
+            />
+
+            <SubHeading>Fun facts</SubHeading>
+            <ListEditor
+                items={value.funFacts}
+                onChange={(funFacts) => set('funFacts', funFacts)}
+                makeNew={() => ({ label: '', value: '' })}
+                addLabel="Add fun fact"
+                itemTitle={(f, i) => f.label || `Fun fact ${i + 1}`}
+                confirmText="Remove this fun fact? It disappears from the site after you press Save."
+                renderItem={(item, setItem) => (
+                    <Row>
+                        <Field label="Prompt" help="e.g. “Favorite band”">
+                            <TextInput value={item.label} onChange={(label) => setItem({ ...item, label })} />
+                        </Field>
+                        <Field label="Answer">
+                            <TextInput value={item.value} onChange={(value) => setItem({ ...item, value })} />
+                        </Field>
+                    </Row>
                 )}
             />
         </div>

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import Reveal from '../Reveal';
 import { useContent } from '../content';
 import aboutPhoto from '../assets/etan-drums-ww.jpeg';
@@ -34,28 +34,70 @@ function linkify(text: string): ReactNode[] {
 }
 
 function AboutPage() {
-    const { heading, paragraphs, photoUrl, photoCaption } = useContent().about;
+    const { paragraphs, photoUrl, photoCaption, funFacts = [] } = useContent().about;
+    const facts = funFacts.filter((f) => f.label && f.value);
+    // Touch screens have no hover, so a tap flips the photo instead. On
+    // hover devices CSS handles it and clicks are ignored, so a click can't
+    // leave it stuck flipped after the mouse leaves.
+    const [flipped, setFlipped] = useState(false);
+    const onPhotoTap = () => {
+        if (!window.matchMedia('(hover: hover)').matches) setFlipped((f) => !f);
+    };
 
     return (
         <div className="page">
-            <div className="about-hero">
+            <div className={`about-hero${facts.length ? ' about-hero--facts' : ''}`}>
                 <Reveal className="about-photo">
-                    <div className="about-frame">
-                        <img
-                            src={photoUrl || aboutPhoto}
-                            alt="Etan Cohn behind the drum kit in a pit"
-                        />
-                        <div className="about-frame__caption">
-                            {photoCaption}
+                    <div
+                        className={`about-frame${flipped ? ' is-flipped' : ''}`}
+                        tabIndex={photoCaption ? 0 : undefined}
+                        onClick={photoCaption ? onPhotoTap : undefined}
+                    >
+                        <div className="about-frame__face">
+                            <img
+                                src={photoUrl || aboutPhoto}
+                                alt="Etan Cohn behind the drum kit in a pit"
+                            />
                         </div>
+                        {photoCaption && (
+                            <div className="about-frame__face about-frame__face--back">
+                                <div className="about-frame__staff" aria-hidden="true">
+                                    <span className="about-frame__note">♪</span>
+                                </div>
+                                <p className="about-frame__caption">{photoCaption}</p>
+                            </div>
+                        )}
                     </div>
                 </Reveal>
 
+                {facts.length > 0 && (
+                    <Reveal className="about-facts">
+                        <div className="setlist">
+                            <div className="setlist__head">
+                                <span className="setlist__title">Fun facts</span>
+                            </div>
+                            <ol className="setlist__items">
+                                {facts.map((f, i) => (
+                                    <li key={i} className="setlist__item">
+                                        <span className="setlist__num" aria-hidden="true">
+                                            {String(i + 1).padStart(2, '0')}
+                                        </span>
+                                        <span className="setlist__label">{f.label}</span>
+                                        <span className="setlist__value">{f.value}</span>
+                                    </li>
+                                ))}
+                            </ol>
+                        </div>
+                    </Reveal>
+                )}
+
                 <div className="about-text">
-                    <div className="page__eyebrow">About</div>
-                    <h1 className="page__title">{heading}</h1>
+                    <h1 className="about-title">About</h1>
                     {paragraphs.map((p, i) => (
-                        <p key={i} className="about-text__para">
+                        <p
+                            key={i}
+                            className={`about-text__para${i === 0 ? ' about-text__para--lede' : ''}`}
+                        >
                             {linkify(p)}
                         </p>
                     ))}
