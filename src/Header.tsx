@@ -2,7 +2,10 @@ import { CSSProperties, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import EmailIcon from '@mui/icons-material/Email';
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import { Route, routeHref } from './router';
+import { setTheme, useTheme } from './theme';
 import './Header.css';
 
 const TABS: { route: Route; label: string }[] = [
@@ -29,6 +32,21 @@ function MenuToggle({ open, onClick }: { open: boolean; onClick: () => void }) {
             <span />
             <span />
             <span />
+        </button>
+    );
+}
+
+function ThemeToggle() {
+    const dark = useTheme() === 'dark';
+    return (
+        <button
+            type="button"
+            className="site-header__icon site-header__theme"
+            onClick={() => setTheme(dark ? 'light' : 'dark')}
+            aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+            title={dark ? 'Light mode' : 'Dark mode'}
+        >
+            {dark ? <LightModeOutlinedIcon fontSize="small" /> : <DarkModeOutlinedIcon fontSize="small" />}
         </button>
     );
 }
@@ -144,6 +162,7 @@ function Header({ route }: { route: Route }) {
                         >
                             <EmailIcon fontSize="small" />
                         </a>
+                        <ThemeToggle />
                         <MenuToggle open={menuOpen} onClick={() => setMenuOpen((v) => !v)} />
                     </div>
                 </div>

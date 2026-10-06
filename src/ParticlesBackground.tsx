@@ -3,9 +3,11 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import type { Container, ISourceOptions } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim"; // Slim bundle includes polygon shape and links
+import { useTheme } from "./theme";
 
 function ParticlesBackground() {
     const [init, setInit] = useState(false);
+    const theme = useTheme();
 
     // Initialize particles engine
     useEffect(() => {
@@ -23,12 +25,8 @@ function ParticlesBackground() {
     // Define the Polygon Preset Configuration using useMemo
     const options: ISourceOptions = useMemo(
         () => ({
-            background: {
-                color: {
-                    value: "#f3f4f5",
-                    // value: "rgb(18, 20, 19)", // A darker background often looks good
-                },
-            },
+            // No canvas background: the body's themed --canvas color shows
+            // through, so switching light/dark only has to recolor the blobs.
             // Halved from 60: the particles drift slowly, so 30fps is visually
             // identical but costs half the full-screen canvas repaints.
             fpsLimit: 30,
@@ -65,7 +63,7 @@ function ParticlesBackground() {
                 color: {
                   // value: ["#FF6B6B", "#4ECDC4", "#45B7D1", "#F6AE2D", "#FFFFFF"],
                 //   value: "black",
-                    value: "#2e2f30", // Color of the polygons
+                    value: theme === "dark" ? "#7bc47f" : "#2e2f30", // Color of the polygons
                     // value: particleColor,  // rgb(58, 58, 58)
                 },
                 // collisions: {
@@ -130,7 +128,7 @@ function ParticlesBackground() {
             // perceptible gain. Off = ~4x less fill work per frame on HiDPI.
             detectRetina: false,
         }),
-        [], // Memoize options
+        [theme], // Memoize options
     );
 
     if (!init) {

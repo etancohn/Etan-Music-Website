@@ -7,6 +7,12 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Etan Cohn Drums</title>
+    <!-- Apply the saved theme before first paint (see src/theme.ts). -->
+    <script>
+      try {
+        if (localStorage.getItem('emw-theme') === 'dark') document.documentElement.dataset.theme = 'dark';
+      } catch (e) {}
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">

@@ -1,5 +1,62 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
+/* Theme tokens. Light is the default; dark mode (opt-in via the header
+   toggle, see theme.ts) borrows the admin dashboard's palette. `:root[...]`
+   outranks Bootstrap's own :root, which loads after this file. */
+:root {
+  --canvas: #f3f4f5;
+  --surface: #ffffff;
+  --text: #2e2f30;
+  --text-2: #5f6368;
+  --text-3: #8a8f94;
+  --text-4: #9aa0a5;
+  --accent: #015112;
+  --accent-rgb: 1, 81, 18;
+  --accent-solid: #015112;
+  --accent-solid-hover: #026a18;
+  --on-accent: #ffffff;
+  --line: #cfd3d6;
+  --line-soft: #e3e5e7;
+  --line-strong: #b6babd;
+  --ink-rgb: 46, 47, 48;
+  --shadow-rgb: 18, 30, 22;
+  --glass-rgb: 255, 255, 255;
+  --glass-2-rgb: 246, 247, 248;
+  /* Hairline borders, card edge rings, and a multiplier on shadow alphas.
+     Dark mode needs all three stronger: a black shadow barely registers on a
+     near-black page, so cards lean on a faint light edge to separate. */
+  --hairline: rgba(46, 47, 48, 0.08);
+  --ring: 0 0 0 0 transparent;
+  --shadow-k: 1;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #101312;
+  --surface: #20261f;
+  --text: #edefeb;
+  --text-2: #b4bcb5;
+  --text-3: #8d968e;
+  --text-4: #6f776f;
+  --accent: #7bc47f;
+  --accent-rgb: 123, 196, 127;
+  --accent-solid: #7bc47f;
+  --accent-solid-hover: #8fd193;
+  --on-accent: #10221a;
+  --line: rgba(237, 239, 235, 0.18);
+  --line-soft: rgba(237, 239, 235, 0.1);
+  --line-strong: rgba(237, 239, 235, 0.28);
+  --ink-rgb: 237, 239, 235;
+  --shadow-rgb: 0, 0, 0;
+  --glass-rgb: 30, 36, 32;
+  --glass-2-rgb: 24, 29, 26;
+  --hairline: rgba(237, 239, 235, 0.13);
+  --ring: 0 0 0 1px rgba(237, 239, 235, 0.1);
+  --shadow-k: 2;
+  --bs-body-color: var(--text);
+  --bs-body-color-rgb: 237, 239, 235;
+}
+
 /* clip (not hidden) — hidden creates a scroll container that breaks position: sticky */
 html, body {
   overflow-x: clip;
@@ -20,7 +77,12 @@ body {
   width: 100%;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 600;
-  background-color: white;
+}
+
+/* `html body` so it outranks Bootstrap's body rule, which loads later. The
+   particle canvas is transparent, so this is the page's backdrop. */
+html body {
+  background-color: var(--canvas);
 }
 
 h1 {

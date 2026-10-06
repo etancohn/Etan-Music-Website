@@ -42,7 +42,7 @@
     display: flex;
     align-items: center;
     gap: 0.7rem;
-    color: #015112;
+    color: var(--accent);
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.22em;
@@ -54,7 +54,7 @@
     width: 2.2rem;
     height: 2px;
     border-radius: 1px;
-    background: #015112;
+    background: var(--accent-solid);
 }
 
 .hero-name {
@@ -63,12 +63,12 @@
     font-weight: 700;
     letter-spacing: -0.035em;
     line-height: 1.05;
-    color: #2e2f30;
+    color: var(--text);
     margin: 0.9rem 0 0;
 }
 
 .hero-desc {
-    color: #5f6368;
+    color: var(--text-2);
     font-weight: 400;
     font-size: 1.05rem;
     line-height: 1.7;
@@ -98,25 +98,25 @@
 }
 
 .hero-btn-primary {
-    background: #015112;
-    color: #ffffff;
-    box-shadow: 0 8px 20px -6px rgba(1, 81, 18, 0.45);
+    background: var(--accent-solid);
+    color: var(--on-accent);
+    box-shadow: 0 8px 20px -6px rgba(var(--accent-rgb), 0.45);
 }
 
 .hero-btn-primary:hover {
-    background: #026a18;
+    background: var(--accent-solid-hover);
     transform: translateY(-2px);
-    box-shadow: 0 12px 26px -6px rgba(1, 81, 18, 0.5);
+    box-shadow: 0 12px 26px -6px rgba(var(--accent-rgb), 0.5);
 }
 
 .hero-btn-ghost {
-    color: #2e2f30;
-    border: 2px solid #cfd3d6;
-    background: rgba(255, 255, 255, 0.65);
+    color: var(--text);
+    border: 2px solid var(--line);
+    background: rgba(var(--glass-rgb), 0.65);
 }
 
 .hero-btn-ghost:hover {
-    border-color: #2e2f30;
+    border-color: var(--text);
     transform: translateY(-2px);
 }
 
@@ -152,10 +152,10 @@
 /* polaroid-style white mat, pinned at a slight tilt */
 .hero-frame {
     position: relative;
-    background: #ffffff;
+    background: var(--surface);
     padding: 12px;
     border-radius: 18px;
-    box-shadow: 0 26px 60px -20px rgba(18, 30, 22, 0.4);
+    box-shadow: 0 26px 60px -20px rgba(var(--shadow-rgb), calc(0.4 * var(--shadow-k))), var(--ring);
     transform: rotate(-1.5deg);
     transition:
         transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
@@ -165,7 +165,7 @@
 /* levels out and lifts on hover */
 .hero-photo:hover .hero-frame {
     transform: rotate(0deg) translateY(-4px);
-    box-shadow: 0 34px 70px -22px rgba(18, 30, 22, 0.45);
+    box-shadow: 0 34px 70px -22px rgba(var(--shadow-rgb), calc(0.45 * var(--shadow-k))), var(--ring);
 }
 
 /* translucent washi-tape strips across the top corners */
@@ -176,7 +176,7 @@
     width: 76px;
     height: 24px;
     border-radius: 2px;
-    box-shadow: 0 1px 3px rgba(20, 30, 22, 0.16);
+    box-shadow: 0 1px 3px rgba(var(--shadow-rgb), calc(0.16 * var(--shadow-k)));
     opacity: 0;
     z-index: 2;
     pointer-events: none;
@@ -229,7 +229,7 @@
     font-style: italic;
     font-weight: 500;
     letter-spacing: 0.06em;
-    color: #8a8f94;
+    color: var(--text-3);
 }
 
 /* ---------- featured video panel ---------- */
@@ -248,14 +248,14 @@
        (Same approach as .site-header.) */
     background: linear-gradient(
         to bottom,
-        rgba(255, 255, 255, 0.93),
-        rgba(246, 247, 248, 0.9)
+        rgba(var(--glass-rgb), 0.93),
+        rgba(var(--glass-2-rgb), 0.9)
     );
-    border: 1px solid rgba(46, 47, 48, 0.08);
+    border: 1px solid var(--hairline);
     border-radius: 20px;
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.7),
-        0 22px 48px -26px rgba(18, 30, 22, 0.4);
+        inset 0 1px 0 rgba(var(--glass-rgb), 0.7),
+        0 22px 48px -26px rgba(var(--shadow-rgb), calc(0.4 * var(--shadow-k)));
 }
 
 .hero-featured-head {
@@ -264,7 +264,7 @@
 }
 
 .hero-featured-label {
-    color: #015112;
+    color: var(--accent);
     font-size: 0.82rem;
     font-weight: 700;
     letter-spacing: 0.2em;
@@ -280,10 +280,10 @@
 
 /* mini-polaroid video card — a lighter sibling of .hero-frame */
 .hero-card {
-    background: #ffffff;
+    background: var(--surface);
     padding: 8px 8px 0;
     border-radius: 14px;
-    box-shadow: 0 18px 40px -16px rgba(18, 30, 22, 0.35);
+    box-shadow: 0 18px 40px -16px rgba(var(--shadow-rgb), calc(0.35 * var(--shadow-k))), var(--ring);
     --tilt: 0deg;
     transform: rotate(var(--tilt));
     width: min(var(--card-w, 300px), 40vw);
@@ -302,7 +302,7 @@
 
 .hero-card:hover {
     transform: rotate(0deg) translateY(-4px);
-    box-shadow: 0 26px 54px -18px rgba(18, 30, 22, 0.42);
+    box-shadow: 0 26px 54px -18px rgba(var(--shadow-rgb), calc(0.42 * var(--shadow-k))), var(--ring);
 }
 
 .hero-card-media {
@@ -321,8 +321,8 @@
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: rgba(1, 81, 18, 0.92);
-    color: #ffffff;
+    background: rgba(var(--accent-rgb), 0.92);
+    color: var(--on-accent);
     box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.55);
     transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -342,7 +342,7 @@
     font-style: italic;
     font-weight: 500;
     letter-spacing: 0.06em;
-    color: #8a8f94;
+    color: var(--text-3);
 }
 
 /* ---------- responsive ---------- */

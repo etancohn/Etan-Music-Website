@@ -7,7 +7,7 @@
 .band-block + .band-block {
     margin-top: 2.5rem;
     padding-top: 2rem;
-    border-top: 1px solid #e3e5e7;
+    border-top: 1px solid var(--line-soft);
 }
 
 .band-block__intro {
@@ -21,8 +21,8 @@
 .band-block__photo {
     width: 100%;
     border-radius: 12px;
-    box-shadow: 0 18px 40px -18px rgba(18, 30, 22, 0.35);
-    background: #ffffff;
+    box-shadow: 0 18px 40px -18px rgba(var(--shadow-rgb), calc(0.35 * var(--shadow-k))), var(--ring);
+    background: var(--surface);
     padding: 8px;
 }
 
@@ -31,12 +31,12 @@
     font-size: 1.25rem;
     font-weight: 700;
     letter-spacing: -0.01em;
-    color: #2e2f30;
+    color: var(--text);
     margin: 0;
 }
 
 .band-block__desc {
-    color: #5f6368;
+    color: var(--text-2);
     font-weight: 400;
     font-size: 0.95rem;
     line-height: 1.65;
@@ -45,7 +45,7 @@
 }
 
 .band-block__desc a {
-    color: #015112;
+    color: var(--accent);
     font-weight: 600;
 }
 
@@ -72,7 +72,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: #2e2f30;
+    color: var(--text);
     margin: 0 0 1.1rem;
 }
 
@@ -81,7 +81,7 @@
     font-weight: 400;
     letter-spacing: 0.02em;
     text-transform: none;
-    color: #8a8f94;
+    color: var(--text-3);
 }
 
 /* ---------- responsive ---------- */

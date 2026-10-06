@@ -1,8 +1,6 @@
 import { ReactNode } from 'react';
-import EmailIcon from '@mui/icons-material/Email';
 import Reveal from '../Reveal';
 import { useContent } from '../content';
-import { theaterCredits } from '../data/theaterCredits';
 import aboutPhoto from '../assets/etan-drums-ww.jpeg';
 import './pages.css';
 import './AboutPage.css';
@@ -35,14 +33,6 @@ function linkify(text: string): ReactNode[] {
     return out;
 }
 
-// Regional credits, newest first, for the "selected credits" resume block.
-function selectedCredits() {
-    return theaterCredits
-        .filter((c) => c.category === 'regional')
-        .sort((a, b) => b.year - a.year)
-        .slice(0, 6);
-}
-
 function AboutPage() {
     const { heading, paragraphs, photoUrl, photoCaption } = useContent().about;
 
@@ -69,104 +59,14 @@ function AboutPage() {
                             {linkify(p)}
                         </p>
                     ))}
-                    <div className="about-actions">
-                        <a
-                            className="about-btn about-btn--primary"
-                            href="mailto:etan.cohn@gmail.com?subject=Booking%20inquiry"
-                        >
-                            <EmailIcon fontSize="small" />
-                            Get in Touch
+                    <p className="about-text__site-note">
+                        Interested in a site of your own?{' '}
+                        <a href="mailto:etan.cohn@gmail.com?subject=Website%20inquiry">
+                            Get in touch.
                         </a>
-                        <a className="about-btn about-btn--ghost" href="#/experience">
-                            Full Experience
-                        </a>
-                    </div>
+                    </p>
                 </div>
             </div>
-
-            <section className="page-section" aria-label="Resume at a glance">
-                <h2 className="page-section__label">Resume at a Glance</h2>
-
-                <Reveal className="resume-grid">
-                    <div className="resume-card">
-                        <h3 className="resume-card__title">Selected Credits</h3>
-                        <ul className="resume-card__list">
-                            {selectedCredits().map((c) => (
-                                <li key={`${c.year}-${c.show}-${c.theater}`}>
-                                    <span className="resume-card__show">{c.show}</span>
-                                    <span className="resume-card__detail">
-                                        {c.theater}, {c.year}
-                                    </span>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    <div className="resume-card">
-                        <h3 className="resume-card__title">What I Bring</h3>
-                        <ul className="resume-card__list resume-card__list--plain">
-                            <li>Drum set &amp; auxiliary percussion</li>
-                            <li>Sight-reading books &amp; playing to click</li>
-                            <li>Subbing on short notice</li>
-                            <li>Theater, rock, funk, pop &amp; klezmer</li>
-                            <li>Recording &amp; video production for covers</li>
-                        </ul>
-                    </div>
-
-                    <div className="resume-card">
-                        <h3 className="resume-card__title">Education</h3>
-                        <ul className="resume-card__list">
-                            <li>
-                                <span className="resume-card__show">
-                                    Carnegie Mellon University
-                                </span>
-                                <span className="resume-card__detail">
-                                    Pittsburgh, PA — pit orchestras, original student
-                                    works &amp; recitals
-                                </span>
-                            </li>
-                        </ul>
-
-                        <h3 className="resume-card__title resume-card__title--spaced">
-                            Contact
-                        </h3>
-                        <ul className="resume-card__list resume-card__list--plain">
-                            <li>
-                                <a href="mailto:etan.cohn@gmail.com">
-                                    etan.cohn@gmail.com
-                                </a>
-                            </li>
-                            <li>(972) 310-6503</li>
-                            <li>
-                                <a
-                                    href="https://www.instagram.com/etan_drums/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    @etan_drums
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://www.linkedin.com/in/etan-cohn/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    LinkedIn
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </Reveal>
-
-                <p className="resume-request">
-                    Want the full PDF resume?{' '}
-                    <a href="mailto:etan.cohn@gmail.com?subject=Resume%20request">
-                        Email me
-                    </a>{' '}
-                    and I&rsquo;ll send it over.
-                </p>
-            </section>
         </div>
     );
 }
