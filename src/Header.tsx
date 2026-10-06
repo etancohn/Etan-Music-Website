@@ -1,7 +1,6 @@
 import { CSSProperties, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import EmailIcon from '@mui/icons-material/Email';
+import EmailIcon from '@mui/icons-material/EmailOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import { Route, routeHref } from './router';
@@ -119,51 +118,44 @@ function Header({ route }: { route: Route }) {
                         onClick={() => setMenuOpen(false)}
                     >
                         <img className="site-header__logo" src="/favicon.svg" alt="" />
-                        <span>Etan Cohn</span>
                     </a>
 
-                    <nav className="site-header__nav" aria-label="Primary">
-                        {TABS.map((tab) => {
-                            const active = tab.route === route;
-                            return (
-                                <a
-                                    key={tab.route}
-                                    className={`site-header__tab${active ? ' site-header__tab--active' : ''}`}
-                                    href={routeHref(tab.route)}
-                                    aria-current={active ? 'page' : undefined}
-                                >
-                                    {tab.label}
-                                    {active && (
-                                        <motion.span
-                                            className="site-header__tab-underline"
-                                            layoutId="header-tab-underline"
-                                            transition={{ type: 'spring', stiffness: 500, damping: 40 }}
-                                        />
-                                    )}
-                                </a>
-                            );
-                        })}
-                    </nav>
+                    <div className="site-header__right">
+                        <nav className="site-header__nav" aria-label="Primary">
+                            {TABS.map((tab) => {
+                                const active = tab.route === route;
+                                return (
+                                    <a
+                                        key={tab.route}
+                                        className={`site-header__tab${active ? ' site-header__tab--active' : ''}`}
+                                        href={routeHref(tab.route)}
+                                        aria-current={active ? 'page' : undefined}
+                                    >
+                                        {tab.label}
+                                        {active && (
+                                            <motion.span
+                                                className="site-header__tab-underline"
+                                                layoutId="header-tab-underline"
+                                                transition={{ type: 'spring', stiffness: 500, damping: 40 }}
+                                            />
+                                        )}
+                                    </a>
+                                );
+                            })}
+                        </nav>
 
-                    <div className="site-header__social">
-                        <a
-                            className="site-header__icon"
-                            href="https://www.instagram.com/etan_drums/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Instagram — @etan_drums"
-                        >
-                            <InstagramIcon fontSize="small" />
-                        </a>
-                        <a
-                            className="site-header__icon"
-                            href="mailto:etan.cohn@gmail.com"
-                            aria-label="Email Etan"
-                        >
-                            <EmailIcon fontSize="small" />
-                        </a>
-                        <ThemeToggle />
-                        <MenuToggle open={menuOpen} onClick={() => setMenuOpen((v) => !v)} />
+                        <div className="site-header__actions">
+                            <ThemeToggle />
+                            <a
+                                className="site-header__email"
+                                href="mailto:etan.cohn@gmail.com"
+                                aria-label="Email Etan"
+                                title="Email"
+                            >
+                                <EmailIcon sx={{ fontSize: 18 }} />
+                            </a>
+                            <MenuToggle open={menuOpen} onClick={() => setMenuOpen((v) => !v)} />
+                        </div>
                     </div>
                 </div>
             </header>

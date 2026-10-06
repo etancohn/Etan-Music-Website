@@ -13,6 +13,10 @@ import {
     Checkbox, DateInput, Field, ListEditor, NumberInput, Row, Select, SubHeading, TextArea, TextInput,
 } from './fields';
 import ImageUpload from './ImageUpload';
+import { stripMarkup } from '../richText';
+
+// Appended to the help text of fields that accept *title* markup.
+const TITLE_HELP = 'Wrap a show or album title in *asterisks* to italicize it.';
 
 // One editor component per content section. Each receives the section's draft
 // value and reports the whole next value through onChange — AdminPanel owns
@@ -51,7 +55,7 @@ export function HeroEditor({ value, onChange }: EditorProps<HeroContent>) {
             <Field label="Tagline" help="The small line above your name, e.g. “Drummer · Boston, MA”.">
                 <TextInput value={value.overline} onChange={(v) => set('overline', v)} />
             </Field>
-            <Field label="Intro paragraph">
+            <Field label="Intro paragraph" help={TITLE_HELP}>
                 <TextArea value={value.description} onChange={(v) => set('description', v)} />
             </Field>
             <Field label="Hero photo">
@@ -61,7 +65,7 @@ export function HeroEditor({ value, onChange }: EditorProps<HeroContent>) {
                     onChange={(url) => set('photoUrl', url || undefined)}
                 />
             </Field>
-            <Field label="Photo caption" help="The line under your hero photo.">
+            <Field label="Photo caption" help={`The line under your hero photo. ${TITLE_HELP}`}>
                 <TextInput value={value.photoCaption} onChange={(v) => set('photoCaption', v)} />
             </Field>
 
@@ -71,13 +75,13 @@ export function HeroEditor({ value, onChange }: EditorProps<HeroContent>) {
                 onChange={(featured) => set('featured', featured)}
                 makeNew={() => ({ url: '', caption: '' })}
                 addLabel="Add featured video"
-                itemTitle={(v, i) => v.caption || `Video ${i + 1}`}
+                itemTitle={(v, i) => stripMarkup(v.caption) || `Video ${i + 1}`}
                 renderItem={(item, setItem) => (
                     <Row>
                         <Field label="YouTube link">
                             <TextInput value={item.url} onChange={(url) => setItem({ ...item, url })} placeholder="https://www.youtube.com/watch?v=…" />
                         </Field>
-                        <Field label="Caption">
+                        <Field label="Caption" help={TITLE_HELP}>
                             <TextInput value={item.caption} onChange={(caption) => setItem({ ...item, caption })} />
                         </Field>
                     </Row>
@@ -99,7 +103,7 @@ export function AboutEditor({ value, onChange }: EditorProps<AboutContent>) {
                     onChange={(url) => set('photoUrl', url || undefined)}
                 />
             </Field>
-            <Field label="Photo caption" help="Shown on the back of the photo, which flips over when visitors hover or tap it.">
+            <Field label="Photo caption" help={`Shown on the back of the photo, which flips over when visitors hover or tap it. ${TITLE_HELP}`}>
                 <TextInput value={value.photoCaption} onChange={(v) => set('photoCaption', v)} />
             </Field>
 
@@ -112,7 +116,7 @@ export function AboutEditor({ value, onChange }: EditorProps<AboutContent>) {
                 itemTitle={(p, i) => (p ? `${p.slice(0, 48)}${p.length > 48 ? '…' : ''}` : `Paragraph ${i + 1}`)}
                 confirmText="Remove this paragraph? It disappears from the site after you press Save."
                 renderItem={(item, setItem) => (
-                    <Field label="Paragraph" help="Website names like “chrisrenaud.com” become links automatically.">
+                    <Field label="Paragraph" help={`Website names like “chrisrenaud.com” become links automatically. ${TITLE_HELP}`}>
                         <TextArea value={item} onChange={setItem} minRows={4} />
                     </Field>
                 )}
@@ -131,7 +135,7 @@ export function AboutEditor({ value, onChange }: EditorProps<AboutContent>) {
                         <Field label="Prompt" help="e.g. “Favorite band”">
                             <TextInput value={item.label} onChange={(label) => setItem({ ...item, label })} />
                         </Field>
-                        <Field label="Answer">
+                        <Field label="Answer" help="e.g. “*Legally Blonde*” — asterisks italicize a show title.">
                             <TextInput value={item.value} onChange={(value) => setItem({ ...item, value })} />
                         </Field>
                     </Row>
@@ -224,7 +228,7 @@ export function BandsEditor({ value, onChange }: EditorProps<BandsContent>) {
             <Field label="Band name">
                 <TextInput value={value.name} onChange={(v) => set('name', v)} />
             </Field>
-            <Field label="Description">
+            <Field label="Description" help={TITLE_HELP}>
                 <TextArea value={value.description} onChange={(v) => set('description', v)} />
             </Field>
             <Field label="Band photo">
@@ -241,11 +245,11 @@ export function BandsEditor({ value, onChange }: EditorProps<BandsContent>) {
                 onChange={(videos) => set('videos', videos)}
                 makeNew={() => ({ youtubeId: '', caption: '' })}
                 addLabel="Add video"
-                itemTitle={(v, i) => v.caption || `Video ${i + 1}`}
+                itemTitle={(v, i) => stripMarkup(v.caption) || `Video ${i + 1}`}
                 renderItem={(item, setItem) => (
                     <Row>
                         <YouTubeIdField value={item.youtubeId} onChange={(youtubeId) => setItem({ ...item, youtubeId })} />
-                        <Field label="Caption">
+                        <Field label="Caption" help={TITLE_HELP}>
                             <TextInput value={item.caption} onChange={(caption) => setItem({ ...item, caption })} />
                         </Field>
                     </Row>
@@ -292,11 +296,11 @@ function CoverList({ items, onChange }: { items: CoverVideo[]; onChange: (items:
             onChange={onChange}
             makeNew={() => ({ youtubeId: '', title: '' })}
             addLabel="Add cover"
-            itemTitle={(v, i) => v.title || `Cover ${i + 1}`}
+            itemTitle={(v, i) => stripMarkup(v.title) || `Cover ${i + 1}`}
             renderItem={(item, setItem) => (
                 <Row>
                     <YouTubeIdField value={item.youtubeId} onChange={(youtubeId) => setItem({ ...item, youtubeId })} />
-                    <Field label="Title" help="e.g. “Popular — Wicked”.">
+                    <Field label="Title" help="e.g. “Popular — *Wicked*” (asterisks italicize the show title).">
                         <TextInput value={item.title} onChange={(title) => setItem({ ...item, title })} />
                     </Field>
                 </Row>

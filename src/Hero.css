@@ -10,7 +10,7 @@
     width: 100%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
     /* Head + body stack in the left column; photo spans both rows on the right.
        Splitting the text this way lets the photo slot between name and blurb
        on mobile (see the 900px breakpoint). */
@@ -22,14 +22,21 @@
     column-gap: clamp(2.5rem, 6vw, 5rem);
     row-gap: 0;
     padding: clamp(1.75rem, 5vh, 3rem) 0 clamp(1.5rem, 4vh, 2.5rem);
+    /* The name, photo and buttons own the first screen; the featured videos
+       start just below the fold. --header-h is published live by Header. */
+    min-height: calc(100svh - var(--header-h, 4.5rem));
 }
 
+/* Both rows share the photo's height; pin them to the seam between them so
+   the name and blurb stay together as one block centred beside the photo. */
 .hero-head {
     grid-area: head;
+    align-self: end;
 }
 
 .hero-body {
     grid-area: body;
+    align-self: start;
 }
 
 /* ---------- text column ---------- */
@@ -59,12 +66,13 @@
 
 .hero-name {
     font-family: "IBM Plex Sans", sans-serif;
-    font-size: clamp(2.5rem, 4.8vw, 3.6rem);
+    font-size: clamp(3.2rem, 6.6vw, 5.6rem);
     font-weight: 700;
-    letter-spacing: -0.035em;
-    line-height: 1.05;
+    letter-spacing: -0.045em;
+    line-height: 1;
+    white-space: nowrap;
     color: var(--text);
-    margin: 0.9rem 0 0;
+    margin: 1.1rem 0 0;
 }
 
 .hero-desc {
@@ -73,7 +81,7 @@
     font-size: 1.05rem;
     line-height: 1.7;
     max-width: 44ch;
-    margin: 1.2rem 0 0;
+    margin: 1.6rem 0 0;
 }
 
 .hero-actions {
@@ -120,13 +128,55 @@
     transform: translateY(-2px);
 }
 
+/* ---------- social icons ---------- */
+
+.hero-socials {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 2.25rem;
+}
+
+.hero-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    /* Tinted with the accent at rest so they read as part of the palette
+       rather than greyed-out; fill solid on hover like the header's email. */
+    border: 1px solid rgba(var(--accent-rgb), 0.28);
+    background: rgba(var(--accent-rgb), 0.06);
+    color: var(--accent);
+    transition:
+        color 0.25s ease,
+        border-color 0.25s ease,
+        background-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+.hero-social:hover {
+    color: var(--on-accent);
+    border-color: var(--accent-solid);
+    background: var(--accent-solid);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px -8px rgba(var(--accent-rgb), 0.55);
+}
+
+.hero-social:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
 /* ---------- photo column ---------- */
 
 .hero-photo {
     grid-area: photo;
     position: relative;
     isolation: isolate;
-    max-width: 440px;
+    max-width: 400px;
     width: 100%;
     justify-self: end;
 }
@@ -216,9 +266,10 @@
 .hero-frame img {
     display: block;
     width: 100%;
-    aspect-ratio: 4 / 3;
+    /* Portrait crop, framed on Etan and the stick hand. */
+    aspect-ratio: 5 / 6;
     object-fit: cover;
-    object-position: 58% 40%;
+    object-position: 72% 40%;
     border-radius: 10px;
 }
 
@@ -356,13 +407,10 @@
             "body";
         row-gap: 1.75rem;
         padding-top: 1rem;
-        /* Fill the viewport below the sticky header so the first screen ends
-           right after the buttons, pushing the featured-videos panel below the
-           fold — mirroring desktop, where the fold lands after that panel.
-           --header-h is published live by the Header component. align-content:
-           center (inherited) keeps a little air below the buttons instead of
-           letting them touch the bottom edge. */
-        min-height: calc(100svh - var(--header-h, 4.5rem));
+    }
+
+    .hero-name {
+        font-size: clamp(2.8rem, 11vw, 4.2rem);
     }
 
     /* photo now sits directly under the name, so it no longer needs the top
@@ -413,7 +461,8 @@
         margin-right: auto;
     }
 
-    .hero-actions {
+    .hero-actions,
+    .hero-socials {
         justify-content: center;
     }
 
@@ -421,6 +470,12 @@
         max-width: 540px;
         margin: 0 auto;
         width: 100%;
+    }
+
+    /* Back to landscape so the photo doesn't eat the whole screen. */
+    .hero-frame img {
+        aspect-ratio: 4 / 3;
+        object-position: 58% 40%;
     }
 }
 
@@ -446,6 +501,7 @@
     }
 
     .hero-btn,
+    .hero-social,
     .hero-frame,
     .hero-card,
     .hero-play-badge {

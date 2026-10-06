@@ -83,11 +83,11 @@ export const defaultContent: SiteContent = {
         description:
             'Pit musician and versatile professional drummer, with experience across regional and community theaters and in bands.',
         photoCaption:
-            '♪ in the pit for Come From Away, at Winnipesaukee Playhouse regional theater',
+            '♪ in the pit for *Come From Away*, at Winnipesaukee Playhouse regional theater',
         featured: [
             {
                 url: 'https://www.youtube.com/watch?v=QetcQ_k17VM',
-                caption: 'Dancing Through Life — Wicked',
+                caption: 'Dancing Through Life — *Wicked*',
             },
             {
                 url: 'https://www.youtube.com/watch?v=HpSeqORjsks',
@@ -103,11 +103,11 @@ export const defaultContent: SiteContent = {
             'When not behind a kit, Etan is a software engineer at State Street. He also builds websites for fellow musicians. Check out chrisrenaud.com, alexirwincomposer.com, and this site!',
         ],
         photoCaption:
-            'Behind the kit for Winter Wonderettes at Greater Boston Stage Company',
+            'Behind the kit for *Winter Wonderettes* at Greater Boston Stage Company',
         funFacts: [
-            { label: 'Favorite musical to watch', value: 'Something Rotten' },
-            { label: 'Favorite musical to play', value: 'Legally Blonde' },
-            { label: 'Dream show', value: 'In The Heights' },
+            { label: 'Favorite musical to watch', value: '*Something Rotten*' },
+            { label: 'Favorite musical to play', value: '*Legally Blonde*' },
+            { label: 'Dream show', value: '*In the Heights*' },
             { label: 'Favorite band', value: 'Linkin Park' },
         ],
     },
@@ -118,7 +118,7 @@ export const defaultContent: SiteContent = {
     bands: {
         name: 'Fox and the Cosmic Caravan',
         description:
-            'Rock band that gigged around Carnegie Mellon and Pittsburgh. Wrote and recorded the album Cosmic Caravan, released in 2023.',
+            'Rock band that gigged around Carnegie Mellon and Pittsburgh. Wrote and recorded the album *Cosmic Caravan*, released in 2023.',
         videos: cosmicCaravanVideos,
     },
     performances: {

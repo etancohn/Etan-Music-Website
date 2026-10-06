@@ -1,4 +1,5 @@
 import ReactPlayer from 'react-player/youtube';
+import { rich } from './richText';
 import './VideoCard.css';
 
 function PlayBadge() {
@@ -29,7 +30,7 @@ function VideoCard({ youtubeId, caption }: VideoCardProps) {
                     playIcon={<PlayBadge />}
                 />
             </div>
-            <div className="video-card__caption">{caption}</div>
+            <div className="video-card__caption">{rich(caption)}</div>
         </div>
     );
 }

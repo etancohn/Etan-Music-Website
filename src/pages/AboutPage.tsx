@@ -1,37 +1,10 @@
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import Reveal from '../Reveal';
 import { useContent } from '../content';
+import { rich } from '../richText';
 import aboutPhoto from '../assets/etan-drums-ww.jpeg';
 import './pages.css';
 import './AboutPage.css';
-
-// Bare domains and URLs in bio text ("chrisrenaud.com", "https://…")
-// become links, so the bio can be edited as plain text in the dashboard.
-const LINK_RE = /\b(?:https?:\/\/)?(?:[a-z0-9-]+\.)+[a-z]{2,}(?:\/[^\s]*)?/gi;
-
-function linkify(text: string): ReactNode[] {
-    const out: ReactNode[] = [];
-    let last = 0;
-    for (const m of text.matchAll(LINK_RE)) {
-        // Sentence punctuation right after a URL isn't part of it.
-        const url = m[0].replace(/[.,!?;:)]+$/, '');
-        const start = m.index!;
-        out.push(text.slice(last, start));
-        out.push(
-            <a
-                key={start}
-                href={/^https?:\/\//i.test(url) ? url : `https://${url}`}
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                {url.replace(/^https?:\/\//i, '')}
-            </a>,
-        );
-        last = start + url.length;
-    }
-    out.push(text.slice(last));
-    return out;
-}
 
 function AboutPage() {
     const { paragraphs, photoUrl, photoCaption, funFacts = [] } = useContent().about;
@@ -64,7 +37,7 @@ function AboutPage() {
                                 <div className="about-frame__staff" aria-hidden="true">
                                     <span className="about-frame__note">♪</span>
                                 </div>
-                                <p className="about-frame__caption">{photoCaption}</p>
+                                <p className="about-frame__caption">{rich(photoCaption)}</p>
                             </div>
                         )}
                     </div>
@@ -83,7 +56,7 @@ function AboutPage() {
                                             {String(i + 1).padStart(2, '0')}
                                         </span>
                                         <span className="setlist__label">{f.label}</span>
-                                        <span className="setlist__value">{f.value}</span>
+                                        <span className="setlist__value">{rich(f.value)}</span>
                                     </li>
                                 ))}
                             </ol>
@@ -98,7 +71,7 @@ function AboutPage() {
                             key={i}
                             className={`about-text__para${i === 0 ? ' about-text__para--lede' : ''}`}
                         >
-                            {linkify(p)}
+                            {rich(p, { links: true })}
                         </p>
                     ))}
                     <p className="about-text__site-note">

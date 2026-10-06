@@ -4,15 +4,15 @@ export interface CoverVideo {
 }
 
 export const musicalTheaterCovers: CoverVideo[] = [
-    { youtubeId: 'QetcQ_k17VM', title: 'Dancing Through Life — Wicked' },
-    { youtubeId: 'bTUEODLPljg', title: "As Long As You're Mine — Wicked" },
-    { youtubeId: 'lF7g9NMkc1w', title: 'Satisfied — Hamilton' },
-    { youtubeId: 'Re0Eo5_5N4c', title: "When You're Home — In The Heights" },
-    { youtubeId: 'UCUGC0GWVj0', title: 'What I Did For Love — A Chorus Line' },
-    { youtubeId: 'k7zQBmHtmNM', title: 'Kiss of the Spider Woman Medley' },
-    { youtubeId: 'G2r0Tn_Kcms', title: 'Corner of the Sky — Pippin' },
-    { youtubeId: '0MPV6q_WHmY', title: 'Popular — Wicked' },
-    { youtubeId: 'Nkv8QxUHRm4', title: 'Wish I Were Here — Next To Normal' },
+    { youtubeId: 'QetcQ_k17VM', title: 'Dancing Through Life — *Wicked*' },
+    { youtubeId: 'bTUEODLPljg', title: "As Long As You're Mine — *Wicked*" },
+    { youtubeId: 'lF7g9NMkc1w', title: 'Satisfied — *Hamilton*' },
+    { youtubeId: 'Re0Eo5_5N4c', title: "When You're Home — *In the Heights*" },
+    { youtubeId: 'UCUGC0GWVj0', title: 'What I Did for Love — *A Chorus Line*' },
+    { youtubeId: 'k7zQBmHtmNM', title: '*Kiss of the Spider Woman* Medley' },
+    { youtubeId: 'G2r0Tn_Kcms', title: 'Corner of the Sky — *Pippin*' },
+    { youtubeId: '0MPV6q_WHmY', title: 'Popular — *Wicked*' },
+    { youtubeId: 'Nkv8QxUHRm4', title: 'Wish I Were Here — *Next to Normal*' },
 ];
 
 export const popCovers: CoverVideo[] = [

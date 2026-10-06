@@ -113,8 +113,7 @@
 }
 
 /* One big word for a header, like the Chris Renaud and Alex Irwin sites:
-   no eyebrow, no dek. The short accent bar under it hands off to the drop
-   cap below. */
+   no eyebrow, no dek, no rule. The drop cap below is the only accent. */
 .about-title {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: clamp(2.8rem, 5.5vw, 4rem);
@@ -123,16 +122,6 @@
     line-height: 1;
     color: var(--text);
     margin: 0;
-}
-
-.about-title::after {
-    content: "";
-    display: block;
-    width: 3rem;
-    height: 4px;
-    margin-top: 1.1rem;
-    border-radius: 2px;
-    background: var(--accent-solid);
 }
 
 /* the opening paragraph is the lede: a touch larger, with a drop cap */
@@ -166,7 +155,7 @@
 }
 
 .about-text__para:first-of-type {
-    margin-top: 1.6rem;
+    margin-top: 1.35rem;
 }
 
 /* quiet follow-on to the bio's websites paragraph */
@@ -374,4 +363,11 @@
     .about-text__site-note a {
         transition: none;
     }
+}
+
+/* show titles in the fun facts match the Experience page's credit rows */
+.setlist__value .work-title {
+    font-family: 'Times New Roman', serif;
+    font-size: 1.14em;
+    font-weight: 600;
 }

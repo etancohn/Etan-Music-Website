@@ -1,22 +1,8 @@
-import InstagramIcon from '@mui/icons-material/Instagram';
-import FacebookIcon from '@mui/icons-material/Facebook';
 import EmailIcon from '@mui/icons-material/EmailOutlined';
 import PhoneIcon from '@mui/icons-material/LocalPhoneOutlined';
 import { useContent } from './content';
+import { SOCIALS } from './socials';
 import './Footer.css';
-
-const SOCIALS = [
-    {
-        href: 'https://www.instagram.com/etan_drums/',
-        label: 'Instagram — @etan_drums',
-        Icon: InstagramIcon,
-    },
-    {
-        href: 'https://www.facebook.com/profile.php?id=100008408079481',
-        label: 'Facebook',
-        Icon: FacebookIcon,
-    },
-];
 
 export default function Footer() {
     // The hero tagline ("Drummer · Boston, MA") is admin-editable, so the

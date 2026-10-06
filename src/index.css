@@ -97,3 +97,16 @@ h2 {
   font-family: 'Times New Roman', serif;
   font-weight: 700;
 }
+
+/* Titles of works (shows, albums), from *asterisk* markup — see richText.tsx.
+   Italic in running text; upright inside captions that are already italic
+   (reverse italics), so the title still stands apart. */
+.work-title {
+  font-style: italic;
+}
+
+.hero-frame-caption .work-title,
+.hero-card-caption .work-title,
+.video-card__caption .work-title {
+  font-style: normal;
+}

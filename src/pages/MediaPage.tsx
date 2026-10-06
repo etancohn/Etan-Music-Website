@@ -2,6 +2,7 @@ import VideoCard from '../VideoCard';
 import Reveal from '../Reveal';
 import SpotifyPlayer from '../SpotifyPlayer';
 import { CoverVideo } from '../data/covers';
+import { rich } from '../richText';
 import { useContent } from '../content.tsx';
 import cosmicCaravanPic from '../assets/cosmic-caravan-pic.jpeg';
 import './pages.css';
@@ -51,7 +52,7 @@ function MediaPage() {
                         />
                         <div className="band-block__text">
                             <h3 className="band-block__name">{bands.name}</h3>
-                            <p className="band-block__desc">{bands.description}</p>
+                            <p className="band-block__desc">{rich(bands.description)}</p>
                             <SpotifyPlayer />
                         </div>
                     </div>

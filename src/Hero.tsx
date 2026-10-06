@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import ReactPlayer from "react-player/youtube";
+import { SOCIALS } from "./socials";
 import heroImg from "./assets/etan-hero.jpg";
 import { useContent } from "./content.tsx";
+import { rich } from "./richText";
 import "./Hero.css";
 
 // Matches the 900px mobile breakpoint used throughout Hero.css.
@@ -120,25 +122,38 @@ function Hero() {
                             src={photoUrl || heroImg}
                             alt="Etan Cohn playing drums in a pit orchestra"
                         />
-                        <div className="hero-frame-caption">{photoCaption}</div>
+                        <div className="hero-frame-caption">{rich(photoCaption)}</div>
                     </div>
                 </motion.div>
 
                 <div className="hero-text hero-body">
                     <motion.p className="hero-desc" variants={fadeUp}>
-                        {description}
+                        {rich(description)}
                     </motion.p>
 
                     <motion.div className="hero-actions" variants={fadeUp}>
                         <a className="hero-btn hero-btn-primary" href="#/experience">
                             See Experience
                         </a>
-                        <a
-                            className="hero-btn hero-btn-ghost"
-                            href="mailto:etan.cohn@gmail.com"
-                        >
-                            Get in Touch
+                        <a className="hero-btn hero-btn-ghost" href="#/about">
+                            About Me
                         </a>
+                    </motion.div>
+
+                    <motion.div className="hero-socials" variants={fadeUp}>
+                        {SOCIALS.map(({ href, label, Icon }) => (
+                            <a
+                                key={href}
+                                className="hero-social"
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={label}
+                                title={label}
+                            >
+                                <Icon fontSize="small" />
+                            </a>
+                        ))}
                     </motion.div>
                 </div>
             </motion.div>
@@ -164,7 +179,7 @@ function Hero() {
                                     playIcon={<PlayBadge />}
                                 />
                             </div>
-                            <div className="hero-card-caption">{video.caption}</div>
+                            <div className="hero-card-caption">{rich(video.caption)}</div>
                         </div>
                     ))}
                 </div>
