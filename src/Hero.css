@@ -506,6 +506,13 @@
         font-size: clamp(2.8rem, 11vw, 4.2rem);
     }
 
+    /* Undo the desktop end/start pinning, which in a flex column would push
+       the name right and the blurb left instead of centring them. */
+    .hero-head,
+    .hero-body {
+        align-self: stretch;
+    }
+
     .hero-body {
         width: auto;
     }
