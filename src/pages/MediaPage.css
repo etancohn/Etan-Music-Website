@@ -1,21 +1,10 @@
-/* ---------- recordings (band block) ---------- */
+/* ---------- band (Fox and the Cosmic Caravan) ---------- */
 
 .band-block {
-    margin-top: 0.5rem;
-}
-
-.band-block + .band-block {
-    margin-top: 2.5rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--line-soft);
-}
-
-.band-block__intro {
     display: grid;
     grid-template-columns: 260px minmax(0, 1fr);
     gap: 2rem;
-    align-items: start;
-    margin-bottom: 1.75rem;
+    align-items: center;
 }
 
 .band-block__photo {
@@ -26,22 +15,13 @@
     padding: 8px;
 }
 
-.band-block__name {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    color: var(--text);
-    margin: 0;
-}
-
 .band-block__desc {
     color: var(--text-2);
     font-weight: 400;
-    font-size: 0.95rem;
+    font-size: 1rem;
     line-height: 1.65;
     max-width: 56ch;
-    margin: 0.6rem 0 1rem;
+    margin: 0 0 1.1rem;
 }
 
 .band-block__desc a {
@@ -49,45 +29,25 @@
     font-weight: 600;
 }
 
-.band-block--compact .band-block__desc {
-    margin-bottom: 0;
+.band-block__text .spotify-player {
+    max-width: 460px;
+}
+
+.band-block__text .spotify-player iframe {
+    display: block;
+    width: 100%;
+    border-radius: 12px;
 }
 
 .band-block__videos {
+    margin-top: 2rem;
     grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-}
-
-/* ---------- drum cover genre groups ---------- */
-
-.cover-group + .cover-group {
-    margin-top: 2.5rem;
-}
-
-.cover-group__label {
-    display: flex;
-    align-items: baseline;
-    gap: 0.9rem;
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 0.82rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--text);
-    margin: 0 0 1.1rem;
-}
-
-.cover-group__count {
-    font-size: 0.75rem;
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    text-transform: none;
-    color: var(--text-3);
 }
 
 /* ---------- responsive ---------- */
 
 @media (max-width: 760px) {
-    .band-block__intro {
+    .band-block {
         grid-template-columns: 1fr;
         gap: 1.25rem;
     }
