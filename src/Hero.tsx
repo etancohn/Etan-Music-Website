@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import ReactPlayer from "react-player/youtube";
 import { SOCIALS } from "./socials";
@@ -46,12 +46,19 @@ const photoReveal: Variants = {
     },
 };
 
+// The featured panel sits below the fold, so it reveals as it scrolls into
+// view; its cards then pin themselves in one after the other (cardDrop).
 const featuredReveal: Variants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 36 },
     show: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.55 },
+        transition: {
+            duration: 1,
+            ease: [0.22, 1, 0.36, 1],
+            delayChildren: 0.25,
+            staggerChildren: 0.18,
+        },
     },
 };
 
@@ -63,9 +70,60 @@ const featuredFlip: Variants = {
         opacity: 1,
         rotateX: 0,
         transformPerspective: 2500,
-        transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+        transition: {
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+            delayChildren: 0.3,
+            staggerChildren: 0.14,
+        },
     },
 };
+
+// Each card rises with the panel from a steeper angle and eases onto its
+// resting tilt (the tilt itself lives in CSS on .hero-card). Alternates
+// direction by index. A long ease-out rather than a spring, so it settles
+// without snapping.
+const cardDrop: Variants = {
+    hidden: (i: number) => ({
+        opacity: 0,
+        y: 30,
+        rotate: i % 2 ? 3.5 : -3.5,
+        scale: 0.96,
+    }),
+    show: {
+        opacity: 1,
+        y: 0,
+        rotate: 0,
+        scale: 1,
+        transition: {
+            duration: 1.1,
+            ease: [0.16, 1, 0.3, 1],
+            opacity: { duration: 0.6, ease: "easeOut" },
+        },
+    },
+};
+
+const labelReveal: Variants = {
+    hidden: { opacity: 0, x: -14 },
+    show: {
+        opacity: 1,
+        x: 0,
+        transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    },
+};
+
+// True once the page has scrolled past `threshold` px. Only re-renders when
+// that boolean flips, not on every scroll event.
+function useScrolledPast(threshold: number) {
+    const [past, setPast] = useState(false);
+    useEffect(() => {
+        const onScroll = () => setPast(window.scrollY > threshold);
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
+    }, [threshold]);
+    return past;
+}
 
 function PlayBadge() {
     return (
@@ -81,22 +139,17 @@ function Hero() {
     const reduceMotion = useReducedMotion();
     const isMobile = useIsMobile();
     const { overline, description, photoUrl, photoCaption, featured } = useContent().hero;
+    const featuredRef = useRef<HTMLDivElement>(null);
+    const scrolled = useScrolledPast(40);
 
-    // On mobile the featured tile flips in on scroll; on desktop it keeps its
-    // fade-up on mount alongside the rest of the hero.
-    const featuredMotion =
-        isMobile && !reduceMotion
-            ? {
-                  variants: featuredFlip,
-                  initial: "hidden" as const,
-                  whileInView: "show" as const,
-                  viewport: { once: true, amount: 0.3 },
-              }
-            : {
-                  variants: featuredReveal,
-                  initial: reduceMotion ? "show" : "hidden",
-                  animate: "show" as const,
-              };
+    // Both layouts reveal the featured panel on scroll: a flip-down on mobile
+    // (the old AOS effect), a rise on desktop.
+    const featuredMotion = {
+        variants: isMobile ? featuredFlip : featuredReveal,
+        initial: reduceMotion ? ("show" as const) : ("hidden" as const),
+        whileInView: "show" as const,
+        viewport: { once: true, amount: 0.3 },
+    };
 
     return (
         <section className="hero">
@@ -156,31 +209,63 @@ function Hero() {
                         ))}
                     </motion.div>
                 </div>
+
+                {/* Desktop-only hint that there's more below; fades out on the
+                    first scroll. */}
+                <button
+                    type="button"
+                    className={`hero-cue${scrolled ? " is-hidden" : ""}`}
+                    onClick={() =>
+                        featuredRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })
+                    }
+                    tabIndex={scrolled ? -1 : undefined}
+                >
+                    <span className="hero-cue-label">Featured Videos</span>
+                    <span className="hero-cue-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18">
+                            <path
+                                d="M6 9l6 6 6-6"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+                        </svg>
+                    </span>
+                </button>
             </motion.div>
 
-            <motion.div className="hero-featured" {...featuredMotion}>
+            <motion.div className="hero-featured" ref={featuredRef} {...featuredMotion}>
                 <div className="hero-featured-head">
-                    <div className="hero-featured-label">
+                    <motion.div className="hero-featured-label" variants={labelReveal}>
                         Featured
                         <br />
                         Videos
-                    </div>
+                    </motion.div>
                 </div>
                 <div className="hero-featured-row">
-                    {featured.map((video) => (
-                        <div key={video.url} className="hero-card">
-                            <div className="hero-card-media">
-                                <ReactPlayer
-                                    url={video.url}
-                                    light={true}
-                                    controls
-                                    width="100%"
-                                    height="100%"
-                                    playIcon={<PlayBadge />}
-                                />
+                    {featured.map((video, i) => (
+                        <motion.div
+                            key={video.url}
+                            className="hero-card-slot"
+                            variants={cardDrop}
+                            custom={i}
+                        >
+                            <div className="hero-card">
+                                <div className="hero-card-media">
+                                    <ReactPlayer
+                                        url={video.url}
+                                        light={true}
+                                        controls
+                                        width="100%"
+                                        height="100%"
+                                        playIcon={<PlayBadge />}
+                                    />
+                                </div>
+                                <div className="hero-card-caption">{rich(video.caption)}</div>
                             </div>
-                            <div className="hero-card-caption">{rich(video.caption)}</div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </motion.div>
