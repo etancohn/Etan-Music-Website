@@ -1,15 +1,38 @@
+import { ReactNode } from 'react';
 import EmailIcon from '@mui/icons-material/Email';
 import Reveal from '../Reveal';
+import { useContent } from '../content';
 import { theaterCredits } from '../data/theaterCredits';
 import aboutPhoto from '../assets/etan-drums-ww.jpeg';
 import './pages.css';
 import './AboutPage.css';
 
-function resumeStats() {
-    const productions = theaterCredits.length;
-    const theaters = new Set(theaterCredits.map((c) => c.theater)).size;
-    const firstYear = Math.min(...theaterCredits.map((c) => c.year));
-    return { productions, theaters, firstYear };
+// Bare domains and URLs in bio text ("chrisrenaud.com", "https://…")
+// become links, so the bio can be edited as plain text in the dashboard.
+const LINK_RE = /\b(?:https?:\/\/)?(?:[a-z0-9-]+\.)+[a-z]{2,}(?:\/[^\s]*)?/gi;
+
+function linkify(text: string): ReactNode[] {
+    const out: ReactNode[] = [];
+    let last = 0;
+    for (const m of text.matchAll(LINK_RE)) {
+        // Sentence punctuation right after a URL isn't part of it.
+        const url = m[0].replace(/[.,!?;:)]+$/, '');
+        const start = m.index!;
+        out.push(text.slice(last, start));
+        out.push(
+            <a
+                key={start}
+                href={/^https?:\/\//i.test(url) ? url : `https://${url}`}
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                {url.replace(/^https?:\/\//i, '')}
+            </a>,
+        );
+        last = start + url.length;
+    }
+    out.push(text.slice(last));
+    return out;
 }
 
 // Regional credits, newest first, for the "selected credits" resume block.
@@ -21,7 +44,7 @@ function selectedCredits() {
 }
 
 function AboutPage() {
-    const { productions, theaters, firstYear } = resumeStats();
+    const { heading, paragraphs, photoUrl, photoCaption } = useContent().about;
 
     return (
         <div className="page">
@@ -29,39 +52,23 @@ function AboutPage() {
                 <Reveal className="about-photo">
                     <div className="about-frame">
                         <img
-                            src={aboutPhoto}
+                            src={photoUrl || aboutPhoto}
                             alt="Etan Cohn behind the drum kit in a pit"
                         />
                         <div className="about-frame__caption">
-                            ♪&ensp;behind the kit for Winter Wonderettes at Greater Boston Stage Company
+                            {photoCaption}
                         </div>
                     </div>
                 </Reveal>
 
                 <div className="about-text">
                     <div className="page__eyebrow">About</div>
-                    <h1 className="page__title">Hi, I&rsquo;m Etan.</h1>
-                    <p className="about-text__para">
-                        I&rsquo;m a drummer and percussionist based in Boston, and my
-                        favorite seat in any theater is the one behind the kit. Since{' '}
-                        {firstYear} I&rsquo;ve played {productions} productions across{' '}
-                        {theaters} regional, community, and educational theaters — from{' '}
-                        <em>Come From Away</em> and <em>Legally Blonde</em> to student
-                        originals that had never been performed before.
-                    </p>
-                    <p className="about-text__para">
-                        I got my start at Carnegie Mellon University, drumming for
-                        Scotch&rsquo;n&rsquo;Soda Theater, School of Drama and School of
-                        Music productions, and cabarets and senior recitals — and
-                        co-founding the rock band Fox and the Cosmic Caravan along the
-                        way. These days you&rsquo;ll find me in pits around Greater
-                        Boston and playing with the funk/rock band Katie and the Roses.
-                    </p>
-                    <p className="about-text__para">
-                        I read charts, play to click, cover a wide stylistic range, and
-                        sub on short notice. When I&rsquo;m not in a pit, I&rsquo;m
-                        recording drum covers of the shows and songs I love.
-                    </p>
+                    <h1 className="page__title">{heading}</h1>
+                    {paragraphs.map((p, i) => (
+                        <p key={i} className="about-text__para">
+                            {linkify(p)}
+                        </p>
+                    ))}
                     <div className="about-actions">
                         <a
                             className="about-btn about-btn--primary"

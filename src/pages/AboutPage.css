@@ -57,6 +57,11 @@
     margin: 1.1rem 0 0;
 }
 
+.about-text__para a {
+    color: #015112;
+    font-weight: 600;
+}
+
 .about-text__para:first-of-type {
     margin-top: 1.3rem;
 }

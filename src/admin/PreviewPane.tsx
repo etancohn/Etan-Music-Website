@@ -12,6 +12,7 @@ const VIEW_H = 800;
 // Which public page shows each editor section.
 const TAB_FOR_SECTION: Record<string, string> = {
     hero: 'home',
+    about: 'about',
     theaterCredits: 'experience',
     bands: 'media',
     performances: 'experience',

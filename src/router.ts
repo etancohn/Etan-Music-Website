@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 
-// TODO: re-add 'about' before public release
-export type Route = 'home' | 'experience' | 'media';
+export type Route = 'home' | 'experience' | 'media' | 'about';
 
-const ROUTES: Route[] = ['home', 'experience', 'media'];
+const ROUTES: Route[] = ['home', 'experience', 'media', 'about'];
 
 // Old hashes that may still be bookmarked or linked externally.
 const LEGACY_ROUTES: Record<string, Route> = { covers: 'media' };

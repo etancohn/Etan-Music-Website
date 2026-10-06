@@ -8,7 +8,7 @@ import AuthGate, { auth } from './AuthGate';
 import { ACCENT, BG, Btn, FAINT, GREEN, MUTED, PANEL_FONT, RED, TEXT } from './fields';
 import PreviewPane from './PreviewPane';
 import {
-    BandsEditor, CoversEditor, HeroEditor, PerformancesEditor, TheaterCreditsEditor,
+    AboutEditor, BandsEditor, CoversEditor, HeroEditor, PerformancesEditor, TheaterCreditsEditor,
 } from './sections';
 
 type SectionKey = keyof SiteContent;
@@ -25,6 +25,7 @@ const asEditor = (c: ComponentType<never>) => c as unknown as SectionDef['Editor
 
 const SECTIONS: SectionDef[] = [
     { id: 'hero', label: 'Home page', Editor: asEditor(HeroEditor) },
+    { id: 'about', label: 'About page', Editor: asEditor(AboutEditor) },
     { id: 'theaterCredits', label: 'Theater credits', Editor: asEditor(TheaterCreditsEditor) },
     { id: 'bands', label: 'Bands', Editor: asEditor(BandsEditor) },
     { id: 'performances', label: 'Cabarets & recitals', Editor: asEditor(PerformancesEditor) },

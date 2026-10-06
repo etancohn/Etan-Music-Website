@@ -8,8 +8,7 @@ import Footer from './Footer.tsx';
 import HomePage from './pages/HomePage.tsx';
 import ExperiencePage from './pages/ExperiencePage.tsx';
 import MediaPage from './pages/MediaPage.tsx';
-// TODO: re-enable before public release
-// import AboutPage from './pages/AboutPage.tsx';
+import AboutPage from './pages/AboutPage.tsx';
 import { Route, parseHash, useRoute } from './router.ts';
 import { ADMIN_PATH } from './adminPath.ts';
 import { IS_PREVIEW, PREVIEW_STATE_MSG } from './previewMode.ts';
@@ -24,8 +23,7 @@ const PAGES: Record<Route, () => JSX.Element> = {
     home: HomePage,
     experience: ExperiencePage,
     media: MediaPage,
-    // TODO: re-enable before public release
-    // about: AboutPage,
+    about: AboutPage,
 };
 
 function App() {

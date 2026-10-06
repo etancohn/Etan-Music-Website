@@ -1,4 +1,5 @@
 import {
+    AboutContent,
     BandsContent,
     CoversContent,
     HeroContent,
@@ -80,6 +81,43 @@ export function HeroEditor({ value, onChange }: EditorProps<HeroContent>) {
                             <TextInput value={item.caption} onChange={(caption) => setItem({ ...item, caption })} />
                         </Field>
                     </Row>
+                )}
+            />
+        </div>
+    );
+}
+
+export function AboutEditor({ value, onChange }: EditorProps<AboutContent>) {
+    const set = <K extends keyof AboutContent>(k: K, v: AboutContent[K]) =>
+        onChange({ ...value, [k]: v });
+    return (
+        <div>
+            <Field label="Heading" help="The big title, e.g. “Meet Etan.”">
+                <TextInput value={value.heading} onChange={(v) => set('heading', v)} />
+            </Field>
+            <Field label="About photo">
+                <ImageUpload
+                    url={value.photoUrl}
+                    folder="about"
+                    onChange={(url) => set('photoUrl', url || undefined)}
+                />
+            </Field>
+            <Field label="Photo caption" help="The line under the photo.">
+                <TextInput value={value.photoCaption} onChange={(v) => set('photoCaption', v)} />
+            </Field>
+
+            <SubHeading>Bio</SubHeading>
+            <ListEditor
+                items={value.paragraphs}
+                onChange={(paragraphs) => set('paragraphs', paragraphs)}
+                makeNew={() => ''}
+                addLabel="Add paragraph"
+                itemTitle={(p, i) => (p ? `${p.slice(0, 48)}${p.length > 48 ? '…' : ''}` : `Paragraph ${i + 1}`)}
+                confirmText="Remove this paragraph? It disappears from the site after you press Save."
+                renderItem={(item, setItem) => (
+                    <Field label="Paragraph" help="Website names like “chrisrenaud.com” become links automatically.">
+                        <TextArea value={item} onChange={setItem} minRows={4} />
+                    </Field>
                 )}
             />
         </div>

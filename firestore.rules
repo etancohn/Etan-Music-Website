@@ -5,7 +5,7 @@ rules_version = '2';
 // ===============================================================
 //
 // Collection: content  (public site copy — no PII, deliberately world-readable)
-// Document IDs: exactly hero | theaterCredits | bands | performances | covers
+// Document IDs: exactly hero | about | theaterCredits | bands | performances | covers
 // Written only by the site owner from the hidden admin dashboard; each save
 // overwrites the whole document with a complete section object.
 //
@@ -15,6 +15,12 @@ rules_version = '2';
 //   - photoUrl: string (optional, https, <=800) — uploaded hero photo
 //   - photoCaption: string (required, <300)
 //   - featured: list (required, <=8) of { url, caption } maps
+//
+// content/about:
+//   - heading: string (required, <200)
+//   - paragraphs: list (required, <=12) of strings — bio paragraphs
+//   - photoUrl: string (optional, https, <=800) — uploaded about photo
+//   - photoCaption: string (required, <300)
 //
 // content/theaterCredits:
 //   - featuredYearMin: int (required, 1900..2100)
@@ -89,6 +95,15 @@ service cloud.firestore {
         && boundedList(data.featured, 8);
     }
 
+    function isValidAbout(data) {
+      return data.keys().hasOnly(['heading', 'paragraphs', 'photoUrl', 'photoCaption'])
+        && data.keys().hasAll(['heading', 'paragraphs', 'photoCaption'])
+        && boundedString(data.heading, 200)
+        && boundedList(data.paragraphs, 12)
+        && optionalHttpsUrl(data, 'photoUrl')
+        && boundedString(data.photoCaption, 300);
+    }
+
     function isValidTheaterCredits(data) {
       return data.keys().hasOnly(['featuredYearMin', 'credits'])
         && data.keys().hasAll(['featuredYearMin', 'credits'])
@@ -137,6 +152,11 @@ service cloud.firestore {
 
     match /content/hero {
       allow write: if isEditor() && isValidHero(request.resource.data);
+      allow delete: if isEditor();
+    }
+
+    match /content/about {
+      allow write: if isEditor() && isValidAbout(request.resource.data);
       allow delete: if isEditor();
     }
 

@@ -51,8 +51,19 @@ export interface CoversContent {
     pop: CoverVideo[];
 }
 
+export interface AboutContent {
+    heading: string;
+    // One string per paragraph. Bare domains/URLs (e.g. "chrisrenaud.com")
+    // render as links.
+    paragraphs: string[];
+    // Uploaded photo URL; when absent the bundled about photo is used.
+    photoUrl?: string;
+    photoCaption: string;
+}
+
 export interface SiteContent {
     hero: HeroContent;
+    about: AboutContent;
     theaterCredits: TheaterCreditsContent;
     bands: BandsContent;
     performances: PerformancesContent;
@@ -76,6 +87,17 @@ export const defaultContent: SiteContent = {
                 caption: 'Live at City Winery',
             },
         ],
+    },
+    about: {
+        heading: 'Meet Etan.',
+        paragraphs: [
+            'Etan Cohn (he/him) is a drummer and percussionist based in Cambridge, Massachusetts. He specializes in musical theater pits and has played more than 30 productions in the past two years at regional and community theaters across Boston and New England, including Winnipesaukee Playhouse, Greater Boston Stage Company, and Seacoast Rep. He loves how musical theater lets him play across genres, from rock, funk, and pop to jazz and Latin.',
+            'Outside of musical theater, Etan has played with bands, jazz combos, church services, and orchestras. He also enjoys the craft side of drumming, from transcribing existing parts to writing his own.',
+            'Etan graduated from Carnegie Mellon University in 2023. In Pittsburgh, he played musicals and cabarets with the School of Drama, School of Music, and Scotch’n’Soda Theatre, drummed for the indie rock band Fox and the Cosmic Caravan, and founded a CMU Klezmer band.',
+            'When not behind a kit, Etan is a software engineer at State Street. He also builds websites for fellow musicians. Check out chrisrenaud.com, alexirwincomposer.com, and this site!',
+        ],
+        photoCaption:
+            '♪ behind the kit for Winter Wonderettes at Greater Boston Stage Company',
     },
     theaterCredits: {
         featuredYearMin: FEATURED_YEAR_MIN,
