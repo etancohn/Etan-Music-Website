@@ -322,12 +322,16 @@
         grid-template-columns: 1fr;
     }
 
-    /* bio reads before the fun facts on narrow screens */
+    /* bio leads on narrow screens, with the photo and fun facts after it */
     .about-hero--facts {
         grid-template-areas:
-            "photo"
             "text"
+            "photo"
             "facts";
+    }
+
+    .about-text {
+        order: -1;
     }
 
     /* fun facts come after the bio here, so the photo needn't shrink */
@@ -347,7 +351,7 @@
     }
 
     .about-photo {
-        max-width: 420px;
+        max-width: 300px;
         margin: 0 auto;
         width: 100%;
     }

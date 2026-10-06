@@ -490,14 +490,16 @@
 /* ---------- responsive ---------- */
 
 @media (max-width: 900px) {
+    /* A column whose photo soaks up whatever height the text leaves over, so
+       everything from the name down to the social icons fits on the first
+       screen. On very short screens the photo bottoms out at its min-height
+       and the hero grows past the fold instead. */
     .hero-inner {
-        grid-template-columns: minmax(0, 1fr);
-        grid-template-areas:
-            "head"
-            "photo"
-            "body";
-        row-gap: 1.75rem;
-        padding: 1rem 0 clamp(1.5rem, 4vh, 2.5rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.25rem;
+        padding: 0.75rem 0 1.25rem;
     }
 
     .hero-name {
@@ -567,15 +569,37 @@
     }
 
     .hero-photo {
+        flex: 1 1 0;
+        min-height: 220px;
+        max-height: 60svh;
         max-width: 540px;
         margin: 0 auto;
         width: 100%;
+        display: flex;
+        flex-direction: column;
     }
 
-    /* Back to landscape so the photo doesn't eat the whole screen. */
+    .hero-frame {
+        flex: 1 1 auto;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Height comes from the leftover space, not an aspect ratio. */
     .hero-frame img {
-        aspect-ratio: 4 / 3;
+        flex: 1 1 0;
+        min-height: 0;
+        aspect-ratio: auto;
         object-position: 58% 40%;
+    }
+
+    .hero-actions {
+        margin-top: 1.25rem;
+    }
+
+    .hero-socials {
+        margin-top: 1.25rem;
     }
 }
 
