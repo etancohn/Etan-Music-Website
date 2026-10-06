@@ -8,9 +8,9 @@ import './Header.css';
 
 const TABS: { route: Route; label: string }[] = [
     { route: 'home', label: 'Home' },
+    { route: 'about', label: 'About' },
     { route: 'experience', label: 'Experience' },
     { route: 'media', label: 'Media' },
-    { route: 'about', label: 'About' },
 ];
 
 function Header({ route }: { route: Route }) {
