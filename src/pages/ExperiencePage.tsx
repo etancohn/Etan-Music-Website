@@ -1,10 +1,14 @@
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import DownloadIcon from '@mui/icons-material/FileDownloadOutlined';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import TheaterCreditsSection from '../TheaterCreditsSection';
 import Reveal from '../Reveal';
 import { Performance } from '../data/performances';
 import { useContent } from '../content.tsx';
 import './pages.css';
 import './ExperiencePage.css';
+
+const RESUME_URL = '/Etan-Cohn-Drums-Resume.pdf';
 
 function PerformanceRow({ year, title, venue, youtubeLink }: Performance) {
     return (
@@ -30,12 +34,23 @@ function ExperiencePage() {
 
     return (
         <div className="page">
-            <div className="page__eyebrow">Experience</div>
             <h1 className="page__title">Performance Experience</h1>
-            <p className="page__lede">
-                Take a look at my experience across musical theater pits,
-                cabarets, and recitals.
-            </p>
+
+            <div className="resume-actions">
+                <a className="resume-btn resume-btn--primary" href={RESUME_URL} download>
+                    <DownloadIcon />
+                    Download Resume
+                </a>
+                <a
+                    className="resume-btn resume-btn--ghost"
+                    href={RESUME_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <OpenInNewIcon />
+                    View PDF
+                </a>
+            </div>
 
             <section className="page-section" aria-label="Musical theater credits">
                 <h2 className="page-section__label">

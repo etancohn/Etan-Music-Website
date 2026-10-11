@@ -1,3 +1,61 @@
+/* ---------- resume buttons ---------- */
+
+.resume-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.62rem 1.35rem;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.resume-btn svg {
+    font-size: 1.15rem;
+}
+
+.resume-btn--primary {
+    background: var(--accent-solid);
+    color: var(--on-accent);
+    box-shadow: 0 8px 20px -6px rgba(var(--accent-rgb), 0.45);
+}
+
+.resume-btn--primary:hover {
+    background: var(--accent-solid-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px -6px rgba(var(--accent-rgb), 0.5);
+}
+
+.resume-btn--ghost {
+    color: var(--text);
+    border: 2px solid var(--line);
+    background: rgba(var(--glass-rgb), 0.65);
+}
+
+.resume-btn--ghost:hover {
+    border-color: var(--text);
+    transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .resume-btn {
+        transition: none;
+    }
+}
+
 /* ---------- stats row ---------- */
 
 .exp-stats {
